@@ -83,10 +83,6 @@ function start() {
   }
   entities['npc1'] = new character(9,8,'ivysaur');
   setInterval("entities['npc1'].stepRandom()",randRange(500,3000));
-  entities['npc2'] = new character(27,9,'charmeleon');
-  setInterval("entities['npc2'].stepRandom()",randRange(500,3000));
-  entities['npc3'] = new character(30,25,'warturtle');
-  setInterval("entities['npc3'].stepRandom()",randRange(500,3000));
 
   game.viewport.clear();
   setInterval(game.drawMap,game.framesPerSecond);
