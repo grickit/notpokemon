@@ -26,6 +26,7 @@
     this.sprite = sprites[imageURL];
     this.is_moving = false;
     this.can_move = true;
+    this.speed = 11;
     if(this.sprite == undefined) {
       this.image = images[imageURL];
       this.sprite = this.image;
@@ -63,8 +64,8 @@
 	  mapone.entities[this.y][this.x] = this;
 	  this.is_moving = true;
 	  this.can_move = false;
-	  setTimeout(function(thisObj) { thisObj.is_moving = false; },game.framesPerSecond*2,this);
-	  setTimeout(function(thisObj) { thisObj.can_move = true; },game.framesPerSecond*4,this);
+	  setTimeout(function(thisObj) { thisObj.is_moving = false; },game.framesPerSecond*(20/this.speed),this);
+	  setTimeout(function(thisObj) { thisObj.can_move = true; },game.framesPerSecond*(20/this.speed)*2,this);
 	}
       }
       else {
