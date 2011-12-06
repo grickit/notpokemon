@@ -1,4 +1,5 @@
 window.addEventListener('keydown', function(e) {
+  game.menus.stats.box.innerHTML = entities['player'].x+','+entities['player'].y;
   game.keyboard.keymapping_temp[e.keyCode] = true;
 });
 

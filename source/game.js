@@ -13,6 +13,7 @@
     game.menus.stdout = new output('output','',0);
     game.menus.main = new output('menu_main','Main');
     game.menus.context = new output('menu_context','Context');
+    game.menus.stats = new output('stats','Stats');
   // ----- }
 
 
