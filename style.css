@@ -25,51 +25,31 @@ body {
 }
 
 #menu_main {
-  position: absolute;
-  top: 228px;
-  left: 10px;
   width: 300px;
   height: 62px;
+  margin-top: 10px;
+  margin-left: 10px;
+  float: left;
   background-color: #BFBFBF;
   font-size: 7pt;
   text-align: left;
 }
 
 #menu_context {
-  position: absolute;
-  top: 228px;
-  left: 320px;
   width: 170px;
   height: 62px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 10px;
   background-color: #BFBFBF;
   font-size: 7pt;
   text-align: left;
 }
 
-#party_good {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 94px;
-  height: 208px;
-  background-color: #A60000;
-}
-
-#party_evil {
-  position: absolute;
-  top: 10px;
-  left: 114px;
-  width: 94px;
-  height: 208px;
-  background-color: #A6A600;
-}
-
 #map {
-  position: absolute;
-  top: 10px;
-  left: 218px;
-  width: 272px;
-  height: 208px;
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
   background-color: #000000;
 }
 
