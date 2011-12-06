@@ -82,7 +82,7 @@ function start() {
     console.log(document.location.hash);
   }
   entities['npc1'] = new character(9,8,'ivysaur');
-  setInterval("entities['npc1'].stepRandom()",randRange(500,3000));
+  setInterval("entities['npc1'].stepToPlayer()",500);
 
   game.viewport.clear();
   setInterval(game.drawMap,game.framesPerSecond);
