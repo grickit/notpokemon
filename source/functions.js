@@ -39,3 +39,7 @@ function tileConditionTest(tiles, condition, x, y) {
 
   return (testString.match(new RegExp(condition)));
 }
+
+function manhattanDistance(x, y, x2, y2) {
+  return Math.abs(x2 - x) + Math.abs(y2 - y);
+}

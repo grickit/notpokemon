@@ -82,11 +82,11 @@ function start() {
     console.log(document.location.hash);
   }
   entities['npc1'] = new character(9,8,'bulbasaur');
-  setInterval("entities['npc1'].stepToPlayer()",game.framesPerSecond*5);
+  entities['npc1'].tick();
   entities['npc2'] = new character(5,4,'ivysaur');
-  setInterval("entities['npc2'].stepToPlayer()",game.framesPerSecond*5);
+  entities['npc2'].tick();
   entities['npc3'] = new character(21,13,'venasaur');
-  setInterval("entities['npc3'].stepToPlayer()",game.framesPerSecond*5);
+  entities['npc3'].tick();
 
   game.viewport.clear();
   setInterval(game.drawMap,game.framesPerSecond);

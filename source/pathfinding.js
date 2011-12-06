@@ -57,7 +57,7 @@ function findPath(x, y, x2, y2) {
       // Is this the first time we've been here or did we get a lower g than last time?
       if(!openList[neighborString] || neighbor.g < openList[neighborString].g) {
 	neighbor.parent = currentNode;
-	neighbor.h = (Math.abs(x2 - neighbor.x) + Math.abs(y2 - neighbor.y));
+	neighbor.h = manhattanDistance(neighbor.x, neighbor.y);
 	neighbor.f = neighbor.g + neighbor.h;
 	openList[neighborString] = neighbor;
 	openListSize++;
