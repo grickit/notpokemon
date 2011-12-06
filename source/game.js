@@ -77,6 +77,16 @@
       return tile;
     }
 
+    game.viewport.getEntity = function(x, y) {
+      if(x < 0 || y < 0 || x > mapone.image.width-1 || y > mapone.image.height-1) {
+	var entity = undefined;
+      }
+      else {
+	var entity = mapone.entities[y][x];
+      }
+      return entity;
+    }
+
     game.viewport.getAdjustedTile = function(x, y) {
       var newx = game.viewport.x + x;
       var newy = game.viewport.y + y;
@@ -86,13 +96,7 @@
     game.viewport.getAdjustedEntity = function(x, y) {
       var newx = game.viewport.x + x;
       var newy = game.viewport.y + y;
-      if(newx < 0 || newy < 0 || newx > mapone.image.width-1 || newy > mapone.image.height-1) {
-	var entity = undefined;
-      }
-      else {
-	var entity = mapone.entities[newy][newx];
-      }
-      return entity;
+      return game.viewport.getEntity(newx, newy);
     }
 
     game.viewport.getAdjustedDrawingCoordinates = function(x, y) {
