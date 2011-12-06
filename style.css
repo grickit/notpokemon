@@ -6,6 +6,31 @@ body {
   font-size: 10pt;
 }
 
+#globalheader {
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #111111;
+  text-align: left;
+  color: #0090B0;
+  text-shadow: 3px 3px 3px #888888;
+  border-bottom: 2px solid #0090B0;
+}
+
+#globalheader a, #globalheader a:link, #globalheader a:visited {
+  color: #FFFFFF;
+  text-shadow: 1px 1px 1px #888888;
+  text-decoration: none;
+}
+
+#globalheader a:hover {
+  color: #0090B0;
+  text-shadow: 1px 1px 1px #888888;
+  text-decoration: none;
+}
+
 #output a, #output a:link, #output a:visited {
   color: #FFFFFF;
 }
