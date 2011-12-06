@@ -85,7 +85,7 @@ function start() {
   entities['npc1'].tick();
   entities['npc2'] = new character(5,4,'ivysaur');
   entities['npc2'].tick();
-  entities['npc3'] = new character(21,13,'venasaur');
+  entities['npc3'] = new character(31,54,'venasaur');
   entities['npc3'].tick();
 
   game.viewport.clear();

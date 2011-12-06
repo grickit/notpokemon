@@ -25,7 +25,7 @@ function findPath(x, y, x2, y2) {
     // Find the node with the lowest F score
     for (lowestF in openList) { break; } // A hack to start with the "first" entry
     for(i in openList) {
-      if(openList[i].f < openList[lowestF].f) {
+      if(openList[i].f <= openList[lowestF].f) {
 	lowestF = i;
       }
     }
@@ -51,7 +51,7 @@ function findPath(x, y, x2, y2) {
       var neighbor = neighbors[i];
       var neighborString = neighbor.x+','+neighbor.y;
       // Is this node in the ignore list?
-      if(closedList[neighborString]) { continue; }
+      if(closedList[neighborString] != undefined) { continue; }
 
       neighbor.g = currentNode.g+1;
       // Is this the first time we've been here or did we get a lower g than last time?
