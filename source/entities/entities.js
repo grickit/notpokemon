@@ -85,10 +85,10 @@
 
   character.prototype.stepToPlayer = function() {
     var path = findPath(this.x, this.y, entities['player'].x, entities['player'].y);
-    var first = path.shift();
-    //console.log(first);
-    if(first != undefined && first.direction != undefined) {
-      this.step(first.direction);
+    var last = path.pop();
+    //console.log(last);
+    if(last != undefined && last.direction != undefined) {
+      this.step(last.direction);
     }
   }
 // ----- }
