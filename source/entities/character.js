@@ -1,10 +1,7 @@
 // ----- CLASS: character {
   character.prototype = new entity();
   function character(x, y, imageURL) {
-    this.x = (x == undefined)? 0 : x;
-    this.y = (y == undefined)? 0 : y;
-    this.imageURL = imageURL;
-    this.facing = 1; //North: 0, South: 1, East: 2, West: 3;
+    entity.call(this, x, y, imageURL);
     this.sprite = sprites[imageURL];
     this.is_moving = false;
     this.can_move = true;
