@@ -1,6 +1,5 @@
 function randRange(min, max) {
-  var random = Math.floor(Math.random()*(max))+min;
-  return random;
+  return Math.floor(Math.random()*(max))+min;
 }
 
 function easyCharacterSheet(imageURL, x, y) {
@@ -36,7 +35,6 @@ function tileConditionTest(tiles, condition, x, y) {
   singleTileCondition(tiles, x, y, -1, 1)+','+
   singleTileCondition(tiles, x, y, 0, 1)+','+
   singleTileCondition(tiles, x, y, 1, 1);
-
   return (testString.match(new RegExp(condition)));
 }
 
