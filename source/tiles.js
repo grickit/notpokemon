@@ -1,31 +1,32 @@
 // ----- CLASS: tileType {
-  function tileType(letter, name, color, imageURL, clip, overlays, transitions) {
-    if (letter != undefined) {
-      this.letter = letter;
+  function tileType(args) {
+    console.log(args);
+    if (args.letter != undefined) {
+      this.letter = args.letter;
     }
     else {
       throw "new tileType missing required letter attribute";
     }
 
-    if (name != undefined) {
-      this.name = name;
+    if (args.name != undefined) {
+      this.name = args.name;
     }
     else {
       throw "new tileType missing required name attribute";
     }
 
-    if (color != undefined) {
-      this.color = color;
+    if (args.color != undefined) {
+      this.color = args.color;
     }
     else {
       throw "new tileType missing required color attribute";
     }
 
-    this.imageURL = imageURL;
+    this.imageURL = args.imageURL;
     this.image = images[this.imageURL];
-    this.clip = clip != undefined ? clip : [false,false,false,false];
-    this.overlays = overlays;
-    this.transitions = (transitions == undefined)? [new tileSprite(this.imageURL, 0, 0, this.image.width, this.image.height)] : transitions;
+    this.clip = (args.clip == undefined)? [false,false,false,false]: args.clip;
+    this.overlays = args.overlays;
+    this.transitions = (args.transitions == undefined)? [new tileSprite(this.imageURL, 0, 0, this.image.width, this.image.height)] : args.transitions;
   }
 // ----- }
 
@@ -60,12 +61,12 @@
     this.tilesByColor = {};
   }
 
-  tileSet.prototype.add = function(letter, name, color, imageURL, overlays, clip, transitions) {
-    var foo = new tileType(letter, name, color, imageURL, overlays, clip, transitions);
-    if(this.tilesByLetter[letter] != undefined) { throw "new tileType trying to use letter '"+letter+"', which is already used in this tileSet"; }
-    if(this.tilesByColor[color] != undefined) { throw "new tileType trying to use color '"+color+"', which already used in this tileSet"; }
+  tileSet.prototype.add = function(args) {
+    var foo = new tileType(args);
+    if(this.tilesByLetter[args.letter] != undefined) { throw "new tileType trying to use letter '"+letter+"', which is already used in this tileSet"; }
+    if(this.tilesByColor[args.color] != undefined) { throw "new tileType trying to use color '"+color+"', which already used in this tileSet"; }
     this.tiles.push(foo);
-    this.tilesByLetter[letter] = foo;
-    this.tilesByColor[color] = foo;
+    this.tilesByLetter[args.letter] = foo;
+    this.tilesByColor[args.color] = foo;
   }
 // ----- }
