@@ -49,8 +49,8 @@
   }
 
   character.prototype.stepRandom = function() {
-    if(randRange(0,1) == 0) {
-      this.step(game.directionWords[randRange(0,3)]);
+    if(randRange(0,2) == 0) {
+      this.facing = randRange(0,3);
     }
     else {
       this.step(game.directionWords[this.facing])
@@ -65,7 +65,7 @@
 
     if(this.path != undefined && this.path.length > 0) {
       this.step(this.path.pop().direction);
-      setTimeout(function(thisObj) { thisObj.tick(); }, game.framesPerSecond*(20/this.speed)*2, this);
+      setTimeout(function(thisObj) { thisObj.tick(); }, game.framesPerSecond*(20/this.speed)*3, this);
     }
     else if(this != entities['player']) {
       this.stepRandom();
