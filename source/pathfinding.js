@@ -1,20 +1,3 @@
-function getValidNeighbors(x, y) {
-  var neighbors = new Array();
-  if(game.viewport.getTile(x,y-1).clip[0]) {
-    neighbors.push({x: x, y: y-1, direction: 'north'});
-  }
-  if(game.viewport.getTile(x,y+1).clip[1]) {
-    neighbors.push({x: x, y: y+1, direction: 'south'});
-  }
-  if(game.viewport.getTile(x+1,y).clip[2]) {
-    neighbors.push({x: x+1, y: y, direction: 'east'});
-  }
-  if(game.viewport.getTile(x-1,y).clip[3]) {
-    neighbors.push({x: x-1, y: y, direction: 'west'});
-  }
-  return neighbors;
-}
-
 function findPath(x, y, x2, y2) {
   var openList = new Array();
   var closedList = new Array();
@@ -46,7 +29,7 @@ function findPath(x, y, x2, y2) {
     openListSize--;
     closedList[lowestF] = currentNode;
 
-    var neighbors = getValidNeighbors(currentNode.x, currentNode.y);
+    var neighbors = getMovableNeighbors(currentNode.x, currentNode.y);
     for(i in neighbors) {
       var neighbor = neighbors[i];
       var neighborString = neighbor.x+','+neighbor.y;

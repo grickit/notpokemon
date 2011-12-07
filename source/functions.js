@@ -43,3 +43,20 @@ function tileConditionTest(tiles, condition, x, y) {
 function manhattanDistance(x, y, x2, y2) {
   return Math.abs(x2 - x) + Math.abs(y2 - y);
 }
+
+function getMovableNeighbors(x, y) {
+  var neighbors = new Array();
+  if(game.viewport.getTile(x,y-1).clip[0]) {
+    neighbors.push({x: x, y: y-1, direction: 'north'});
+  }
+  if(game.viewport.getTile(x,y+1).clip[1]) {
+    neighbors.push({x: x, y: y+1, direction: 'south'});
+  }
+  if(game.viewport.getTile(x+1,y).clip[2]) {
+    neighbors.push({x: x+1, y: y, direction: 'east'});
+  }
+  if(game.viewport.getTile(x-1,y).clip[3]) {
+    neighbors.push({x: x-1, y: y, direction: 'west'});
+  }
+  return neighbors;
+}
