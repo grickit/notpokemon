@@ -28,22 +28,22 @@ function start() {
     color: '0,0,255,255',
     imageURL: 'tiles/w-tile',
     transitions:
-      [ new tileSprite('tiles/new/water',0,0,16,16,   '(.+),(s),(.+),(s),(w),(.+),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/water',32,0,16,16,  '(.+),(s),(.+),(.+),(w),(s),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/water',0,32,16,16,  '(.+),(.+),(.+),(s),(w),(.+),(.+),(s),(.+)'),
-      new tileSprite('tiles/new/water',32,32,16,16, '(.+),(.+),(.+),(.+),(w),(s),(.+),(s),(.+)'),
+      [ new tileSprite({imageURL: 'tiles/new/water', x: 0, y: 0, width: 16, height: 16, condition: '(.+),(s),(.+),(s),(w),(.+),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/water', x: 32, y: 0, width: 16, height: 16, condition:  '(.+),(s),(.+),(.+),(w),(s),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/water', x: 0, y: 32, width: 16, height: 16, condition:  '(.+),(.+),(.+),(s),(w),(.+),(.+),(s),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/water', x: 32, y: 32, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(w),(s),(.+),(s),(.+)'}),
 
-      new tileSprite('tiles/new/water',48,16,16,16,   '(.+),(w),(s),(.+),(w),(w),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/water',64,0,16,16,   '(.+),(.+),(.+),(w),(w),(.+),(s),(w),(.+)'),
-      new tileSprite('tiles/new/water',64,16,16,16,   '(s),(w),(.+),(w),(w),(.+),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/water',48,0,16,16,   '(.+),(.+),(.+),(.+),(w),(w),(.+),(w),(s)'),
+      new tileSprite({imageURL: 'tiles/new/water', x: 48, y: 16, width: 16, height: 16, condition: '(.+),(w),(s),(.+),(w),(w),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/water', x: 64, y: 0, width: 16, height: 16, condition:  '(.+),(.+),(.+),(w),(w),(.+),(s),(w),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/water', x: 64, y: 16, width: 16, height: 16, condition: '(s),(w),(.+),(w),(w),(.+),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/water', x: 48, y: 0, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(w),(w),(.+),(w),(s)'}),
 
-      new tileSprite('tiles/new/water',16,0,16,16,   '(.+),(s),(.+),(.+),(w),(.+),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/water',16,32,16,16,   '(.+),(.+),(.+),(.+),(w),(.+),(.+),(s),(.+)'),
-      new tileSprite('tiles/new/water',0,16,16,16,   '(.+),(.+),(.+),(s),(w),(.+),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/water',32,16,16,16,   '(.+),(.+),(.+),(.+),(w),(s),(.+),(.+),(.+)'),
+      new tileSprite({imageURL: 'tiles/new/water', x: 16, y: 0, width: 16, height: 16, condition:  '(.+),(s),(.+),(.+),(w),(.+),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/water', x: 16, y: 32, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(w),(.+),(.+),(s),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/water', x: 0, y: 16, width: 16, height: 16, condition:  '(.+),(.+),(.+),(s),(w),(.+),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/water', x: 32, y: 16, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(w),(s),(.+),(.+),(.+)'}),
 
-      new tileSprite('tiles/new/water',16,16,16,16, '(.+),(.+),(.+),(.+),(w),(.+),(.+),(.+),(.+)') ]
+      new tileSprite({imageURL: 'tiles/new/water', x: 16, y: 16, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(w),(.+),(.+),(.+),(.+)'}) ]
   });
   baseTileSet.add({
     letter: 's',
@@ -52,22 +52,22 @@ function start() {
     imageURL: 'tiles/s-tile',
     clip: [true,true,true,true],
     transitions:
-      [ new tileSprite('tiles/new/sand',0,0,16,16,   '(.+),(g|d|gg|T),(.+),(g|d|gg|T),(s),(.+),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/sand',32,0,16,16,  '(.+),(g|d|gg|T),(.+),(.+),(s),(g|d|gg|T),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/sand',0,32,16,16,  '(.+),(.+),(.+),(g|d|gg|T),(s),(.+),(.+),(g|d|gg|T),(.+)'),
-      new tileSprite('tiles/new/sand',32,32,16,16, '(.+),(.+),(.+),(.+),(s),(g|d|gg|T),(.+),(g|d|gg|T),(.+)'),
+      [ new tileSprite({imageURL: 'tiles/new/sand', x: 0, y: 0, width: 16, height: 16, condition: '(.+),(g|d|gg|T),(.+),(g|d|gg|T),(s),(.+),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/sand', x: 32, y: 0, width: 16, height: 16, condition:  '(.+),(g|d|gg|T),(.+),(.+),(s),(g|d|gg|T),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/sand', x: 0, y: 32, width: 16, height: 16, condition:  '(.+),(.+),(.+),(g|d|gg|T),(s),(.+),(.+),(g|d|gg|T),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/sand', x: 32, y: 32, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(s),(g|d|gg|T),(.+),(g|d|gg|T),(.+)'}),
 
-      new tileSprite('tiles/new/sand',48,16,16,16,   '(.+),(s),(g|d|gg|T),(.+),(s),(s),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/sand',64,0,16,16,   '(.+),(.+),(.+),(s),(s),(.+),(g|d|gg|T),(s),(.+)'),
-      new tileSprite('tiles/new/sand',64,16,16,16,   '(g|d|gg|T),(s),(.+),(s),(s),(.+),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/sand',48,0,16,16,   '(.+),(.+),(.+),(.+),(s),(s),(.+),(s),(g|d|gg|T)'),
+      new tileSprite({imageURL: 'tiles/new/sand', x: 48, y: 16, width: 16, height: 16, condition: '(.+),(s),(g|d|gg|T),(.+),(s),(s),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/sand', x: 64, y: 0, width: 16, height: 16, condition:  '(.+),(.+),(.+),(s),(s),(.+),(g|d|gg|T),(s),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/sand', x: 64, y: 16, width: 16, height: 16, condition: '(g|d|gg|T),(s),(.+),(s),(s),(.+),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/sand', x: 48, y: 0, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(s),(s),(.+),(s),(g|d|gg|T)'}),
 
-      new tileSprite('tiles/new/sand',16,0,16,16,   '(.+),(g|d|gg|T),(.+),(.+),(s),(.+),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/sand',16,32,16,16,   '(.+),(.+),(.+),(.+),(s),(.+),(.+),(g|d|gg|T),(.+)'),
-      new tileSprite('tiles/new/sand',0,16,16,16,   '(.+),(.+),(.+),(g|d|gg|T),(s),(.+),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/sand',32,16,16,16,   '(.+),(.+),(.+),(.+),(s),(g|d|gg|T),(.+),(.+),(.+)'),
+      new tileSprite({imageURL: 'tiles/new/sand', x: 16, y: 0, width: 16, height: 16, condition:   '(.+),(g|d|gg|T),(.+),(.+),(s),(.+),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/sand', x: 16, y: 32, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(s),(.+),(.+),(g|d|gg|T),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/sand', x: 0, y: 16, width: 16, height: 16, condition:   '(.+),(.+),(.+),(g|d|gg|T),(s),(.+),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/sand', x: 32, y: 16, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(s),(g|d|gg|T),(.+),(.+),(.+)'}),
 
-      new tileSprite('tiles/new/sand',16,16,16,16, '(.+),(.+),(.+),(.+),(s),(.+),(.+),(.+),(.+)') ]
+      new tileSprite({imageURL: 'tiles/new/sand', x: 16, y: 16, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(s),(.+),(.+),(.+),(.+)'}) ]
   });
   baseTileSet.add({
     letter: 'd',
@@ -76,22 +76,22 @@ function start() {
     imageURL: 'tiles/d-tile',
     clip: [true,true,true,true],
     transitions:
-      [ new tileSprite('tiles/new/dirt',0,0,16,16,   '(.+),(g|gg|T|s|w),(.+),(g|gg|T|s|w),(d),(.+),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/dirt',32,0,16,16,  '(.+),(g|gg|T|s|w),(.+),(.+),(d),(g|gg|T|s|w),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/dirt',0,32,16,16,  '(.+),(.+),(.+),(g|gg|T|s|w),(d),(.+),(.+),(g|gg|T|s|w),(.+)'),
-      new tileSprite('tiles/new/dirt',32,32,16,16, '(.+),(.+),(.+),(.+),(d),(g|gg|T|s|w),(.+),(g|gg|T|s|w),(.+)'),
+      [ new tileSprite({imageURL: 'tiles/new/dirt', x: 0, y: 0, width: 16, height: 16, condition:  '(.+),(g|gg|T|s|w),(.+),(g|gg|T|s|w),(d),(.+),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/dirt', x: 32, y: 0, width: 16, height: 16, condition:   '(.+),(g|gg|T|s|w),(.+),(.+),(d),(g|gg|T|s|w),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/dirt', x: 0, y: 32, width: 16, height: 16, condition:   '(.+),(.+),(.+),(g|gg|T|s|w),(d),(.+),(.+),(g|gg|T|s|w),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/dirt', x: 32, y: 32, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(d),(g|gg|T|s|w),(.+),(g|gg|T|s|w),(.+)'}),
 
-      new tileSprite('tiles/new/dirt',48,16,16,16,   '(.+),(d),(g|gg|T|s|w),(.+),(d),(d),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/dirt',64,0,16,16,   '(.+),(.+),(.+),(d),(d),(.+),(g|gg|T|s|w),(d),(.+)'),
-      new tileSprite('tiles/new/dirt',64,16,16,16,   '(g|gg|T|s|w),(d),(.+),(d),(d),(.+),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/dirt',48,0,16,16,   '(.+),(.+),(.+),(.+),(d),(d),(.+),(d),(g|gg|T|s|w)'),
+      new tileSprite({imageURL: 'tiles/new/dirt', x: 48, y: 16, width: 16, height: 16, condition:  '(.+),(d),(g|gg|T|s|w),(.+),(d),(d),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/dirt', x: 64, y: 0, width: 16, height: 16, condition:   '(.+),(.+),(.+),(d),(d),(.+),(g|gg|T|s|w),(d),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/dirt', x: 64, y: 16, width: 16, height: 16, condition:  '(g|gg|T|s|w),(d),(.+),(d),(d),(.+),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/dirt', x: 48, y: 0, width: 16, height: 16, condition:   '(.+),(.+),(.+),(.+),(d),(d),(.+),(d),(g|gg|T|s|w)'}),
 
-      new tileSprite('tiles/new/dirt',16,0,16,16,   '(.+),(g|gg|T|s|w),(.+),(.+),(d),(.+),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/dirt',16,32,16,16,   '(.+),(.+),(.+),(.+),(d),(.+),(.+),(g|gg|T|s|w),(.+)'),
-      new tileSprite('tiles/new/dirt',0,16,16,16,   '(.+),(.+),(.+),(g|gg|T|s|w),(d),(.+),(.+),(.+),(.+)'),
-      new tileSprite('tiles/new/dirt',32,16,16,16,   '(.+),(.+),(.+),(.+),(d),(g|gg|T|s|w),(.+),(.+),(.+)'),
+      new tileSprite({imageURL: 'tiles/new/dirt', x: 16, y: 0, width: 16, height: 16, condition:   '(.+),(g|gg|T|s|w),(.+),(.+),(d),(.+),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/dirt', x: 16, y: 32, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(d),(.+),(.+),(g|gg|T|s|w),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/dirt', x: 0, y: 16, width: 16, height: 16, condition:   '(.+),(.+),(.+),(g|gg|T|s|w),(d),(.+),(.+),(.+),(.+)'}),
+      new tileSprite({imageURL: 'tiles/new/dirt', x: 32, y: 16, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(d),(g|gg|T|s|w),(.+),(.+),(.+)'}),
 
-      new tileSprite('tiles/new/dirt',16,16,16,16, '(.+),(.+),(.+),(.+),(d),(.+),(.+),(.+),(.+)') ]
+      new tileSprite({imageURL: 'tiles/new/dirt', x: 16, y: 16, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(d),(.+),(.+),(.+),(.+)'}) ]
   });
   baseTileSet.add({
     letter: 'r',

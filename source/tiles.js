@@ -1,6 +1,5 @@
 // ----- CLASS: tileType {
   function tileType(args) {
-    console.log(args);
     if (args.letter != undefined) {
       this.letter = args.letter;
     }
@@ -26,20 +25,20 @@
     this.image = images[this.imageURL];
     this.clip = (args.clip == undefined)? [false,false,false,false]: args.clip;
     this.overlays = args.overlays;
-    this.transitions = (args.transitions == undefined)? [new tileSprite(this.imageURL, 0, 0, this.image.width, this.image.height)] : args.transitions;
+    this.transitions = (args.transitions == undefined)? [new tileSprite({imageURL: this.imageURL, x: 0, y: 0, width: this.image.width, height: this.image.height})] : args.transitions;
   }
 // ----- }
 
 
 // ----- CLASS: tileSprite {
-  function tileSprite(imageURL, x, y, width, height, condition) {
-    this.imageURL = imageURL;
-    this.image = images[imageURL];
-    this.x = (x == undefined)? 0 : x;
-    this.y = (y == undefined)? 0 : y;
-    this.width = (y == undefined)? 16 : width;
-    this.height = (height == undefined)? 16 : height;
-    this.condition = (condition == undefined)? '.+,.+,.+,.+,.+,.+,.+,.+,.+' : condition;
+  function tileSprite(args) {
+    this.imageURL = args.imageURL;
+    this.image = images[this.imageURL];
+    this.x = (args.x == undefined)? 0 : args.x;
+    this.y = (args.y == undefined)? 0 : args.y;
+    this.width = (args.y == undefined)? 16 : args.width;
+    this.height = (args.height == undefined)? 16 : args.height;
+    this.condition = (args.condition == undefined)? '.+,.+,.+,.+,.+,.+,.+,.+,.+' : args.condition;
   }
 // ----- }
 
