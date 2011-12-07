@@ -131,7 +131,7 @@
 
     game.viewport.drawOverlay = function(overlay, x, y) {
       var newxy = game.viewport.getAdjustedDrawingCoordinates(x + overlay.xoffset, y + overlay.yoffset);
-      if(!overlay.draw_while_moving) {
+      if(!overlay.draw_over_moving) {
 	if(game.viewport.getAdjustedEntity(x,y) == undefined || !game.viewport.getAdjustedEntity(x,y).is_moving) {
 	  game.viewport.context.drawImage(overlay.image, newxy[0], newxy[1]);
 	}

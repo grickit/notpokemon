@@ -106,7 +106,7 @@ function start() {
     color: '0,128,0,255',
     imageURL: 'tiles/tb-tile',
     overlays:
-      [ new tileOverlay('tiles/tt-tile-overlay',undefined,-1) ]
+      [ new tileOverlay({imageURL: 'tiles/tt-tile-overlay', yoffset: -1}) ]
   });
   baseTileSet.add({
     letter: 'gg',
@@ -115,7 +115,7 @@ function start() {
     imageURL: 'tiles/gg-tile',
     clip: [true,true,true,true],
     overlays:
-      [ new tileOverlay('tiles/gg-tile-overlay',undefined,undefined,false) ]
+      [ new tileOverlay({imageURL: 'tiles/gg-tile-overlay', draw_over_moving: false}) ]
   });
 
   mapone = new map('maps/map1');

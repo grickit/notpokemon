@@ -44,11 +44,11 @@
 
 
 // ----- CLASS: tileOverlay {
-  function tileOverlay(imageURL, xoffset, yoffset, draw_while_moving) {
-    this.xoffset = (xoffset == undefined)? 0 : parseInt(xoffset);
-    this.yoffset = (yoffset == undefined)? 0 : parseInt(yoffset);
-    this.image = images[imageURL];
-    this.draw_while_moving = (draw_while_moving == undefined)? true : draw_while_moving;
+  function tileOverlay(args) {
+    this.xoffset = (args.xoffset == undefined)? 0 : parseInt(args.xoffset);
+    this.yoffset = (args.yoffset == undefined)? 0 : parseInt(args.yoffset);
+    this.image = images[args.imageURL];
+    this.draw_over_moving = (args.draw_over_moving == undefined)? true : args.draw_over_moving;
   }
 // ----- }
 
