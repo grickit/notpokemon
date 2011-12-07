@@ -65,7 +65,7 @@
 
     if(this.path != undefined && this.path.length > 0) {
       this.step(this.path.pop().direction);
-      setTimeout(function(thisObj) { thisObj.tick(); }, game.framesPerSecond*3, this);
+      setTimeout(function(thisObj) { thisObj.tick(); }, game.framesPerSecond*(20/this.speed)*2, this);
     }
     else if(this != entities['player']) {
       this.stepRandom();
