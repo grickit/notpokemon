@@ -1,8 +1,7 @@
 // ----- CLASS: character {
-  character.prototype = new entity();
-  function character(x, y, imageURL) {
-    entity.call(this, x, y, imageURL);
-    this.sprite = sprites[imageURL];
+  function character(args) {
+    entity.call(this, args);
+    this.sprite = sprites[args.imageURL];
     this.is_moving = false;
     this.can_move = true;
     this.speed = 11;

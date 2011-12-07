@@ -121,17 +121,13 @@ function start() {
   mapone = new map('maps/map1');
 
   if(document.location.hash == '') {
-    entities['player'] = new character(9,7,'raichu');
+    entities['player'] = new character({x: 9, y: 7, imageURL: 'raichu'});
   }
   else {
-    entities['player'] = new character(9,7,document.location.hash.substring(1));
+    entities['player'] = new character({x: 9, y: 7, imageURL: document.location.hash.substring(1)});
     console.log(document.location.hash);
   }
-  entities['npc1'] = new character(9,8,'bulbasaur');
-  entities['npc1'].tick();
-  entities['npc2'] = new character(5,4,'ivysaur');
-  entities['npc2'].tick();
-  entities['npc3'] = new character(31,54,'venasaur');
+  entities['npc3'] = new character({x: 31, y: 54, imageURL: 'venasaur'});
   entities['npc3'].tick();
 
   game.viewport.clear();

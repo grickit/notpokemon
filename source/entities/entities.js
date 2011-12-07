@@ -1,8 +1,8 @@
 // ----- CLASS: entity {
-  function entity(x, y, imageURL) {
-    this.x = (x == undefined)? 0 : x;
-    this.y = (y == undefined)? 0 : y;
-    this.imageURL = imageURL;
+  function entity(args) {
+    this.x = (args.x == undefined)? 0 : args.x;
+    this.y = (args.y == undefined)? 0 : args.y;
+    this.imageURL = args.imageURL;
     this.facing = 1; //North: 0, South: 1, East: 2, West: 3;
   }
 
