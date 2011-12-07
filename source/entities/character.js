@@ -30,24 +30,20 @@
     }
   }
 
-  character.prototype.step = function(direction, ignore_facing) {
+  character.prototype.step = function(direction) {
     if(this.can_move) {
       var newx = this.x + game.directionChanges[direction].x;
       var newy = this.y + game.directionChanges[direction].y;
-      if(ignore_facing || direction == game.directionWords[this.facing]) {
-	if(mapone.entities[newy][newx] == undefined && baseTileSet.tilesByColor[mapone.tiles[newy][newx]].clip[game.directionNumbers[direction]]) {
-	  mapone.entities[this.y][this.x] = undefined;
-	  this.x = newx;
-	  this.y = newy;
-	  mapone.entities[this.y][this.x] = this;
-	  this.is_moving = true;
-	  this.can_move = false;
-	  setTimeout(function(thisObj) { thisObj.is_moving = false; },game.framesPerSecond*(20/this.speed),this);
-	  setTimeout(function(thisObj) { thisObj.can_move = true; },game.framesPerSecond*(20/this.speed)*2,this);
-	}
-      }
-      else {
-	this.facing = game.directionNumbers[direction];
+      this.facing = game.directionNumbers[direction];
+      if(mapone.entities[newy][newx] == undefined && baseTileSet.tilesByColor[mapone.tiles[newy][newx]].clip[game.directionNumbers[direction]]) {
+	mapone.entities[this.y][this.x] = undefined;
+	this.x = newx;
+	this.y = newy;
+	mapone.entities[this.y][this.x] = this;
+	this.is_moving = true;
+	this.can_move = false;
+	setTimeout(function(thisObj) { thisObj.is_moving = false; },game.framesPerSecond*(20/this.speed),this);
+	setTimeout(function(thisObj) { thisObj.can_move = true; },game.framesPerSecond*(20/this.speed)*2,this);
       }
     }
   }
