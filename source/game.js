@@ -7,6 +7,28 @@
     framesPerSecond: 1000/25
   }
 
+  game.getTile = function(x, y) {
+    if(x < 0 || y < 0 || x > mapone.image.width-1 || y > mapone.image.height-1) {
+      var tile = game.errorTile;
+    }
+    else {
+      var tile = baseTileSet.tilesByColor[mapone.tiles[y][x]];
+    }
+    if (tile == undefined) {
+      tile = game.errorTile;
+    }
+    return tile;
+  }
+
+  game.getEntity = function(x, y) {
+    if(x < 0 || y < 0 || x > mapone.image.width-1 || y > mapone.image.height-1) {
+      var entity = undefined;
+    }
+    else {
+      var entity = mapone.entities[y][x];
+    }
+    return entity;
+  }
 
   // ----- OBJECT: game.menus {
     game.menus = {};
@@ -65,39 +87,16 @@
       game.viewport.context.fill();
     }
 
-    game.viewport.getTile = function(x, y) {
-      if(x < 0 || y < 0 || x > mapone.image.width-1 || y > mapone.image.height-1) {
-	var tile = game.errorTile;
-      }
-      else {
-	var tile = baseTileSet.tilesByColor[mapone.tiles[y][x]];
-      }
-      if (tile == undefined) {
-	tile = game.errorTile;
-      }
-      return tile;
-    }
-
-    game.viewport.getEntity = function(x, y) {
-      if(x < 0 || y < 0 || x > mapone.image.width-1 || y > mapone.image.height-1) {
-	var entity = undefined;
-      }
-      else {
-	var entity = mapone.entities[y][x];
-      }
-      return entity;
-    }
-
     game.viewport.getAdjustedTile = function(x, y) {
       var newx = game.viewport.x + x;
       var newy = game.viewport.y + y;
-      return game.viewport.getTile(newx, newy);
+      return game.getTile(newx, newy);
     }
 
     game.viewport.getAdjustedEntity = function(x, y) {
       var newx = game.viewport.x + x;
       var newy = game.viewport.y + y;
-      return game.viewport.getEntity(newx, newy);
+      return game.getEntity(newx, newy);
     }
 
     game.viewport.getAdjustedDrawingCoordinates = function(x, y) {

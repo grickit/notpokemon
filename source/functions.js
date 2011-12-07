@@ -46,16 +46,16 @@ function manhattanDistance(x, y, x2, y2) {
 
 function getMovableNeighbors(x, y) {
   var neighbors = new Array();
-  if(game.viewport.getTile(x,y-1).clip[0]) {
+  if(game.getTile(x,y-1).clip[0]) {
     neighbors.push({x: x, y: y-1, direction: 'north'});
   }
-  if(game.viewport.getTile(x,y+1).clip[1]) {
+  if(game.getTile(x,y+1).clip[1]) {
     neighbors.push({x: x, y: y+1, direction: 'south'});
   }
-  if(game.viewport.getTile(x+1,y).clip[2]) {
+  if(game.getTile(x+1,y).clip[2]) {
     neighbors.push({x: x+1, y: y, direction: 'east'});
   }
-  if(game.viewport.getTile(x-1,y).clip[3]) {
+  if(game.getTile(x-1,y).clip[3]) {
     neighbors.push({x: x-1, y: y, direction: 'west'});
   }
   return neighbors;

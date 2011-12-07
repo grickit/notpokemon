@@ -13,6 +13,4 @@
   entity.prototype.visible = function() {
     return ((this.x > game.viewport.x) && (this.y > game.viewport.y) && (this.x < game.viewport.x + game.viewport.tilesX) && (this.y < game.viewport.y + game.viewport.tilesY));
   }
-
-  entity.prototype.tick = function() {  }
 // ----- }
