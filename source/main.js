@@ -127,7 +127,7 @@ function start() {
     imageURL: 'tiles/g-tile',
     clip: [false,true,false,false],
     transitions:
-      [ new tileSprite({imageURL: 'tiles/new/hill', x: 16, y: 32, width: 16, height: 16, condition:  '(.+),(.+),(.+),(h),(h),(h),(.+),(.+),(.+)'}),
+      [ new tileSprite({imageURL: 'tiles/new/hill', x: 16, y: 32, width: 16, height: 16, condition:  '(.+),(.+),(.+),(h|_),(h|_),(h|_),(.+),(.+),(.+)'}),
 	new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(.+),(h),(h),(.+),(.+),(.+)'}),
 	new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(h),(h),(.+),(.+),(.+),(.+)'}) ]
   });
@@ -140,7 +140,7 @@ function start() {
     clip: [false,false,false,true],
     transitions:
       [ new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(h),(h),(h),(h),(h),(.+)'}),
-	new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 16, width: 16, height: 16, condition:  '(.+),(h),(.+),(.+),(h),(.+),(.+),(h),(.+)'}),
+	new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 16, width: 16, height: 16, condition:  '(.+),(h|_),(.+),(.+),(h|_),(.+),(.+),(h|_),(.+)'}),
 	new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(.+),(h),(h),(.+),(.+),(.+)'}) ]
   });
   baseTileSet.add({
@@ -152,7 +152,7 @@ function start() {
     clip: [false,false,true,false],
     transitions:
       [ new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(h),(h),(h),(.+),(h),(h)'}),
-	new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 16, width: 16, height: 16, condition:  '(.+),(h),(.+),(.+),(h),(.+),(.+),(h),(.+)'}),
+	new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 16, width: 16, height: 16, condition:  '(.+),(h|_),(.+),(.+),(h|_),(.+),(.+),(h|_),(.+)'}),
 	new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(h),(h),(.+),(.+),(.+),(.+)'}) ]
   });
 
