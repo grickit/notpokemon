@@ -1,6 +1,8 @@
 // ----- CLASS: character {
   function character(args) {
+    this.prototype = new entity(args);
     entity.call(this, args);
+
     this.sprite = sprites[args.imageURL];
     this.is_moving = false;
     this.can_move = true;
@@ -14,20 +16,6 @@
     }
 
     mapone.entities[this.y][this.x] = this;
-  }
-
-  character.prototype.getImage = function() {
-    if(this.sprite == undefined) {
-      return this.image;
-    }
-    else {
-      if(this.is_moving) {
-	return this.sprite.images[game.directionWords[this.facing]+'2'];
-      }
-      else {
-	return this.sprite.images[game.directionWords[this.facing]];
-      }
-    }
   }
 
   character.prototype.step = function(direction) {
