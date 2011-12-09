@@ -159,10 +159,10 @@ function start() {
   mapone = new map('maps/map1');
 
   if(document.location.hash == '') {
-    entities['player'] = new character({x: 9, y: 7, imageURL: 'raichu'});
+    entities['player'] = new character({x: 9, y: 9, imageURL: 'raichu'});
   }
   else {
-    entities['player'] = new character({x: 9, y: 7, imageURL: document.location.hash.substring(1)});
+    entities['player'] = new character({x: 9, y: 9, imageURL: document.location.hash.substring(1)});
     console.log(document.location.hash);
   }
   entities['npc3'] = new character({x: 31, y: 54, imageURL: 'venasaur'});
