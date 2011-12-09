@@ -21,6 +21,7 @@
       throw "new tileType missing required color attribute";
     }
 
+    this.group = (args.group == undefined)? this.letter : args.group;
     this.imageURL = args.imageURL;
     this.image = images[this.imageURL];
     this.clip = (args.clip == undefined)? [false,false,false,false]: args.clip;

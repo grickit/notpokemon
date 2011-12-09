@@ -16,7 +16,7 @@ function singleTileCondition(tiles, x, y, xoffset, yoffset) {
 	return '_';
       }
       else {
-	return baseTileSet.tilesByColor[tiles[y+yoffset][x+xoffset]].letter;
+	return baseTileSet.tilesByColor[tiles[y+yoffset][x+xoffset]].group;
       }
     }
   }
