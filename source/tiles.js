@@ -64,7 +64,7 @@
   tileSet.prototype.add = function(args) {
     var foo = new tileType(args);
     if(this.tilesByLetter[args.letter] != undefined) { throw "new tileType trying to use letter '"+letter+"', which is already used in this tileSet"; }
-    if(this.tilesByColor[args.color] != undefined) { throw "new tileType trying to use color '"+color+"', which already used in this tileSet"; }
+    if(this.tilesByColor[args.color] != undefined) { throw "new tileType trying to use color '"+args.color+"', which already used in this tileSet"; }
     this.tiles.push(foo);
     this.tilesByLetter[args.letter] = foo;
     this.tilesByColor[args.color] = foo;

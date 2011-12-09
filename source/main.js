@@ -119,6 +119,37 @@ function start() {
     overlays:
       [ new tileOverlay({imageURL: 'tiles/gg-tile-overlay', draw_over_moving: false}) ]
   });
+  baseTileSet.add({
+    letter: 'hs',
+    group: 'h',
+    name: 'hill south',
+    color: '128,128,0,255',
+    imageURL: 'tiles/g-tile',
+    transitions:
+      [ new tileSprite({imageURL: 'tiles/new/hill', x: 16, y: 32, width: 16, height: 16, condition:  '(.+),(.+),(.+),(h),(h),(h),(.+),(.+),(.+)'}),
+	new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(.+),(h),(h),(.+),(.+),(.+)'}),
+	new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(h),(h),(.+),(.+),(.+),(.+)'}) ]
+  });
+  baseTileSet.add({
+    letter: 'hw',
+    group: 'h',
+    name: 'hill west',
+    color: '128,0,0,255',
+    imageURL: 'tiles/g-tile',
+    transitions:
+      [ new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 16, width: 16, height: 16, condition:  '(.+),(h),(.+),(.+),(h),(.+),(.+),(h),(.+)'}),
+	new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(.+),(h),(h),(.+),(.+),(.+)'}) ]
+  });
+  baseTileSet.add({
+    letter: 'he',
+    group: 'h',
+    name: 'hill east',
+    color: '255,128,0,255',
+    imageURL: 'tiles/g-tile',
+    transitions:
+      [ new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 16, width: 16, height: 16, condition:  '(.+),(h),(.+),(.+),(h),(.+),(.+),(h),(.+)'}),
+	new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(h),(h),(.+),(.+),(.+),(.+)'}) ]
+  });
 
   mapone = new map('maps/map1');
 
