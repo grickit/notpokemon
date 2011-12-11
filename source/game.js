@@ -268,12 +268,6 @@
 	  }
 	}
       }
-
-      game.menus.stats.box.innerHTML = '';
-      for(name in entities) {
-	sprite = entities[name].sprite.images[game.directionWords[entities[name].facing]];
-	game.menus.stats.box.innerHTML += '<a class="entity_listing" onMouseOver="javascript:game.viewport.tracking = entities[\''+name+'\'];" onMouseOut="javascript: game.viewport.tracking = entities[\'player\'];">'+name+': '+entities[name].x+','+entities[name].y+'</a>';
-      }
     }
   }
 

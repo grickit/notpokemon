@@ -26,18 +26,19 @@ body {
 
 #stats {
   width: 198px;
-  height: 208px;
+  height: 100px;
   float: left;
   margin-top: 10px;
   margin-left: 10px;
   background-color: #BFBFBF;
   font-size: 7pt;
   text-align: left;
+  overflow: auto;
 }
 
 .entity_listing {
   display: block;
-  width: 198px;
+  width: auto;
   height: 32px;
   border-bottom: 1px solid #000000;
 }

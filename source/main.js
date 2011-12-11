@@ -169,9 +169,15 @@ function start() {
   entities['player'].tick();
   entities['npc1'] = new character({x: 13, y: 26, imageURL: 'venasaur'});
   entities['npc1'].tick();
-  
+
   entities['npc2'] = new character({x: 34, y: 30, imageURL: 'squirtle'});
   entities['npc2'].tick();
+
+  entities['npc3'] = new character({x: 30, y: 13, imageURL: 'bulbasaur'});
+  entities['npc3'].tick();
+
+  entities['npc4'] = new character({x: 6, y: 22, imageURL: 'charmander'});
+  entities['npc4'].tick();
 
   game.viewport.clear();
   setInterval(game.drawMap,game.framesPerSecond);
@@ -182,6 +188,12 @@ function start() {
 
   for (var name in sprites) {
     game.menus.stdout.write('<a href="#'+name+'" onClick="entities[\'player\'].sprite = sprites[\''+name+'\']; entities[\'player\'].image = sprites[\''+name+'\'].image;">'+name+'</a>');
+  }
+
+  game.menus.stats.box.innerHTML = '';
+  for(name in entities) {
+    sprite = entities[name].sprite.images[game.directionWords[entities[name].facing]];
+    game.menus.stats.box.innerHTML += '<a class="entity_listing" href="javascript:game.viewport.tracking = entities[\''+name+'\'];">'+name+': '+entities[name].x+','+entities[name].y+'</a>';
   }
 }
 
