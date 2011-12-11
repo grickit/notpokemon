@@ -193,7 +193,7 @@ function start() {
   game.menus.stats.box.innerHTML = '';
   for(name in entities) {
     sprite = entities[name].sprite.images[game.directionWords[entities[name].facing]];
-    game.menus.stats.box.innerHTML += '<a class="entity_listing" href="javascript:game.viewport.tracking = entities[\''+name+'\'];">'+name+': '+entities[name].x+','+entities[name].y+'</a>';
+    game.menus.stats.write('<a class="entity_listing" href="javascript:game.viewport.tracking = entities[\''+name+'\'];">'+name+': '+entities[name].x+','+entities[name].y+'</a>',false);
   }
 }
 

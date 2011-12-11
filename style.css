@@ -26,7 +26,7 @@ body {
 
 #stats {
   width: 198px;
-  height: 100px;
+  height: 208px;
   float: left;
   margin-top: 10px;
   margin-left: 10px;
@@ -41,10 +41,16 @@ body {
   width: auto;
   height: 32px;
   border-bottom: 1px solid #000000;
+  color: #000000;
+  text-decoration: none;
 }
 
 .entity_listing:hover {
   background-color: #CFCFCF;
+}
+
+.entity_listing:active {
+  background-color: #DFDFDF;
 }
 
 #menu_main {
