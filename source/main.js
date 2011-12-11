@@ -159,27 +159,26 @@ function start() {
   mapone = new map('maps/map1');
 
   if(document.location.hash == '') {
-    entities['player'] = new character({x: 9, y: 9, imageURL: 'raichu'});
+    new character({x: 9, y: 9, imageURL: 'raichu', name: 'player'});
   }
   else {
-    entities['player'] = new character({x: 9, y: 9, imageURL: document.location.hash.substring(1)});
+    new character({x: 9, y: 9, imageURL: document.location.hash.substring(1), name: 'player'});
     console.log(document.location.hash);
   }
   game.viewport.tracking = entities['player'];
   entities['player'].tick();
-  entities['npc1'] = new character({x: 13, y: 26, imageURL: 'venasaur'});
+  new character({x: 13, y: 26, imageURL: 'venasaur', name: 'npc1'});
   entities['npc1'].tick();
 
-  entities['npc2'] = new character({x: 34, y: 30, imageURL: 'squirtle'});
+  new character({x: 34, y: 30, imageURL: 'squirtle', name: 'npc2'});
   entities['npc2'].tick();
 
-  entities['npc3'] = new character({x: 30, y: 13, imageURL: 'bulbasaur'});
+  new character({x: 30, y: 13, imageURL: 'bulbasaur', name: 'npc3'});
   entities['npc3'].tick();
 
-  entities['npc4'] = new character({x: 6, y: 22, imageURL: 'charmander'});
+  new character({x: 6, y: 22, imageURL: 'charmander', name: 'npc4'});
   entities['npc4'].tick();
 
-  game.viewport.clear();
   setInterval(game.drawMap,game.framesPerSecond);
   setInterval(game.keyboard.poll,game.framesPerSecond);
   game.menus.main.scrollingWrite('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo urna, gravida nec consequat quis, vehicula tincidunt sem. Pellentesque neque purus, fringilla in dignissim vitae.');
@@ -193,7 +192,8 @@ function start() {
   game.menus.stats.box.innerHTML = '';
   for(name in entities) {
     sprite = entities[name].sprite.images[game.directionWords[entities[name].facing]];
-    game.menus.stats.write('<a class="entity_listing" href="javascript:game.viewport.tracking = entities[\''+name+'\'];">'+name+': '+entities[name].x+','+entities[name].y+'</a>',false);
+    console.log('entity'+name+'icon');
+    game.menus.stats.write('<a class="entity_listing" href="javascript:game.viewport.tracking = entities[\''+name+'\'];">'+name+': '+entities[name].x+','+entities[name].y+'<canvas id="entity'+name+'icon" width="32" height="32" style="float: right;"></a>',false);
   }
 }
 

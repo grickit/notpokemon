@@ -4,6 +4,9 @@
     this.y = (args.y == undefined)? 0 : args.y;
     this.facing = (args.facing == undefined)? 1 : args.facing; //North: 0, South: 1, East: 2, West: 3;
 
+    if(args.name == undefined) { throw "new entity missing required name attribute"; }
+    else { this.name = args.name; entities[this.name] = this; }
+
     if(args.imageURL == undefined) { throw "new entity missing required imageURL attribute"; }
     else { this.imageURL = args.imageURL; }
 

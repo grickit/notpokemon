@@ -79,14 +79,6 @@
     game.viewport.x = 0;
     game.viewport.y = 0;
 
-    game.viewport.clear = function() {
-      game.viewport.context.fillStyle = '#000000';
-      game.viewport.context.beginPath();
-      game.viewport.context.rect(0, 0, game.viewport.context.width, game.viewport.context.height);
-      game.viewport.context.closePath();
-      game.viewport.context.fill();
-    }
-
     game.viewport.getAdjustedTile = function(x, y) {
       var newx = game.viewport.x + x;
       var newy = game.viewport.y + y;
@@ -228,7 +220,7 @@
 
   game.drawMap = function() {
     if(!game.paused) {
-      game.viewport.clear();
+      clearCanvas(game.viewport.context);
       game.viewport.x = game.viewport.tracking.x - 8;
       game.viewport.y = game.viewport.tracking.y - 6;
 

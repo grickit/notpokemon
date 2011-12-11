@@ -68,3 +68,11 @@ function findPosition(obj) {
   } while (obj = obj.offsetParent);
   return [left, top];
 }
+
+function clearCanvas(context) {
+  context.fillStyle = '#000000FF';
+  context.beginPath();
+  context.rect(0, 0, context.width, context.height);
+  context.closePath();
+  context.fill();
+}
