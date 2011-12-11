@@ -192,7 +192,6 @@ function start() {
   game.menus.stats.box.innerHTML = '';
   for(name in entities) {
     sprite = entities[name].sprite.images[game.directionWords[entities[name].facing]];
-    console.log('entity'+name+'icon');
     game.menus.stats.write('<a class="entity_listing" href="javascript:game.viewport.tracking = entities[\''+name+'\'];">'+name+': '+entities[name].x+','+entities[name].y+'<canvas id="entity'+name+'icon" width="32" height="32" style="float: right;"></a>',false);
   }
 }

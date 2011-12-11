@@ -47,7 +47,6 @@
 
   character.prototype.pathTo = function(x, y) {
     if(this.path == undefined || this.path.length == 0 || (this.path[0].x != x && this.path[0].y != y)) {
-      console.log('finding new path');
       this.path = findPath(this.x, this.y, x, y);
     }
   }
