@@ -270,4 +270,12 @@
       }
     }
   }
+
+  game.canvas.addEventListener('mousedown', function(e) {
+    var canvasCoords = findPosition(game.canvas);
+    var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
+    var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
+    console.log(x+','+y);
+    entities['player'].pathTo(x, y);
+  });
 // ----- }

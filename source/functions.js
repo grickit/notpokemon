@@ -58,3 +58,13 @@ function getMovableNeighbors(x, y) {
   }
   return neighbors;
 }
+
+function findPosition(obj) {
+  var left = 0;
+  var top = 0;
+  do {
+    left += obj.offsetLeft;
+    top += obj.offsetTop;
+  } while (obj = obj.offsetParent);
+  return [left, top];
+}

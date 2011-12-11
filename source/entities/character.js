@@ -61,9 +61,11 @@
   }
 
   character.prototype.tick = function() {
-    var dist = manhattanDistance(this.x, this.y, entities['player'].x, entities['player'].y);
-    if(dist > 1 && dist < 10) {
-      this.pathTo(entities['player'].x, entities['player'].y);
+    if(this != entities['player']) {
+      var dist = manhattanDistance(this.x, this.y, entities['player'].x, entities['player'].y);
+      if(dist > 1 && dist < 10) {
+	this.pathTo(entities['player'].x, entities['player'].y);
+      }
     }
     if(this.followPath()) {
       setTimeout(function(thisObj) { thisObj.tick(); }, game.framesPerSecond*(20/this.speed)*3, this);
@@ -71,6 +73,9 @@
     else if(this != entities['player']) {
       this.stepRandom();
       setTimeout(function(thisObj) { thisObj.tick(); }, 1000, this);
+    }
+    else {
+      setTimeout(function(thisObj) { thisObj.tick(); }, game.framesPerSecond*(20/this.speed)*3, this);
     }
   }
 // ----- }
