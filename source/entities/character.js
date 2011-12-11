@@ -45,14 +45,27 @@
     }
   }
 
+  character.prototype.pathTo = function(x, y) {
+    if(this.path == undefined || this.path.length == 0 || (this.path[0].x != x && this.path[0].y != y)) {
+      console.log('finding new path');
+      this.path = findPath(this.x, this.y, x, y);
+    }
+  }
+
+  character.prototype.followPath = function () {
+    if(this.path != undefined && this.path.length > 0) {
+      this.step(this.path.pop().direction);
+      return true;
+    }
+    return false;
+  }
+
   character.prototype.tick = function() {
     var dist = manhattanDistance(this.x, this.y, entities['player'].x, entities['player'].y);
     if(dist > 1 && dist < 10) {
-      this.path = findPath(this.x, this.y, entities['player'].x, entities['player'].y);
+      this.pathTo(entities['player'].x, entities['player'].y);
     }
-
-    if(this.path != undefined && this.path.length > 0) {
-      this.step(this.path.pop().direction);
+    if(this.followPath()) {
       setTimeout(function(thisObj) { thisObj.tick(); }, game.framesPerSecond*(20/this.speed)*3, this);
     }
     else if(this != entities['player']) {
