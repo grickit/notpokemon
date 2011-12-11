@@ -12,7 +12,7 @@ function preloadImage(imageURL) {
 // ----- CLASS characterSheet {
   function characterSheet(imageURL, x, y, width, height) {
     this.imageURL = imageURL;
-    this.image = images[this.imageURL]
+    this.image = images[this.imageURL];
     this.x = (x == undefined)? 0 : x;
     this.y = (y == undefined)? 0 : y;
     this.width = (width == undefined)? 64 : width;

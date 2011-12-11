@@ -26,13 +26,24 @@ body {
 
 #stats {
   width: 198px;
-  height: 50px;
+  height: 208px;
   float: left;
   margin-top: 10px;
   margin-left: 10px;
   background-color: #BFBFBF;
   font-size: 7pt;
   text-align: left;
+}
+
+.entity_listing {
+  display: block;
+  width: 198px;
+  height: 32px;
+  border-bottom: 1px solid #000000;
+}
+
+.entity_listing:hover {
+  background-color: #CFCFCF;
 }
 
 #menu_main {

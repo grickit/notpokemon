@@ -100,9 +100,9 @@
     }
 
     game.viewport.getAdjustedDrawingCoordinates = function(x, y) {
-      if(entities['player'].is_moving) {
-	var newx = (x * 16) + (game.directionChanges[game.directionWords[entities['player'].facing]].x * 8);
-	var newy = (y * 16) + (game.directionChanges[game.directionWords[entities['player'].facing]].y * 8);
+      if(game.viewport.tracking.is_moving) {
+	var newx = (x * 16) + (game.directionChanges[game.directionWords[game.viewport.tracking.facing]].x * 8);
+	var newy = (y * 16) + (game.directionChanges[game.directionWords[game.viewport.tracking.facing]].y * 8);
       }
       else {
 	var newx = x * 16;
@@ -229,8 +229,8 @@
   game.drawMap = function() {
     if(!game.paused) {
       game.viewport.clear();
-      game.viewport.x = entities['player'].x - 8;
-      game.viewport.y = entities['player'].y - 6;
+      game.viewport.x = game.viewport.tracking.x - 8;
+      game.viewport.y = game.viewport.tracking.y - 6;
 
       /*for(var y = -1; y < game.viewport.tilesY+1; y++) {
 	for(var x = -1;  x < game.viewport.tilesX+1; x++) {
@@ -244,9 +244,9 @@
       }*/
 
       //Render tiles
-      if(entities['player'].is_moving) { // This condition-set is the opposite of game.viewport.getAdjustedDrawingCoordinateS()
-	var newx = (game.viewport.x * 16) - (game.directionChanges[game.directionWords[entities['player'].facing]].x * 8);
-	var newy = (game.viewport.y * 16) - (game.directionChanges[game.directionWords[entities['player'].facing]].y * 8);
+      if(game.viewport.tracking.is_moving) { // This condition-set is the opposite of game.viewport.getAdjustedDrawingCoordinateS()
+	var newx = (game.viewport.x * 16) - (game.directionChanges[game.directionWords[game.viewport.tracking.facing]].x * 8);
+	var newy = (game.viewport.y * 16) - (game.directionChanges[game.directionWords[game.viewport.tracking.facing]].y * 8);
       }
       else {
 	var newx = game.viewport.x * 16;
@@ -267,6 +267,12 @@
 	    game.viewport.drawOverlay(tile.overlays[o], x, y);
 	  }
 	}
+      }
+
+      game.menus.stats.box.innerHTML = '';
+      for(name in entities) {
+	sprite = entities[name].sprite.images[game.directionWords[entities[name].facing]];
+	game.menus.stats.box.innerHTML += '<a class="entity_listing" onMouseOver="javascript:game.viewport.tracking = entities[\''+name+'\'];" onMouseOut="javascript: game.viewport.tracking = entities[\'player\'];">'+name+': '+entities[name].x+','+entities[name].y+'</a>';
       }
     }
   }

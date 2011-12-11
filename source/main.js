@@ -165,10 +165,11 @@ function start() {
     entities['player'] = new character({x: 9, y: 9, imageURL: document.location.hash.substring(1)});
     console.log(document.location.hash);
   }
+  game.viewport.tracking = entities['player'];
   entities['player'].tick();
   entities['npc1'] = new character({x: 13, y: 26, imageURL: 'venasaur'});
   entities['npc1'].tick();
-
+  
   entities['npc2'] = new character({x: 34, y: 30, imageURL: 'squirtle'});
   entities['npc2'].tick();
 
