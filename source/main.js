@@ -166,18 +166,12 @@ function start() {
     console.log(document.location.hash);
   }
   game.viewport.tracking = entities['player'];
-  entities['player'].tick();
-  new character({x: 13, y: 26, imageURL: 'venasaur', name: 'npc1'});
-  entities['npc1'].tick();
-
-  new character({x: 34, y: 30, imageURL: 'squirtle', name: 'npc2'});
-  entities['npc2'].tick();
-
-  new character({x: 30, y: 13, imageURL: 'bulbasaur', name: 'npc3'});
-  entities['npc3'].tick();
-
-  new character({x: 6, y: 22, imageURL: 'charmander', name: 'npc4'});
-  entities['npc4'].tick();
+  new character({x: 13, y: 26, imageURL: 'venasaur', name: 'venasaur1'});
+  new character({x: 34, y: 30, imageURL: 'squirtle', name: 'squirtle1'});
+  new character({x: 30, y: 13, imageURL: 'bulbasaur', name: 'bulbasaur1'});
+  new character({x: 6, y: 22, imageURL: 'charmander', name: 'charmander1'});
+  new character({x: 6, y: 23, imageURL: 'charmander', name: 'charmander2'});
+  new character({x: 6, y: 24, imageURL: 'charmander', name: 'charmander3'});
 
   setInterval(game.drawMap,game.framesPerSecond);
   setInterval(game.keyboard.poll,game.framesPerSecond);
@@ -191,7 +185,6 @@ function start() {
 
   game.menus.stats.box.innerHTML = '';
   for(name in entities) {
-    sprite = entities[name].sprite.images[game.directionWords[entities[name].facing]];
     game.menus.stats.write('<a class="entity_listing" href="javascript:game.viewport.tracking = entities[\''+name+'\'];">'+name+': '+entities[name].x+','+entities[name].y+'<canvas id="entity'+name+'icon" width="32" height="32" style="float: right;"></a>',false);
   }
 }
