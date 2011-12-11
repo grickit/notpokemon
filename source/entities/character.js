@@ -66,7 +66,7 @@
       this.context = this.canvas.getContext('2d');
       this.context.width = 32;
       this.context.height = 32;
-      clearCanvas(this.context);
+      clearCanvas(this.context,'#CFCFCF');
       var sprite = this.sprite.images['south'];
       this.context.drawImage(this.image, sprite.x, sprite.y, sprite.width, sprite.height, 0, 0, sprite.width, sprite.height);
     }

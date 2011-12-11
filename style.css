@@ -45,6 +45,10 @@ body {
   text-decoration: none;
 }
 
+.entity_listing canvas {
+  border-left: 1px solid #000000;
+}
+
 .entity_listing:hover {
   background-color: #CFCFCF;
 }

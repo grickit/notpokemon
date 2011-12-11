@@ -69,8 +69,8 @@ function findPosition(obj) {
   return [left, top];
 }
 
-function clearCanvas(context) {
-  context.fillStyle = '#000000FF';
+function clearCanvas(context,color) {
+  context.fillStyle = (color == undefined)? '#000000' : color;
   context.beginPath();
   context.rect(0, 0, context.width, context.height);
   context.closePath();
