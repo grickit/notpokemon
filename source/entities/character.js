@@ -64,6 +64,8 @@
     if(document.getElementById('entity'+this.name+'icon')) {
       this.canvas = document.getElementById('entity'+this.name+'icon');
       this.context = this.canvas.getContext('2d');
+      this.context.width = 32;
+      this.context.height = 32;
       clearCanvas(this.context);
       var sprite = this.sprite.images['south'];
       this.context.drawImage(this.image, sprite.x, sprite.y, sprite.width, sprite.height, 0, 0, sprite.width, sprite.height);
