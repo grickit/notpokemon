@@ -176,7 +176,7 @@ function start() {
   setInterval(game.drawMap,game.framesPerSecond);
   setInterval(game.keyboard.poll,game.framesPerSecond);
   game.menus.main.scrollingWrite('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo urna, gravida nec consequat quis, vehicula tincidunt sem. Pellentesque neque purus, fringilla in dignissim vitae.');
-  game.menus.context.scrollingWrite('Use the arrow keys to move.');
+  game.menus.context.scrollingWrite('Click the screen to move.');
   game.menus.context.scrollingWrite('For now you can click the links below to preview the different available character models');
 
   for (var name in sprites) {
