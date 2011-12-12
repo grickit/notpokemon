@@ -10,7 +10,7 @@
     if(args.imageURL == undefined) { throw "new entity missing required imageURL attribute"; }
     else { this.imageURL = args.imageURL; }
 
-    if(sprites[args.imageURL] == undefined) { throw "new entity trying to use nonexistant sprite"; }
+    if(sprites[args.imageURL] == undefined) { this.sprite = images[imageURL]; }
     else { this.sprite = sprites[args.imageURL]; }
 
 
