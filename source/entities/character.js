@@ -14,8 +14,6 @@
     else {
       this.image = this.sprite.image;
     }
-
-    mapone.entities[this.y][this.x][this.name] = this;
     this.tick();
   }
 

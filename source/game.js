@@ -270,6 +270,12 @@
     var canvasCoords = findPosition(game.canvas);
     var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
     var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
+    if(entities['movemarker'] != undefined) {
+      console.log('already have movemarker');
+      delete mapone.entities[entities['movemarker'].y][entities['movemarker'].x]['movemarker'];
+      delete entities['movemarker'];
+    }
+    new entity({x: x, y: y, imageURL: 'characters/marker', name: 'movemarker'});
     entities['player'].pathTo(x, y);
   });
 // ----- }

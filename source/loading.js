@@ -16,6 +16,7 @@ function loadImages() {
   preloadImage('tiles/new/sand');
   preloadImage('tiles/new/dirt');
   preloadImage('tiles/new/hill');
+  preloadImage('characters/marker');
 }
 
 function loadCharacterSheets() {

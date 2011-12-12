@@ -10,21 +10,28 @@
     if(args.imageURL == undefined) { throw "new entity missing required imageURL attribute"; }
     else { this.imageURL = args.imageURL; }
 
-    if(sprites[args.imageURL] == undefined) { this.sprite = images[imageURL]; }
+    if(sprites[args.imageURL] == undefined) { this.sprite = images[args.imageURL]; }
     else { this.sprite = sprites[args.imageURL]; }
 
 
     this.getImage = function() {
-      if(this.is_moving) {
-	return this.sprite.images[game.directionWords[this.facing]+'2'];
+      if(this.sprite instanceof characterSheet) {
+	if(this.is_moving) {
+	  return this.sprite.images[game.directionWords[this.facing]+'2'];
+	}
+	else {
+	  return this.sprite.images[game.directionWords[this.facing]];
+	}
       }
       else {
-	return this.sprite.images[game.directionWords[this.facing]];
+	return this.sprite;
       }
     }
 
     this.visible = function() {
       return ((this.x > game.viewport.x) && (this.y > game.viewport.y) && (this.x < game.viewport.x + game.viewport.tilesX) && (this.y < game.viewport.y + game.viewport.tilesY));
     }
+
+    mapone.entities[this.y][this.x][this.name] = this;
   }
 // ----- }
