@@ -15,7 +15,7 @@
       this.image = this.sprite.image;
     }
 
-    mapone.entities[this.y][this.x] = this;
+    mapone.entities[this.y][this.x][this.name] = this;
     this.tick();
   }
 
@@ -24,8 +24,8 @@
       var newx = this.x + game.directionChanges[direction].x;
       var newy = this.y + game.directionChanges[direction].y;
       this.facing = game.directionNumbers[direction];
-      if((mapone.entities[newy][newx] == undefined || !mapone.entities[newy][newx] instanceof character) && baseTileSet.tilesByColor[mapone.tiles[newy][newx]].clip[game.directionNumbers[direction]]) {
-	mapone.entities[this.y][this.x] = undefined;
+      if(baseTileSet.tilesByColor[mapone.tiles[newy][newx]].clip[game.directionNumbers[direction]]) {
+	delete mapone.entities[this.y][this.x][this.name];
 	this.x = newx;
 	this.y = newy;
 	this.is_moving = true;
@@ -88,7 +88,7 @@
     else {
       setTimeout(function(thisObj) { thisObj.tick(); }, game.framesPerSecond*(20/this.speed)*3, this);
     }
-    mapone.entities[this.y][this.x] = this;
+    mapone.entities[this.y][this.x][this.name] = this;
     this.updateIcon();
   }
 // ----- }

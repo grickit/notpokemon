@@ -20,14 +20,14 @@
     return tile;
   }
 
-  game.getEntity = function(x, y) {
+  game.getEntities = function(x, y) {
     if(x < 0 || y < 0 || x > mapone.image.width-1 || y > mapone.image.height-1) {
-      var entity = undefined;
+      var entities = undefined;
     }
     else {
-      var entity = mapone.entities[y][x];
+      var entities = mapone.entities[y][x];
     }
-    return entity;
+    return entities;
   }
 
   // ----- OBJECT: game.menus {
@@ -85,10 +85,10 @@
       return game.getTile(newx, newy);
     }
 
-    game.viewport.getAdjustedEntity = function(x, y) {
+    game.viewport.getAdjustedEntities = function(x, y) {
       var newx = game.viewport.x + x;
       var newy = game.viewport.y + y;
-      return game.getEntity(newx, newy);
+      return game.getEntities(newx, newy);
     }
 
     game.viewport.getAdjustedDrawingCoordinates = function(x, y) {
@@ -123,13 +123,14 @@
     game.viewport.drawOverlay = function(overlay, x, y) {
       var newxy = game.viewport.getAdjustedDrawingCoordinates(x + overlay.xoffset, y + overlay.yoffset);
       if(!overlay.draw_over_moving) {
-	if(game.viewport.getAdjustedEntity(x,y) == undefined || !game.viewport.getAdjustedEntity(x,y).is_moving) {
-	  game.viewport.context.drawImage(overlay.image, newxy[0], newxy[1]);
+	these_entities = game.viewport.getAdjustedEntities(x,y);
+	for(name in these_entities) {
+	  if(these_entities[name].is_moving) {
+	    return;
+	  }
 	}
       }
-      else {
-	game.viewport.context.drawImage(overlay.image, newxy[0], newxy[1]);
-      }
+      game.viewport.context.drawImage(overlay.image, newxy[0], newxy[1]);
     }
 
     game.viewport.drawEntity = function(entity, x, y) {
@@ -251,8 +252,10 @@
       for(var y = -1; y < game.viewport.tilesY+1; y++) {
 	for(var x = -1;  x < game.viewport.tilesX+1; x++) {
 	  //Render entities
-	  if((entity = game.viewport.getAdjustedEntity(x, y)) != undefined) {
-	    game.viewport.drawEntity(entity,x,y);
+	  if((these_entities = game.viewport.getAdjustedEntities(x, y)) != undefined) {
+	    for(name in these_entities) {
+	      game.viewport.drawEntity(these_entities[name],x,y);
+	    }
 	  }
 	  //Render overlays
 	  for(o in (tile = game.viewport.getAdjustedTile(x, y)).overlays) {

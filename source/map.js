@@ -22,7 +22,7 @@ function map(imageURL) {
     for(var x = -1; x < this.image.width+1; x++) {
       var index = (y * this.imageData.width + x) * 4;
       xtiles[x] = (''+this.imageData.data[index]+','+this.imageData.data[index+1]+','+this.imageData.data[index+2]+','+this.imageData.data[index+3]);
-      xentities[x] = undefined;
+      xentities[x] = new Array();
     }
     this.tiles[y] = xtiles;
     this.entities[y] = xentities;
