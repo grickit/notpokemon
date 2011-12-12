@@ -56,6 +56,7 @@
       clearCanvas(this.context,'#CFCFCF');
       var sprite = this.sprite.images['south'];
       this.context.drawImage(this.sprite.image, sprite.x, sprite.y, sprite.width, sprite.height, 0, 0, sprite.width, sprite.height);
+      document.getElementById('entity'+this.name+'coords').innerHTML = this.x+','+this.y;
     }
   }
 
