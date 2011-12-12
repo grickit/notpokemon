@@ -180,7 +180,9 @@ function start() {
   game.menus.context.scrollingWrite('For now you can click the links below to preview the different available character models');
 
   for (var name in sprites) {
-    game.menus.stdout.write('<a href="#'+name+'" onClick="game.viewport.tracking.sprite = sprites[\''+name+'\']; entities[\'player\'].image = sprites[\''+name+'\'].image;">'+name+'</a>');
+    if(entities['name'] instanceof character) {
+      game.menus.stdout.write('<a href="#'+name+'" onClick="game.viewport.tracking.sprite = sprites[\''+name+'\']; entities[\'player\'].image = sprites[\''+name+'\'].image;">'+name+'</a>');
+    }
   }
 
   game.menus.stats.box.innerHTML = '';
