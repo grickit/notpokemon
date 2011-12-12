@@ -32,6 +32,13 @@
       return ((this.x > game.viewport.x) && (this.y > game.viewport.y) && (this.x < game.viewport.x + game.viewport.tilesX) && (this.y < game.viewport.y + game.viewport.tilesY));
     }
 
+    this.setPosition = function(x,y) {
+      delete mapone.entities[this.y][this.x][this.name];
+      this.x = x;
+      this.y = y;
+      mapone.entities[this.y][this.x][this.name] = this;
+    }
+
     mapone.entities[this.y][this.x][this.name] = this;
   }
 // ----- }
