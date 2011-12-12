@@ -272,8 +272,8 @@
 
   game.canvas.addEventListener('mousedown', function(e) {
     var canvasCoords = findPosition(game.canvas);
-    var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.mapx;
-    var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.mapy;
+    var x = Math.floor((e.pageX - canvasCoords[0] + game.viewport.x) / 16);
+    var y = Math.floor((e.pageY - canvasCoords[1] + game.viewport.y) / 16);
     if(entities['movemarker'] == undefined) {
       new entity({x: x, y: y, imageURL: 'characters/marker', name: 'movemarker'});
     }
