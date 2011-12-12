@@ -186,7 +186,7 @@ function start() {
   game.menus.stats.box.innerHTML = '';
   for(name in entities) {
     if(entities[name] instanceof character) {
-      game.menus.stats.write('<a class="entity_listing" href="javascript:game.viewport.tracking = entities[\''+name+'\'];"> \
+      game.menus.stats.write('<a class="entity_listing" href="javascript:game.viewport.track(\''+name+'\');"> \
       <span id="entity'+name+'coords">'+name+': '+entities[name].x+','+entities[name].y+'</span> \
       <canvas id="entity'+name+'icon" width="32" height="32" style="float: right;">',
       false);

@@ -78,23 +78,29 @@
     game.viewport.tilesY = game.canvas.height / 16;
     game.viewport.x = 0;
     game.viewport.y = 0;
-    game.viewport.mapx = 0;
-    game.viewport.mapy = 0;
+
+    game.viewport.track = function(name) {
+      if(entities[name] != undefined) {
+	game.viewport.tracking = entities[name];
+	game.viewport.x = (entities[name].x - Math.floor(game.viewport.tilesX/2));
+	game.viewport.y = (entities[name].y - Math.floor(game.viewport.tilesY/2));
+      }
+    }
 
     game.viewport.getAdjustedTile = function(x, y) {
-      var newx = game.viewport.mapx + x;
-      var newy = game.viewport.mapy + y;
+      var newx = game.viewport.x + x;
+      var newy = game.viewport.y + y;
       return game.getTile(newx, newy);
     }
 
     game.viewport.getAdjustedEntities = function(x, y) {
-      var newx = game.viewport.mapx + x;
-      var newy = game.viewport.mapy + y;
+      var newx = game.viewport.x + x;
+      var newy = game.viewport.y + y;
       return game.getEntities(newx, newy);
     }
 
     game.viewport.getAdjustedDrawingCoordinates = function(x, y) {
-      if(game.viewport.tracking.is_moving) {
+      if(game.viewport.tracking != undefined && game.viewport.tracking.is_moving) {
 	var newx = (x * 16) + (game.directionChanges[game.directionWords[game.viewport.tracking.facing]].x * 8);
 	var newy = (y * 16) + (game.directionChanges[game.directionWords[game.viewport.tracking.facing]].y * 8);
       }
@@ -112,8 +118,8 @@
       }
       else {
 	for(test in tile.image.images) {
-	  var newx = game.viewport.mapx + x;
-	  var newy = game.viewport.mapy + y;
+	  var newx = game.viewport.x + x;
+	  var newy = game.viewport.y + y;
 	  if(tileConditionTest(tile.image.images[test].condition,newx,newy)) {
 	    var sprite = tile.image.images[test];
 	    game.viewport.context.drawImage(tile.image.image, sprite.x, sprite.y, sprite.width, sprite.height, newxy[0], newxy[1], sprite.width, sprite.height);
@@ -158,6 +164,7 @@
     game.keyboard.keymapping_temp = new Array();
 
     game.keyboard.keyDown = function(key) {
+      game.viewport.tracking = undefined;
       switch(key) {
 	case '38':
 	  entities['player'].facing = 0;
@@ -181,16 +188,20 @@
     game.keyboard.keyHold = function(key) {
       switch(key) {
 	case '38':
-	  entities['player'].step('north');
+	  //entities['player'].step('north');
+	  game.viewport.y--;
 	  break;
 	case '40':
-	  entities['player'].step('south');
+	  //entities['player'].step('south');
+	  game.viewport.y++;
 	  break;
 	case '39':
-	  entities['player'].step('east');
+	  //entities['player'].step('east');
+	  game.viewport.x++;
 	  break;
 	case '37':
-	  entities['player'].step('west');
+	  //entities['player'].step('west');
+	  game.viewport.x--;
 	  break;
       }
     }
@@ -224,16 +235,16 @@
   game.drawMap = function() {
     if(!game.paused) {
       clearCanvas(game.viewport.context);
-      game.viewport.mapx = game.viewport.tracking.x - 8;
-      game.viewport.mapy = game.viewport.tracking.y - 6;
-      game.viewport.x = game.viewport.mapx * 16;
-      game.viewport.y = game.viewport.mapy * 16;
+      if(game.viewport.tracking != undefined) {
+	game.viewport.x = game.viewport.tracking.x - Math.floor(game.viewport.tilesX/2) - 1;
+	game.viewport.y = game.viewport.tracking.y - Math.floor(game.viewport.tilesY/2) - 1;
+      }
 
       /*for(var y = -1; y < game.viewport.tilesY+1; y++) {
 	for(var x = -1;  x < game.viewport.tilesX+1; x++) {
 	  //Render tile
-	  var newx = (x+game.viewport.mapx)*16;
-	  var newy = (y+game.viewport.mapy)*16;
+	  var newx = (x+game.viewport.x)*16;
+	  var newy = (y+game.viewport.y)*16;
 	  var imageData = game.vbuffer.context.getImageData(newx, newy,16,16);
 	  var putxy = game.viewport.getAdjustedDrawingCoordinates(x, y);
 	  game.viewport.context.putImageData(imageData, putxy[0], putxy[1]);
@@ -241,13 +252,13 @@
       }*/
 
       //Render tiles
-      if(game.viewport.tracking.is_moving) { // This condition-set is the opposite of game.viewport.getAdjustedDrawingCoordinateS()
-	var newx = (game.viewport.x) - (game.directionChanges[game.directionWords[game.viewport.tracking.facing]].x * 8);
-	var newy = (game.viewport.y) - (game.directionChanges[game.directionWords[game.viewport.tracking.facing]].y * 8);
+      if(game.viewport.tracking != undefined && game.viewport.tracking.is_moving) { // This condition-set is the opposite of game.viewport.getAdjustedDrawingCoordinateS()
+	var newx = (game.viewport.x * 16) - (game.directionChanges[game.directionWords[game.viewport.tracking.facing]].x * 8);
+	var newy = (game.viewport.y * 16) - (game.directionChanges[game.directionWords[game.viewport.tracking.facing]].y * 8);
       }
       else {
-	var newx = game.viewport.x;
-	var newy = game.viewport.y;
+	var newx = game.viewport.x * 16;
+	var newy = game.viewport.y * 16;
       }
       var imageData = game.vbuffer.context.getImageData(newx,newy,game.canvas.width, game.canvas.height);
       game.viewport.context.putImageData(imageData, 0, 0);
@@ -272,8 +283,8 @@
 
   game.canvas.addEventListener('mousedown', function(e) {
     var canvasCoords = findPosition(game.canvas);
-    var x = Math.floor((e.pageX - canvasCoords[0] + game.viewport.x) / 16);
-    var y = Math.floor((e.pageY - canvasCoords[1] + game.viewport.y) / 16);
+    var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
+    var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
     if(entities['movemarker'] == undefined) {
       new entity({x: x, y: y, imageURL: 'characters/marker', name: 'movemarker'});
     }
