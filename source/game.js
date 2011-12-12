@@ -137,7 +137,7 @@
       var newxy = game.viewport.getAdjustedDrawingCoordinates(x, y);
       var sprite = entity.getImage();
       if(entity.sprite instanceof characterSheet) {
-	game.viewport.context.drawImage(entity.image, sprite.x, sprite.y, sprite.width, sprite.height, newxy[0]+sprite.xoffset, newxy[1]+sprite.yoffset, sprite.width, sprite.height);
+	game.viewport.context.drawImage(entity.sprite.image, sprite.x, sprite.y, sprite.width, sprite.height, newxy[0]+sprite.xoffset, newxy[1]+sprite.yoffset, sprite.width, sprite.height);
       }
       else if(entity.sprite instanceof Image) {
 	game.viewport.context.drawImage(sprite, newxy[0], newxy[1]);
