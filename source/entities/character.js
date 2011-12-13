@@ -65,21 +65,18 @@
   }
 
   character.prototype.tick = function() {
-    if(this != entities['player']) {
-      var dist = manhattanDistance(this.x, this.y, entities['player'].x, entities['player'].y);
+    if(this.target != undefined && entities[this.target] != undefined) {
+      var dist = manhattanDistance(this.x, this.y, entities[this.target].x, entities[this.target].y);
       if(dist > 1 && dist < 10) {
-	this.pathTo(entities['player'].x, entities['player'].y);
+	this.pathTo(entities[this.target].x, entities[this.target].y);
       }
     }
     if(this.followPath()) {
       setTimeout(function(thisObj) { thisObj.tick(); }, game.framesPerSecond*(20/this.speed)*3, this);
     }
-    else if(this != entities['player']) {
+    else {
       this.stepRandom();
       setTimeout(function(thisObj) { thisObj.tick(); }, 1000, this);
-    }
-    else {
-      setTimeout(function(thisObj) { thisObj.tick(); }, game.framesPerSecond*(20/this.speed)*3, this);
     }
     this.updateIcon();
   }

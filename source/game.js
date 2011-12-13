@@ -188,19 +188,15 @@
     game.keyboard.keyHold = function(key) {
       switch(key) {
 	case '38':
-	  //entities['player'].step('north');
 	  game.viewport.y--;
 	  break;
 	case '40':
-	  //entities['player'].step('south');
 	  game.viewport.y++;
 	  break;
 	case '39':
-	  //entities['player'].step('east');
 	  game.viewport.x++;
 	  break;
 	case '37':
-	  //entities['player'].step('west');
 	  game.viewport.x--;
 	  break;
       }
