@@ -238,12 +238,12 @@
       if(game.viewport.tracking != undefined && game.viewport.tracking.getImage().trackyoffset) {
 	newy -= game.viewport.tracking.getImage().trackyoffset;
       }
-      var imageData = game.vbuffer.context.getImageData(newx,newy,game.canvas.width, game.canvas.height);
-      game.viewport.context.putImageData(imageData, 0, 0);
+      var imageData = game.vbuffer.context.getImageData(newx-16,newy-16,game.canvas.width+16, game.canvas.height+16);
+      game.viewport.context.putImageData(imageData, -16, -16);
 
 
-      for(var y = -1; y < game.viewport.tilesY+1; y++) {
-	for(var x = -1;  x < game.viewport.tilesX+1; x++) {
+      for(var y = -2; y < game.viewport.tilesY+2; y++) {
+	for(var x = -2;  x < game.viewport.tilesX+2; x++) {
 	  //Render entities
 	  if((these_entities = game.viewport.getAdjustedEntities(x, y)) != undefined) {
 	    for(name in these_entities) {
