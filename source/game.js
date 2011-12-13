@@ -236,8 +236,8 @@
     if(!game.paused) {
       clearCanvas(game.viewport.context);
       if(game.viewport.tracking != undefined) {
-	game.viewport.x = game.viewport.tracking.x - Math.floor(game.viewport.tilesX/2) - 1;
-	game.viewport.y = game.viewport.tracking.y - Math.floor(game.viewport.tilesY/2) - 1;
+	game.viewport.x = game.viewport.tracking.x - Math.ceil(game.viewport.tilesX/2);
+	game.viewport.y = game.viewport.tracking.y - Math.ceil(game.viewport.tilesY/2);
       }
 
       /*for(var y = -1; y < game.viewport.tilesY+1; y++) {
