@@ -34,7 +34,11 @@
   }
 
   character.prototype.pathTo = function(x, y) {
-    if(this.path == undefined || this.path.length == 0 || (this.path[0].x != x && this.path[0].y != y)) {
+    if(this.path == undefined || this.path.length == 0) {
+      this.path = findPath(this.x, this.y, x, y);
+    }
+    else if(this.path[0].x == x && this.path[0].y == y) { }
+    else {
       this.path = findPath(this.x, this.y, x, y);
     }
   }
