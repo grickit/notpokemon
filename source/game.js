@@ -147,7 +147,7 @@
       if(entity.sprite instanceof characterSheet) {
 	game.viewport.context.drawImage(entity.sprite.image, sprite.x, sprite.y, sprite.width, sprite.height, newxy[0]+sprite.xoffset, newxy[1]+sprite.yoffset, sprite.width, sprite.height);
       }
-      else if(entity.sprite instanceof Image) {
+      else {
 	game.viewport.context.drawImage(sprite, newxy[0], newxy[1]);
       }
     }
