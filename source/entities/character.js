@@ -17,13 +17,12 @@
       var newy = this.y + game.directionChanges[direction].y;
       this.facing = game.directionNumbers[direction];
       if(baseTileSet.tilesByColor[mapone.tiles[newy][newx]].clip[game.directionNumbers[direction]]) {
-	this.setPosition(newx,newy);
 	this.is_moving = true;
 	this.can_move = false;
-	this.movement_frame = 4;
+	this.movement_frame = 2;
 	setTimeout(function(thisObj) { thisObj.movement_frame = 3; },game.framesPerSecond,this);
-	setTimeout(function(thisObj) { thisObj.movement_frame = 2; },game.framesPerSecond*2,this);
-	setTimeout(function(thisObj) { thisObj.movement_frame = 1; },game.framesPerSecond*3,this);
+	setTimeout(function(thisObj) { thisObj.movement_frame = 4; },game.framesPerSecond*2,this);
+	setTimeout(function(thisObj) { thisObj.movement_frame = 1; thisObj.setPosition(newx,newy); },game.framesPerSecond*3,this);
 	setTimeout(function(thisObj) { thisObj.is_moving = false; thisObj.can_move = true; },game.framesPerSecond*4,this);
       }
     }
