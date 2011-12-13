@@ -66,6 +66,7 @@
   }
 
   character.prototype.tick = function() {
+    if (game.paused) { setTimeout(function(thisObj) { thisObj.tick(); }, 1000, this); return; }
     if(this.target != undefined && entities[this.target] != undefined) {
       var dist = manhattanDistance(this.x, this.y, entities[this.target].x, entities[this.target].y);
       if(dist > 1 && dist < 10) {
