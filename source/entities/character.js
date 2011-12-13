@@ -69,12 +69,17 @@
   character.prototype.tick = function() {
     if (game.paused) { setTimeout(function(thisObj) { thisObj.tick(); }, 1000, this); return; }
     switch(this.behavior.style) {
-      case 'guard':
+      case 'follow':
 	if(this.behavior.target == undefined || entities[this.behavior.target] == undefined) { // Target invalid?
 	  this.behavior = {style: undefined};
 	}
 	else {
-	  this.pathTo(entities[this.behavior.target].x, entities[this.behavior.target].y);
+	  var dist = manhattanDistance(this.x, this.y, entities[this.behavior.target].x, entities[this.behavior.target].y);
+	  if(this.behavior.min == undefined) { this.behavior.min = 0; }
+	  if(this.behavior.max == undefined) { this.behavior.max = 9999; }
+	  if(dist >= this.behavior.min && dist <= this.behavior.max) {
+	    this.pathTo(entities[this.behavior.target].x, entities[this.behavior.target].y);
+	  }
 	}
 	break;
 
