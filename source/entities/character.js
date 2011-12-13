@@ -6,8 +6,9 @@
     this.is_moving = false;
     this.can_move = true;
     this.speed = 11;
+    this.behavior = (args.behavior == undefined)? {style: undefined} : args.behavior;
+
     this.tick();
-    this.target = args.target;
   }
 
   character.prototype.step = function(direction) {
@@ -67,12 +68,34 @@
 
   character.prototype.tick = function() {
     if (game.paused) { setTimeout(function(thisObj) { thisObj.tick(); }, 1000, this); return; }
-    if(this.target != undefined && entities[this.target] != undefined) {
-      var dist = manhattanDistance(this.x, this.y, entities[this.target].x, entities[this.target].y);
-      if(dist > 1 && dist < 10) {
-	this.pathTo(entities[this.target].x, entities[this.target].y);
-      }
+    switch(this.behavior.style) {
+      case 'guard':
+	if(this.behavior.target == undefined || entities[this.behavior.target] == undefined) { // Target invalid?
+	  this.behavior = {style: undefined};
+	}
+	else {
+	  this.pathTo(entities[this.behavior.target].x, entities[this.behavior.target].y);
+	}
+	break;
+
+      case 'patrol':
+	if(entities[this.behavior.first] == undefined || entities[this.behavior.second] == undefined) { // Either target invalid?
+	  this.behavior = {style: undefined};
+	}
+	else if (this.behavior.next == undefined) { // Just starting?
+	  this.behavior.next = this.behavior.first;
+	}
+	else if (this.path == undefined || this.path.length == 0) { // Finished the last path?
+	  if(this.behavior.next == this.behavior.second) { this.behavior.next = this.behavior.first; }
+	  else if(this.behavior.next == this.behavior.first) { this.behavior.next = this.behavior.second; }
+	  this.pathTo(entities[this.behavior.next].x, entities[this.behavior.next].y);
+	}
+	else if(this.path[0].x != entities[this.behavior.next].x || this.path[0].y != entities[this.behavior.next].y) { // Have they moved since we started moving to them?
+	  this.pathTo(entities[this.behavior.next].x, entities[this.behavior.next].y);
+	}
+	break;
     }
+
     if(this.followPath()) {
       setTimeout(function(thisObj) { thisObj.tick(); }, game.framesPerSecond*(20/this.speed)*3, this);
     }

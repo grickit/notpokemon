@@ -170,8 +170,8 @@ function start() {
   new character({x: 34, y: 30, imageURL: 'squirtle', name: 'squirtle1'});
   new character({x: 30, y: 13, imageURL: 'bulbasaur', name: 'bulbasaur1'});
   new character({x: 6, y: 22, imageURL: 'charmander', name: 'charmander1'});
-  new character({x: 6, y: 23, imageURL: 'charmander', name: 'charmander2', target: 'player'});
-  new character({x: 6, y: 24, imageURL: 'charmander', name: 'charmander3', target: 'venasaur1'});
+  new character({x: 6, y: 23, imageURL: 'charmander', name: 'charmander2', behavior: {style: 'guard', target:'player'}});
+  new character({x: 6, y: 24, imageURL: 'charmander', name: 'charmander3', behavior: {style: 'patrol', first: 'venasaur1', second: 'player'}});
 
   setInterval(game.drawMap,game.framesPerSecond);
   setInterval(game.keyboard.poll,game.framesPerSecond);
