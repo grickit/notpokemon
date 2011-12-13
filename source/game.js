@@ -263,10 +263,12 @@
     var canvasCoords = findPosition(game.canvas);
     var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
     var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
-    if(entities['movemarker'] == undefined) {
-      new entity({x: x, y: y, imageURL: 'characters/marker', name: 'movemarker'});
+    if(game.keyboard.keymapping_temp[77]) {
+      if(entities['movemarker'] == undefined) {
+	new entity({x: x, y: y, imageURL: 'characters/marker', name: 'movemarker'});
+      }
+      entities['movemarker'].setPosition(x,y);
+      entities['player'].pathTo(x, y);
     }
-    entities['movemarker'].setPosition(x,y);
-    entities['player'].pathTo(x, y);
   });
 // ----- }
