@@ -26,10 +26,10 @@
 
   character.prototype.stepRandom = function() {
     if(randRange(0,2) == 0) {
-      this.facing = randRange(0,3);
+      this.step(game.directionWords[randRange(0,3)]);
     }
     else {
-      this.step(game.directionWords[this.facing])
+      this.facing = randRange(0,3);
     }
   }
 
