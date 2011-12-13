@@ -100,13 +100,13 @@
     }
 
     game.viewport.getAdjustedDrawingCoordinates = function(x, y) {
-      if(game.viewport.tracking != undefined && game.viewport.tracking.is_moving) {
-	var newx = (x * 16) + (game.directionChanges[game.directionWords[game.viewport.tracking.facing]].x * 8);
-	var newy = (y * 16) + (game.directionChanges[game.directionWords[game.viewport.tracking.facing]].y * 8);
+      var newx = x * 16;
+      var newy = y * 16;
+      if(game.viewport.tracking != undefined && game.viewport.tracking.getImage().trackxoffset) {
+	newx += game.viewport.tracking.getImage().trackxoffset;
       }
-      else {
-	var newx = x * 16;
-	var newy = y * 16;
+      if(game.viewport.tracking != undefined && game.viewport.tracking.getImage().trackyoffset) {
+	newy += game.viewport.tracking.getImage().trackyoffset;
       }
       return [newx, newy];
     }
@@ -236,8 +236,8 @@
     if(!game.paused) {
       clearCanvas(game.viewport.context);
       if(game.viewport.tracking != undefined) {
-	game.viewport.x = game.viewport.tracking.x - Math.ceil(game.viewport.tilesX/2);
-	game.viewport.y = game.viewport.tracking.y - Math.ceil(game.viewport.tilesY/2);
+	game.viewport.x = game.viewport.tracking.x - Math.floor(game.viewport.tilesX/2);
+	game.viewport.y = game.viewport.tracking.y - Math.floor(game.viewport.tilesY/2);
       }
 
       /*for(var y = -1; y < game.viewport.tilesY+1; y++) {
@@ -252,13 +252,13 @@
       }*/
 
       //Render tiles
-      if(game.viewport.tracking != undefined && game.viewport.tracking.is_moving) { // This condition-set is the opposite of game.viewport.getAdjustedDrawingCoordinateS()
-	var newx = (game.viewport.x * 16) - (game.directionChanges[game.directionWords[game.viewport.tracking.facing]].x * 8);
-	var newy = (game.viewport.y * 16) - (game.directionChanges[game.directionWords[game.viewport.tracking.facing]].y * 8);
+      var newx = game.viewport.x * 16;
+      var newy = game.viewport.y * 16;
+      if(game.viewport.tracking != undefined && game.viewport.tracking.getImage().trackxoffset) {
+	newx -= game.viewport.tracking.getImage().trackxoffset;
       }
-      else {
-	var newx = game.viewport.x * 16;
-	var newy = game.viewport.y * 16;
+      if(game.viewport.tracking != undefined && game.viewport.tracking.getImage().trackyoffset) {
+	newy -= game.viewport.tracking.getImage().trackyoffset;
       }
       var imageData = game.vbuffer.context.getImageData(newx,newy,game.canvas.width, game.canvas.height);
       game.viewport.context.putImageData(imageData, 0, 0);

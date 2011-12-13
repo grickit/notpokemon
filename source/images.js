@@ -33,7 +33,8 @@ function preloadImage(imageURL) {
       width: this.width/2,
       height: this.height/4,
       xoffset: -8,
-      yoffset: -8
+      yoffset: -8,
+      trackyoffset: -8
     }
     this.images['south'] = {
       x: this.x,
@@ -49,7 +50,8 @@ function preloadImage(imageURL) {
       width: this.width/2,
       height: this.height/4,
       xoffset: -8,
-      yoffset: -24
+      yoffset: -24,
+      trackyoffset: +8
     }
     this.images['east'] = {
       x: this.x + (this.width/2),
@@ -65,7 +67,8 @@ function preloadImage(imageURL) {
       width: this.width/2,
       height: this.height/4,
       xoffset: -16,
-      yoffset: -16
+      yoffset: -16,
+      trackxoffset: +8
     }
     this.images['west'] = {
       x: this.x + (this.width/2),
@@ -81,7 +84,8 @@ function preloadImage(imageURL) {
       width: this.width/2,
       height: this.height/4,
       xoffset: -0,
-      yoffset: -16
+      yoffset: -16,
+      trackxoffset: -8
     }
   }
 // ----- }
