@@ -175,8 +175,10 @@ function start() {
 
   setInterval(game.drawMap,game.framesPerSecond);
   setInterval(game.keyboard.poll,game.framesPerSecond);
-  game.menus.main.scrollingWrite('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo urna, gravida nec consequat quis, vehicula tincidunt sem. Pellentesque neque purus, fringilla in dignissim vitae.');
-  game.menus.context.scrollingWrite('Click the screen while holding the "M" key to move.');
+  game.menus.main.scrollingWrite('Click the screen to move.');
+  game.menus.main.scrollingWrite('Use the "f" key to guard the clicked location.');
+  game.menus.main.scrollingWrite('Use the "p" key to patrol between the current location and the clicked one.');
+  game.menus.context.scrollingWrite('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed justo urna, gravida nec consequat quis, vehicula tincidunt sem.');
 
   for (var name in sprites) {
       game.menus.stdout.write('<a href="#'+name+'" onClick="game.viewport.tracking.sprite = sprites[\''+name+'\']; entities[\'player\'].image = sprites[\''+name+'\'].image;">'+name+'</a>');

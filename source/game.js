@@ -263,12 +263,31 @@
     var canvasCoords = findPosition(game.canvas);
     var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
     var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
-    if(game.keyboard.keymapping_temp[77]) {
+    if(game.keyboard.keymapping_temp[80]) {
+      if(entities['playermovemarker'] == undefined) {
+	new entity({x: entities['player'].x, y: entities['player'].y, imageURL: 'characters/marker', name: 'playermovemarker'});
+      }
+      if(entities['playerpatrolmarker'] == undefined) {
+	new entity({x: x, y: y, imageURL: 'characters/marker2', name: 'playerpatrolmarker'});
+      }
+      entities['playermovemarker'].setPosition(entities['player'].x,entities['player'].y);
+      entities['playerpatrolmarker'].setPosition(x,y);
+      entities['player'].behavior = {style: 'patrol', first: 'playermovemarker', second: 'playerpatrolmarker'};
+    }
+    else if(game.keyboard.keymapping_temp[70]) {
+      if(entities['playerguardmarker'] == undefined) {
+	new entity({x: x, y: y, imageURL: 'characters/marker3', name: 'playerguardmarker'});
+      }
+      entities['playerguardmarker'].setPosition(x,y);
+      entities['player'].behavior = {style: 'follow', min: 1, max: 9999, target: 'playerguardmarker'};
+    }
+    else {
       if(entities['playermovemarker'] == undefined) {
 	new entity({x: x, y: y, imageURL: 'characters/marker', name: 'playermovemarker'});
       }
       entities['playermovemarker'].setPosition(x,y);
       entities['player'].pathTo(x, y);
+      entities['player'].behavior = {style: undefined};
     }
   });
 // ----- }
