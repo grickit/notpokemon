@@ -165,24 +165,6 @@
 
     game.keyboard.keyDown = function(key) {
       game.viewport.tracking = undefined;
-      switch(key) {
-	case '38':
-	  entities['player'].facing = 0;
-	  entities['player'].is_moving = false;
-	  break;
-	case '40':
-	  entities['player'].facing = 1;
-	  entities['player'].is_moving = false;
-	  break;
-	case '39':
-	  entities['player'].facing = 2;
-	  entities['player'].is_moving = false;
-	  break;
-	case '37':
-	  entities['player'].facing = 3;
-	  entities['player'].is_moving = false;
-	  break;
-      }
     }
 
     game.keyboard.keyHold = function(key) {
