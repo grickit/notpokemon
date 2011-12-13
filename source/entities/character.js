@@ -75,8 +75,8 @@
 	}
 	else {
 	  var dist = manhattanDistance(this.x, this.y, entities[this.behavior.target].x, entities[this.behavior.target].y);
-	  if(this.behavior.min == undefined) { this.behavior.min = 0; }
-	  if(this.behavior.max == undefined) { this.behavior.max = 9999; }
+	  if(this.behavior.min == undefined) { this.behavior.min = 2; }
+	  if(this.behavior.max == undefined) { this.behavior.max = 8; }
 	  if(dist >= this.behavior.min && dist <= this.behavior.max) {
 	    this.pathTo(entities[this.behavior.target].x, entities[this.behavior.target].y);
 	  }
