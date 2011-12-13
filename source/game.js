@@ -264,10 +264,10 @@
     var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
     var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
     if(game.keyboard.keymapping_temp[77]) {
-      if(entities['movemarker'] == undefined) {
-	new entity({x: x, y: y, imageURL: 'characters/marker', name: 'movemarker'});
+      if(entities['playermovemarker'] == undefined) {
+	new entity({x: x, y: y, imageURL: 'characters/marker', name: 'playermovemarker'});
       }
-      entities['movemarker'].setPosition(x,y);
+      entities['playermovemarker'].setPosition(x,y);
       entities['player'].pathTo(x, y);
     }
   });
