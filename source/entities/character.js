@@ -7,6 +7,7 @@
     this.can_move = true;
     this.speed = 11;
     this.tick();
+    this.target = args.target;
   }
 
   character.prototype.step = function(direction) {
