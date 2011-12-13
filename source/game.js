@@ -256,8 +256,6 @@
 	  }
 	}
       }
-      game.viewport.canvas.width *= 2;
-      game.viewport.canvas.height *= 2;
     }
   }
 
