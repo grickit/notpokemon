@@ -4,7 +4,7 @@
     directionWords: { 0: 'north', 1: 'south', 2: 'east', 3: 'west' },
     directionNumbers: { 'north': 0, 'south': 1, 'east': 2, 'west': 3 },
     directionChanges: { 'north': { x: 0, y: -1 }, 'south': { x: 0, y: 1 }, 'east': { x: 1, y: 0 }, 'west': { x: -1, y: 0 } },
-    framesPerSecond: 1000/60
+    framesPerSecond: 1000/20
   }
 
   game.getTile = function(x, y) {

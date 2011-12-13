@@ -21,10 +21,10 @@
 	this.is_moving = true;
 	this.can_move = false;
 	this.movement_frame = 4;
-	setTimeout(function(thisObj) { thisObj.movement_frame = 3; },game.framesPerSecond*4,this);
-	setTimeout(function(thisObj) { thisObj.movement_frame = 2; },game.framesPerSecond*8,this);
-	setTimeout(function(thisObj) { thisObj.movement_frame = 1; },game.framesPerSecond*12,this);
-	setTimeout(function(thisObj) { thisObj.is_moving = false; thisObj.can_move = true; },game.framesPerSecond*16,this);
+	setTimeout(function(thisObj) { thisObj.movement_frame = 3; },game.framesPerSecond,this);
+	setTimeout(function(thisObj) { thisObj.movement_frame = 2; },game.framesPerSecond*2,this);
+	setTimeout(function(thisObj) { thisObj.movement_frame = 1; },game.framesPerSecond*3,this);
+	setTimeout(function(thisObj) { thisObj.is_moving = false; thisObj.can_move = true; },game.framesPerSecond*4,this);
       }
     }
   }
@@ -105,7 +105,7 @@
     }
 
     if(this.followPath()) {
-      setTimeout(function(thisObj) { thisObj.tick(); }, game.framesPerSecond*16, this);
+      setTimeout(function(thisObj) { thisObj.tick(); }, game.framesPerSecond*4, this);
     }
     else {
       this.stepRandom();
