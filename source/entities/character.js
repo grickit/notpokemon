@@ -20,8 +20,11 @@
 	this.setPosition(newx,newy);
 	this.is_moving = true;
 	this.can_move = false;
-	setTimeout(function(thisObj) { thisObj.is_moving = false; },game.framesPerSecond*(20/this.speed),this);
-	setTimeout(function(thisObj) { thisObj.can_move = true; },game.framesPerSecond*(20/this.speed)*2,this);
+	this.movement_frame = 4;
+	setTimeout(function(thisObj) { thisObj.movement_frame = 3; },game.framesPerSecond*4,this);
+	setTimeout(function(thisObj) { thisObj.movement_frame = 2; },game.framesPerSecond*8,this);
+	setTimeout(function(thisObj) { thisObj.movement_frame = 1; },game.framesPerSecond*12,this);
+	setTimeout(function(thisObj) { thisObj.is_moving = false; thisObj.can_move = true; },game.framesPerSecond*16,this);
       }
     }
   }
@@ -60,7 +63,7 @@
       this.context.width = 32;
       this.context.height = 32;
       clearCanvas(this.context,'#CFCFCF');
-      var sprite = this.sprite.images['south'];
+      var sprite = this.sprite.images['south1'];
       this.context.drawImage(this.sprite.image, sprite.x, sprite.y, sprite.width, sprite.height, 0, 0, sprite.width, sprite.height);
       document.getElementById('entity'+this.name+'coords').innerHTML = this.x+','+this.y;
     }
@@ -102,7 +105,7 @@
     }
 
     if(this.followPath()) {
-      setTimeout(function(thisObj) { thisObj.tick(); }, game.framesPerSecond*(20/this.speed)*3, this);
+      setTimeout(function(thisObj) { thisObj.tick(); }, game.framesPerSecond*16, this);
     }
     else {
       this.stepRandom();
