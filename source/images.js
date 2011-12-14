@@ -32,7 +32,7 @@ function preloadImage(imageURL) {
     }
     this.images['north2'] = {
       x: this.x,
-      y: this.y + (this.height/4),
+      y: this.y,
       width: this.width/2,
       height: this.height/4,
       xoffset: -8,
@@ -42,7 +42,7 @@ function preloadImage(imageURL) {
     }
     this.images['north3'] = {
       x: this.x,
-      y: this.y,
+      y: this.y + (this.height/4),
       width: this.width/2,
       height: this.height/4,
       xoffset: -8,
@@ -74,7 +74,7 @@ function preloadImage(imageURL) {
     }
     this.images['south2'] = {
       x: this.x,
-      y: this.y + (this.height/4)*2 + (this.height/4),
+      y: this.y + (this.height/4)*2,
       width: this.width/2,
       height: this.height/4,
       xoffset: -8,
@@ -84,7 +84,7 @@ function preloadImage(imageURL) {
     }
     this.images['south3'] = {
       x: this.x,
-      y: this.y + (this.height/4)*2,
+      y: this.y + (this.height/4)*2 + (this.height/4),
       width: this.width/2,
       height: this.height/4,
       xoffset: -8,
@@ -116,7 +116,7 @@ function preloadImage(imageURL) {
     }
     this.images['east2'] = {
       x: this.x + (this.width/2),
-      y: this.y + (this.height/4)*2 + (this.height/4),
+      y: this.y + (this.height/4)*2,
       width: this.width/2,
       height: this.height/4,
       xoffset: -4,
@@ -126,7 +126,7 @@ function preloadImage(imageURL) {
     }
     this.images['east3'] = {
       x: this.x + (this.width/2),
-      y: this.y + (this.height/4)*2,
+      y: this.y + (this.height/4)*2 + (this.height/4),
       width: this.width/2,
       height: this.height/4,
       xoffset: 0,
@@ -158,7 +158,7 @@ function preloadImage(imageURL) {
     }
     this.images['west2'] = {
       x: this.x + (this.width/2),
-      y: this.y + (this.height/4),
+      y: this.y,
       width: this.width/2,
       height: this.height/4,
       xoffset: -12,
@@ -168,7 +168,7 @@ function preloadImage(imageURL) {
     }
     this.images['west3'] = {
       x: this.x + (this.width/2),
-      y: this.y,
+      y: this.y + (this.height/4),
       width: this.width/2,
       height: this.height/4,
       xoffset: -16,
