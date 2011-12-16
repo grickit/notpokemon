@@ -22,8 +22,7 @@
 	this.movement_frame = 2;
 	setTimeout(function(thisObj) { thisObj.movement_frame = 3; },game.framesPerSecond,this);
 	setTimeout(function(thisObj) { thisObj.movement_frame = 4; },game.framesPerSecond*2,this);
-	setTimeout(function(thisObj) { thisObj.movement_frame = 1; thisObj.setPosition(newx,newy); },game.framesPerSecond*3,this);
-	setTimeout(function(thisObj) { thisObj.is_moving = false; thisObj.can_move = true; },game.framesPerSecond*4,this);
+	setTimeout(function(thisObj) { thisObj.movement_frame = 1; thisObj.setPosition(newx,newy); thisObj.is_moving = false; thisObj.can_move = true; },game.framesPerSecond*3,this);
       }
     }
   }
