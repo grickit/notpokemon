@@ -272,14 +272,14 @@
       }
       entities['playermovemarker'].setPosition(entities['player'].x,entities['player'].y);
       entities['playerpatrolmarker'].setPosition(x,y);
-      entities['player'].behavior = {style: 'patrol', first: entitiy['playermovemarker'], second: entitiy['playerpatrolmarker']};
+      entities['player'].behavior = {style: 'patrol', first: entities['playermovemarker'], second: entities['playerpatrolmarker']};
     }
     else if(game.keyboard.keymapping_temp[70]) {
       if(entities['playerguardmarker'] == undefined) {
 	new entity({x: x, y: y, imageURL: 'characters/marker3', name: 'playerguardmarker'});
       }
       entities['playerguardmarker'].setPosition(x,y);
-      entities['player'].behavior = {style: 'follow', min: 1, max: 9999, target: entitiy['playerguardmarker']};
+      entities['player'].behavior = {style: 'follow', min: 1, max: 9999, target: entities['playerguardmarker']};
     }
     else {
       if(entities['playermovemarker'] == undefined) {
