@@ -8,7 +8,7 @@
     this.speed = 11;
     this.behavior = (args.behavior == undefined)? {style: undefined} : args.behavior;
 
-    this.tick();
+    setTimeout(function(thisObj){ thisObj.tick(); },randRange(0,1000),this);
   }
 
   character.prototype.step = function(direction) {
@@ -28,11 +28,12 @@
   }
 
   character.prototype.stepRandom = function() {
-    if(randRange(0,2) == 0) {
-      this.step(game.directionWords[randRange(0,3)]);
-    }
-    else {
-      this.facing = randRange(0,3);
+    var what = randRange(0,2);
+    switch(what) {
+      case 0:
+	this.step(game.directionWords[randRange(0,3)]); break;
+      case 1:
+	this.facing = randRange(0,3); break;
     }
   }
 
