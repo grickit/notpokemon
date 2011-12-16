@@ -65,6 +65,7 @@
       var sprite = this.sprite.images['south1'];
       this.context.drawImage(this.sprite.image, sprite.x, sprite.y, sprite.width, sprite.height, 0, 0, sprite.width, sprite.height);
       document.getElementById('entity'+this.name+'listing').innerHTML = '<span id="entity'+this.name+'coords">'+this.name+': '+this.x+','+this.y+'</span>';
+      document.getElementById('entity'+this.name+'listing').setAttribute('class','entity_listing_'+this.aggro);
     }
   }
 

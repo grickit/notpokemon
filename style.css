@@ -46,6 +46,9 @@ body {
 }
 
 .entity_listing canvas {
+  width: 32px;
+  height: 32px;
+  float: right;
   border-left: 1px solid #000000;
 }
 
@@ -55,6 +58,22 @@ body {
 
 .entity_listing:active {
   background-color: #DFDFDF;
+}
+
+.entity_listing_controlled {
+  text-shadow: 1px 1px 0px #9999FF;
+}
+
+.entity_listing_hostile {
+  text-shadow: 1px 1px 0px #FF9999;
+}
+
+.entity_listing_friendly {
+  text-shadow: 1px 1px 0px #99FF99;
+}
+
+.entity_listing_neutral {
+  text-shadow: 1px 1px 0px #999999;
 }
 
 #menu_main {

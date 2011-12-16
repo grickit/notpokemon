@@ -3,6 +3,7 @@
     this.x = (args.x == undefined)? 0 : args.x;
     this.y = (args.y == undefined)? 0 : args.y;
     this.facing = (args.facing == undefined)? 1 : args.facing; //North: 0, South: 1, East: 2, West: 3;
+    this.aggro = (args.aggro == undefined)? 'neutral' : args.aggro;
     this.movement_frame = 1;
 
     if(args.name == undefined) { throw "new entity missing required name attribute"; }

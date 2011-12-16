@@ -146,6 +146,7 @@
       var sprite = entity.getImage();
       if(entity.sprite instanceof characterSheet) {
 	game.viewport.context.drawImage(entity.sprite.image, sprite.x, sprite.y, sprite.width, sprite.height, newxy[0]+sprite.xoffset, newxy[1]+sprite.yoffset, sprite.width, sprite.height);
+	game.viewport.context.fillText(entity.name,newxy[0]+sprite.xoffset,newxy[1]+sprite.yoffset);
       }
       else {
 	game.viewport.context.drawImage(sprite, newxy[0], newxy[1]);
