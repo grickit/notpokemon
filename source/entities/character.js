@@ -55,7 +55,7 @@
     return false;
   }
 
-  character.prototype.updateIcon = function() {
+  character.prototype.updateListing = function() {
     if(document.getElementById('entity'+this.name+'icon')) {
       this.canvas = document.getElementById('entity'+this.name+'icon');
       this.context = this.canvas.getContext('2d');
@@ -64,7 +64,7 @@
       clearCanvas(this.context,'#CFCFCF');
       var sprite = this.sprite.images['south1'];
       this.context.drawImage(this.sprite.image, sprite.x, sprite.y, sprite.width, sprite.height, 0, 0, sprite.width, sprite.height);
-      document.getElementById('entity'+this.name+'coords').innerHTML = this.x+','+this.y;
+      document.getElementById('entity'+this.name+'listing').innerHTML = '<span id="entity'+this.name+'coords">'+this.name+': '+this.x+','+this.y+'</span>';
     }
   }
 
@@ -110,6 +110,6 @@
       this.stepRandom();
       setTimeout(function(thisObj) { thisObj.tick(); }, 1000, this);
     }
-    this.updateIcon();
+    this.updateListing();
   }
 // ----- }
