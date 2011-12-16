@@ -72,21 +72,21 @@
     if (game.paused) { setTimeout(function(thisObj) { thisObj.tick(); }, 1000, this); return; }
     switch(this.behavior.style) {
       case 'follow':
-	if(this.behavior.target == undefined || entities[this.behavior.target] == undefined) { // Target invalid?
+	if(this.behavior.target == undefined || this.behavior.target == undefined) { // Target invalid?
 	  this.behavior = {style: undefined};
 	}
 	else {
-	  var dist = manhattanDistance(this.x, this.y, entities[this.behavior.target].x, entities[this.behavior.target].y);
+	  var dist = manhattanDistance(this.x, this.y, this.behavior.target.x, this.behavior.target.y);
 	  if(this.behavior.min == undefined) { this.behavior.min = 2; }
 	  if(this.behavior.max == undefined) { this.behavior.max = 8; }
 	  if(dist >= this.behavior.min && dist <= this.behavior.max) {
-	    this.pathTo(entities[this.behavior.target].x, entities[this.behavior.target].y);
+	    this.pathTo(this.behavior.target.x, this.behavior.target.y);
 	  }
 	}
 	break;
 
       case 'patrol':
-	if(entities[this.behavior.first] == undefined || entities[this.behavior.second] == undefined) { // Either target invalid?
+	if(this.behavior.first == undefined || this.behavior.second == undefined) { // Either target invalid?
 	  this.behavior = {style: undefined};
 	}
 	else if (this.behavior.next == undefined) { // Just starting?
@@ -95,10 +95,10 @@
 	else if (this.path == undefined || this.path.length == 0) { // Finished the last path?
 	  if(this.behavior.next == this.behavior.second) { this.behavior.next = this.behavior.first; }
 	  else if(this.behavior.next == this.behavior.first) { this.behavior.next = this.behavior.second; }
-	  this.pathTo(entities[this.behavior.next].x, entities[this.behavior.next].y);
+	  this.pathTo(this.behavior.next.x, this.behavior.next.y);
 	}
-	else if(this.path[0].x != entities[this.behavior.next].x || this.path[0].y != entities[this.behavior.next].y) { // Have they moved since we started moving to them?
-	  this.pathTo(entities[this.behavior.next].x, entities[this.behavior.next].y);
+	else if(this.path[0].x != this.behavior.next.x || this.path[0].y != this.behavior.next.y) { // Have they moved since we started moving to them?
+	  this.pathTo(this.behavior.next.x, this.behavior.next.y);
 	}
 	break;
     }
