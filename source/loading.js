@@ -21,6 +21,11 @@ function loadImages() {
   preloadImage('characters/marker3');
 }
 
+function loadData() {
+  preloadData('data/basetileset.js');
+  preloadData('data/maps/mapone.js');
+}
+
 function loadCharacterSheets() {
   // ----- SPRITES: kanto: {
   sprites['bulbasaur'] = easyCharacterSheet('kanto',0,0);
