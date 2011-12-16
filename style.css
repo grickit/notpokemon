@@ -24,7 +24,7 @@ body {
   background-image: url('images/backgrounds/sea-bg.png');
 }
 
-#stats {
+#entity_list {
   width: 198px;
   height: 208px;
   float: left;

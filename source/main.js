@@ -184,10 +184,10 @@ function start() {
       game.menus.stdout.write('<a href="#'+name+'" onClick="game.viewport.tracking.sprite = sprites[\''+name+'\']; entities[\'player\'].image = sprites[\''+name+'\'].image;">'+name+'</a>');
   }
 
-  game.menus.stats.box.innerHTML = '';
+  game.menus.entity_list.box.innerHTML = '';
   for(name in entities) {
     if(entities[name] instanceof character) {
-      game.menus.stats.write('<a class="entity_listing" href="javascript:game.viewport.track(\''+name+'\');"> \
+      game.menus.entity_list.write('<a class="entity_listing" href="javascript:game.viewport.track(\''+name+'\');"> \
       <span id="entity'+name+'coords">'+name+': '+entities[name].x+','+entities[name].y+'</span> \
       <canvas id="entity'+name+'icon" width="32" height="32" style="float: right;">',
       false);
