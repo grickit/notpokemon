@@ -43,23 +43,23 @@
     game.canvas = document.getElementById('map');
   // ----- }
 
-  // ----- OBJECT: game.vbuffer {
-    game.vbuffer = {};
-    game.vbuffer.canvas = document.createElement('canvas');
+  // ----- OBJECT: game.mbuffer {
+    game.mbuffer = {};
+    game.mbuffer.canvas = document.createElement('canvas');
 
-    game.vbuffer.prepare = function(width, height) {
+    game.mbuffer.prepare = function(width, height) {
       this.canvas.width = (width == undefined)? 0 : width;
       this.canvas.height = (height == undefined)? 0 : height;
       this.context = this.canvas.getContext('2d');
     }
 
-    game.vbuffer.drawTile = function(tiles, x, y) {
+    game.mbuffer.drawTile = function(tiles, x, y) {
       var tile = baseTileSet.tilesByColor[tiles[y][x]];
       if(tile instanceof tileType) {
 	for(transition in tile.transitions) {
 	  var sprite = tile.transitions[transition];
 	  if(tileConditionTest(tiles,sprite.condition, x, y)) {
-	    game.vbuffer.context.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height, x*16, y*16, 16, 16);
+	    game.mbuffer.context.drawImage(sprite.image, sprite.x, sprite.y, sprite.width, sprite.height, x*16, y*16, 16, 16);
 	    break;
 	  }
 	}
@@ -239,7 +239,7 @@
       if(game.viewport.tracking != undefined && game.viewport.tracking.getImage().trackyoffset) {
 	newy -= game.viewport.tracking.getImage().trackyoffset;
       }
-      var imageData = game.vbuffer.context.getImageData(newx-16,newy-16,game.canvas.width+16, game.canvas.height+16);
+      var imageData = mapone.context.getImageData(newx-16,newy-16,game.canvas.width+16, game.canvas.height+16);
       game.viewport.context.putImageData(imageData, -16, -16);
 
 

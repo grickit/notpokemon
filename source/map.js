@@ -14,7 +14,7 @@ function map(imageURL) {
 
   this.imageData = this.context.getImageData(0, 0, this.canvas.width, this.canvas.height);
 
-  game.vbuffer.prepare(this.image.width*16, this.image.height*16);
+  game.mbuffer.prepare(this.image.width*16, this.image.height*16);
 
   for(var y = -1; y < this.image.height+1; y++) {
     var xtiles = new Array();
@@ -30,7 +30,12 @@ function map(imageURL) {
 
   for(var y = -1; y < this.image.height+1; y++) {
     for(var x = -1; x < this.image.width+1; x++) {
-      game.vbuffer.drawTile(this.tiles, x, y);
+      game.mbuffer.drawTile(this.tiles, x, y);
     }
   }
+
+  this.canvas.width = this.image.width*16;
+  this.canvas.height = this.image.height*16;
+  this.context = this.canvas.getContext('2d');
+  this.context.putImageData(game.mbuffer.context.getImageData(0,0,this.image.width*16,this.image.height*16),0,0);
 }
