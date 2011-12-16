@@ -16,7 +16,7 @@
       var newx = this.x + game.directionChanges[direction].x;
       var newy = this.y + game.directionChanges[direction].y;
       this.facing = game.directionNumbers[direction];
-      if(baseTileSet.tilesByColor[mapone.tiles[newy][newx]].clip[game.directionNumbers[direction]]) {
+      if(game.getTile(this.x, this.y).clipfrom[game.directionNumbers[direction]] && game.getTile(newx,newy).clipto[game.directionNumbers[direction]]) {
 	this.is_moving = true;
 	this.can_move = false;
 	this.movement_frame = 2;

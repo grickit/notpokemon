@@ -20,7 +20,7 @@ function start() {
     name: 'grass',
     color: '128,255,128,255',
     imageURL: 'tiles/g-tile',
-    clip: [true,true,true,true]
+    clipto: [true,true,true,true]
   });
   baseTileSet.add({
     letter: 'w',
@@ -50,7 +50,7 @@ function start() {
     name: 'sand',
     color: '255,255,0,255',
     imageURL: 'tiles/s-tile',
-    clip: [true,true,true,true],
+    clipto: [true,true,true,true],
     transitions:
       [ new tileSprite({imageURL: 'tiles/new/sand', x: 0, y: 0, width: 16, height: 16, condition: '(.+),(g),(.+),(g),(s),(.+),(.+),(.+),(.+)'}),
       new tileSprite({imageURL: 'tiles/new/sand', x: 32, y: 0, width: 16, height: 16, condition:  '(.+),(g),(.+),(.+),(s),(g),(.+),(.+),(.+)'}),
@@ -74,7 +74,7 @@ function start() {
     name: 'dirt',
     color: '128,64,0,255',
     imageURL: 'tiles/d-tile',
-    clip: [true,true,true,true],
+    clipto: [true,true,true,true],
     transitions:
       [ new tileSprite({imageURL: 'tiles/new/dirt', x: 0, y: 0, width: 16, height: 16, condition:  '(.+),(g|s|w),(.+),(g|s|w),(d),(.+),(.+),(.+),(.+)'}),
       new tileSprite({imageURL: 'tiles/new/dirt', x: 32, y: 0, width: 16, height: 16, condition:   '(.+),(g|s|w),(.+),(.+),(d),(g|s|w),(.+),(.+),(.+)'}),
@@ -98,7 +98,7 @@ function start() {
     name: 'road',
     color: '128,128,128,255',
     imageURL: 'tiles/r-tile',
-    clip: [true,true,true,true]
+    clipto: [true,true,true,true]
   });
   baseTileSet.add({
     letter: 'T',
@@ -115,7 +115,7 @@ function start() {
     name: 'tree',
     color: '0,255,0,255',
     imageURL: 'tiles/gg-tile',
-    clip: [true,true,true,true],
+    clipto: [true,true,true,true],
     overlays:
       [ new tileOverlay({imageURL: 'tiles/gg-tile-overlay', draw_over_moving: false}) ]
   });
@@ -125,7 +125,7 @@ function start() {
     name: 'hill south',
     color: '128,128,0,255',
     imageURL: 'tiles/g-tile',
-    clip: [false,true,false,false],
+    clipto: [false,true,false,false],
     transitions:
       [ new tileSprite({imageURL: 'tiles/new/hill', x: 16, y: 32, width: 16, height: 16, condition:  '(.+),(.+),(.+),(h|_),(h|_),(h|_),(.+),(.+),(.+)'}),
 	new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(.+),(h),(h),(.+),(.+),(.+)'}),
@@ -137,7 +137,7 @@ function start() {
     name: 'hill west',
     color: '128,0,0,255',
     imageURL: 'tiles/g-tile',
-    clip: [false,false,false,true],
+    clipto: [false,false,false,true],
     transitions:
       [ new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(h),(h),(h),(h),(h),(.+)'}),
 	new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 16, width: 16, height: 16, condition:  '(.+),(h|_),(.+),(.+),(h|_),(.+),(.+),(h|_),(.+)'}),
@@ -149,7 +149,7 @@ function start() {
     name: 'hill east',
     color: '255,128,0,255',
     imageURL: 'tiles/g-tile',
-    clip: [false,false,true,false],
+    clipto: [false,false,true,false],
     transitions:
       [ new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(h),(h),(h),(.+),(h),(h)'}),
 	new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 16, width: 16, height: 16, condition:  '(.+),(h|_),(.+),(.+),(h|_),(.+),(.+),(h|_),(.+)'}),

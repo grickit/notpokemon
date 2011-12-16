@@ -24,7 +24,8 @@
     this.group = (args.group == undefined)? this.letter : args.group;
     this.imageURL = args.imageURL;
     this.image = images[this.imageURL];
-    this.clip = (args.clip == undefined)? [false,false,false,false]: args.clip;
+    this.clipto = (args.clipto == undefined)? [false,false,false,false]: args.clipto;
+    this.clipfrom = (args.clipfrom == undefined)? [true,true,true,true]: args.clipfrom;
     this.overlays = args.overlays;
     this.transitions = (args.transitions == undefined)? [new tileSprite({imageURL: this.imageURL, x: 0, y: 0, width: this.image.width, height: this.image.height})] : args.transitions;
   }
