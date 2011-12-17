@@ -20,7 +20,8 @@ function start() {
     var newscript = document.createElement('script');
     newscript.type = 'text/javascript';
     newscript.innerHTML = data[name];
-    document.getElementsByTagName('script')[0].parentNode.insertBefore(newscript, this);
+    var oldscript = document.getElementsByTagName('script')[0];
+    oldscript.parentNode.insertBefore(newscript, oldscript);
   }
 
   game.viewport.tracking = entities['player'];
