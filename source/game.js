@@ -219,17 +219,6 @@
 	game.viewport.y = game.viewport.tracking.y - Math.floor(game.viewport.tilesY/2);
       }
 
-      /*for(var y = -1; y < game.viewport.tilesY+1; y++) {
-	for(var x = -1;  x < game.viewport.tilesX+1; x++) {
-	  //Render tile
-	  var newx = (x+game.viewport.x)*16;
-	  var newy = (y+game.viewport.y)*16;
-	  var imageData = game.vbuffer.context.getImageData(newx, newy,16,16);
-	  var putxy = game.viewport.getAdjustedDrawingCoordinates(x, y);
-	  game.viewport.context.putImageData(imageData, putxy[0], putxy[1]);
-	}
-      }*/
-
       //Render tiles
       var newx = game.viewport.x * 16;
       var newy = game.viewport.y * 16;
