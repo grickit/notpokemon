@@ -16,10 +16,10 @@
     this.facing = game.directionNumbers[direction];
     if(game.getTile(this.x, this.y).clipfrom[game.directionNumbers[direction]] && game.getTile(newx,newy).clipto[game.directionNumbers[direction]]) {
       this.is_moving = true;
-      this.movement_frame = 2;
-      setTimeout(function(thisObj) { thisObj.movement_frame = 3; },game.framesPerSecond,this);
-      setTimeout(function(thisObj) { thisObj.movement_frame = 4; },game.framesPerSecond*2,this);
-      setTimeout(function(thisObj) { thisObj.movement_frame = 1; thisObj.setPosition(newx,newy); thisObj.is_moving = false; },game.framesPerSecond*3,this);
+      this.frame = game.directionWords[this.facing]+'2';
+      setTimeout(function(thisObj) { thisObj.frame = game.directionWords[thisObj.facing]+'3'; },game.framesPerSecond,this);
+      setTimeout(function(thisObj) { thisObj.frame = game.directionWords[thisObj.facing]+'4'; },game.framesPerSecond*2,this);
+      setTimeout(function(thisObj) { thisObj.frame = game.directionWords[thisObj.facing]+'1'; thisObj.setPosition(newx,newy); thisObj.is_moving = false; },game.framesPerSecond*3,this);
     }
   }
 

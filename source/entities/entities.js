@@ -4,7 +4,7 @@
     this.y = (args.y == undefined)? 0 : args.y;
     this.facing = (args.facing == undefined)? 1 : args.facing; //North: 0, South: 1, East: 2, West: 3;
     this.aggro = (args.aggro == undefined)? 'neutral' : args.aggro;
-    this.movement_frame = 1;
+    this.frame = 'south1';
 
     if(args.name == undefined) { throw "new entity missing required name attribute"; }
     else { this.name = args.name; entities[this.name] = this; }
@@ -18,7 +18,7 @@
 
     this.getImage = function() {
       if(this.sprite instanceof characterSheet) {
-	return this.sprite.images[game.directionWords[this.facing]+this.movement_frame];
+	return this.sprite.images[this.frame];
       }
       else {
 	return this.sprite;
