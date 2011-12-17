@@ -105,38 +105,21 @@ baseTileSet.add({
     [ new tileOverlay({imageURL: 'tiles/gg-tile-overlay', draw_over_moving: false}) ]
 });
 baseTileSet.add({
-  letter: 'hs',
-  group: 'h',
+  letter: 'h',
   name: 'hill south',
   color: '128,128,0,255',
   imageURL: 'tiles/g-tile',
-  clipto: [false,true,false,false],
+  clipto: [false,false,false,false],
   transitions:
-    [ new tileSprite({imageURL: 'tiles/new/hill', x: 16, y: 32, width: 16, height: 16, condition:  '(.+),(.+),(.+),(h|_),(h|_),(h|_),(.+),(.+),(.+)'}),
-      new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(.+),(h),(h),(.+),(.+),(.+)'}),
-      new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(h),(h),(.+),(.+),(.+),(.+)'}) ]
-});
-baseTileSet.add({
-  letter: 'hw',
-  group: 'h',
-  name: 'hill west',
-  color: '128,0,0,255',
-  imageURL: 'tiles/g-tile',
-  clipto: [false,false,false,true],
-  transitions:
-    [ new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(h),(h),(h),(h),(h),(.+)'}),
-      new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 16, width: 16, height: 16, condition:  '(.+),(h|_),(.+),(.+),(h|_),(.+),(.+),(h|_),(.+)'}),
-      new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(.+),(h),(h),(.+),(.+),(.+)'}) ]
-});
-baseTileSet.add({
-  letter: 'he',
-  group: 'h',
-  name: 'hill east',
-  color: '255,128,0,255',
-  imageURL: 'tiles/g-tile',
-  clipto: [false,false,true,false],
-  transitions:
-    [ new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(h),(h),(h),(.+),(h),(h)'}),
-      new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 16, width: 16, height: 16, condition:  '(.+),(h|_),(.+),(.+),(h|_),(.+),(.+),(h|_),(.+)'}),
-      new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 32, width: 16, height: 16, condition:  '(.+),(h),(.+),(h),(h),(.+),(.+),(.+),(.+)'}) ]
+    [ new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 0, width: 16, height: 16, condition:  '(.+),(g|s|w),(.+),(g|s|w),(h),(.+),(.+),(.+),(.+)'}),
+    new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 0, width: 16, height: 16, condition:   '(.+),(g|s|w),(.+),(.+),(h),(g|s|w),(.+),(.+),(.+)'}),
+    new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 32, width: 16, height: 16, condition:   '(.+),(.+),(.+),(g|s|w),(h),(.+),(.+),(g|s|w),(.+)'}),
+    new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 32, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(h),(g|s|w),(.+),(g|s|w),(.+)'}),
+
+    new tileSprite({imageURL: 'tiles/new/hill', x: 16, y: 0, width: 16, height: 16, condition:   '(.+),(g|s|w),(.+),(.+),(h),(.+),(.+),(.+),(.+)'}),
+    new tileSprite({imageURL: 'tiles/new/hill', x: 16, y: 32, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(h),(.+),(.+),(g|s|w),(.+)'}),
+    new tileSprite({imageURL: 'tiles/new/hill', x: 0, y: 16, width: 16, height: 16, condition:   '(.+),(.+),(.+),(g|s|w),(h),(.+),(.+),(.+),(.+)'}),
+    new tileSprite({imageURL: 'tiles/new/hill', x: 32, y: 16, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(h),(g|s|w),(.+),(.+),(.+)'}),
+
+    new tileSprite({imageURL: 'tiles/new/hill', x: 16, y: 16, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(h),(.+),(.+),(.+),(.+)'}) ]
 });
