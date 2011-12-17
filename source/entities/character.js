@@ -4,7 +4,6 @@
     entity.call(this, args);
 
     this.is_moving = false;
-    this.can_move = true;
     this.speed = 11;
     this.behavior = (args.behavior == undefined)? {style: undefined} : args.behavior;
 
@@ -12,18 +11,15 @@
   }
 
   character.prototype.step = function(direction) {
-    if(this.can_move) {
-      var newx = this.x + game.directionChanges[direction].x;
-      var newy = this.y + game.directionChanges[direction].y;
-      this.facing = game.directionNumbers[direction];
-      if(game.getTile(this.x, this.y).clipfrom[game.directionNumbers[direction]] && game.getTile(newx,newy).clipto[game.directionNumbers[direction]]) {
-	this.is_moving = true;
-	this.can_move = false;
-	this.movement_frame = 2;
-	setTimeout(function(thisObj) { thisObj.movement_frame = 3; },game.framesPerSecond,this);
-	setTimeout(function(thisObj) { thisObj.movement_frame = 4; },game.framesPerSecond*2,this);
-	setTimeout(function(thisObj) { thisObj.movement_frame = 1; thisObj.setPosition(newx,newy); thisObj.is_moving = false; thisObj.can_move = true; },game.framesPerSecond*3,this);
-      }
+    var newx = this.x + game.directionChanges[direction].x;
+    var newy = this.y + game.directionChanges[direction].y;
+    this.facing = game.directionNumbers[direction];
+    if(game.getTile(this.x, this.y).clipfrom[game.directionNumbers[direction]] && game.getTile(newx,newy).clipto[game.directionNumbers[direction]]) {
+      this.is_moving = true;
+      this.movement_frame = 2;
+      setTimeout(function(thisObj) { thisObj.movement_frame = 3; },game.framesPerSecond,this);
+      setTimeout(function(thisObj) { thisObj.movement_frame = 4; },game.framesPerSecond*2,this);
+      setTimeout(function(thisObj) { thisObj.movement_frame = 1; thisObj.setPosition(newx,newy); thisObj.is_moving = false; },game.framesPerSecond*3,this);
     }
   }
 
