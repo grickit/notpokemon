@@ -1,3 +1,27 @@
+var images = new Array();
+var unloaded_images = 0;
+function preloadImage(imageURL) {
+  unloaded_images++;
+  images[imageURL] = new Image();
+  images[imageURL].onload = function() {
+    unloaded_images--;
+  }
+  images[imageURL].src = 'images/'+imageURL+'.png';
+}
+
+var data = new Array();
+var unloaded_data = 0;
+function preloadData(url) {
+  request = new ajaxGetRequest(url)
+
+  request.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status != 404) {
+      data[url] = this.responseText;
+      unloaded_data--;
+    }
+  }
+}
+
 function loadImages() {
   preloadImage('tiles/e-tile');
   preloadImage('tiles/g-tile');
