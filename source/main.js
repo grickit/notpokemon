@@ -5,6 +5,7 @@ function preStart() {
 
   game.terminal.write('Loading images.');
   images.load('404');
+  images.load('alpha');
   images.load('characters/marker');
   images.load('characters/kantopokemon');
   images.load('characters/johtopokemon');
@@ -17,6 +18,7 @@ function preStart() {
   images.load('tiles/grass');
   images.load('tiles/tallgrass');
   images.load('tiles/tallgrass-overlay');
+  images.load('tiles/redflower');
   images.load('maps/map1');
 
 }
@@ -96,6 +98,24 @@ function start() {
     overlays:
       [ new sprite({imageURL: 'tiles/tallgrass-overlay', drawovermoving: false}) ]
   });
+
+  baseTileSet.add({
+    letter: 'gfr',
+    group: 'g',
+    name: 'redflower',
+    color: '128,0,0,255',
+    clipto: [true,true,true,true],
+    transitions:
+      [ new sprite({imageURL: 'alpha'}) ],
+    overlays: [
+      new animation([
+	new sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 500}),
+	new sprite({imageURL: 'tiles/redflower', x: 17, y: 0, duration: 500}),
+	new sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 500}),
+	new sprite({imageURL: 'tiles/redflower', x: 34, y: 0, duration: 500}),
+      ])]
+  });
+  baseTileSet.tilesByLetter['gfr'].overlays[0].next();
 
   mapone = new map('maps/map1');
   game.currentMap = mapone;
