@@ -3,11 +3,8 @@ function map(imageURL,extralayers) {
   this.tiles = new Array();
   this.entities = new Array();
   this.events = new Array();
-  images.load(imageURL,this,'init');
   this.extralayers = extralayers;
-  for(layer in this.extralayers) {
-    images.load(this.extralayers[layer],this,'addLayer',this.extralayers[layer]);
-  }
+  images.load(imageURL,this,'init');
 }
 
 map.prototype.init = function() {
@@ -56,6 +53,9 @@ map.prototype.init = function() {
     }
   }
   //window.open(this.canvas.toDataURL(),'foo');
+  for(layer in this.extralayers) {
+    images.load(this.extralayers[layer],this,'addLayer',this.extralayers[layer]);
+  }
 }
 
 map.prototype.addLayer = function(imageURL) {
@@ -67,4 +67,33 @@ map.prototype.addLayer = function(imageURL) {
   tempcanvas.height = this.height;
   var tempcontext = tempcanvas.getContext('2d');
   tempcontext.drawImage(images.get(imageURL), 0, 0);
+
+  for(var x = 0; x < this.width; x++) {
+    for(var y = 0; y < this.height; y++) {
+      var tempimagedata = tempcontext.getImageData(x,y,1,1);
+      var color = (''+tempimagedata.data[0]+','+tempimagedata.data[1]+','+tempimagedata.data[2]+','+tempimagedata.data[3]);
+      if(color != '0,0,0,0') {
+	this.tiles[x][y] = color;
+      }
+    }
+  }
+
+  for(var x = 0; x < this.width; x++) {
+    for(var y = 0; y < this.height; y++) {
+      var tempimagedata = tempcontext.getImageData(x,y,1,1);
+      var color = (''+tempimagedata.data[0]+','+tempimagedata.data[1]+','+tempimagedata.data[2]+','+tempimagedata.data[3]);
+      if(color != '0,0,0,0') {
+	var tile = baseTileSet.tilesByColor[this.tiles[x][y]];
+	if(tile instanceof tileType) {
+	  for(transition in tile.transitions) {
+	    var sprite = tile.transitions[transition];
+	    if(tileConditionTest(this.tiles,sprite.condition, x, y)) {
+	      this.context.drawImage(images.get(sprite.imageURL), sprite.x, sprite.y, sprite.width, sprite.height, x*16+sprite.xoffset, y*16+sprite.yoffset, 16, 16);
+	      break;
+	    }
+	  }
+	}
+      }
+    }
+  }
 }
