@@ -66,8 +66,6 @@ function start() {
     name: 'hill',
     color: '128,128,0,255',
     transitions: [
-      new sprite({imageURL: 'tiles/hillstairs', x: 0, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(h),(h),(hs),(.+),(.+),(.+)'}),
-      new sprite({imageURL: 'tiles/hillstairs', x: 34, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(hs),(h),(h),(.+),(.+),(.+)'}),
       new sprite({imageURL: 'tiles/hilltograss', x: 0, y: 34, width: 16, height: 16, condition: '(.+),(g|s|d),(.+),(g|s|d),(h),(.+),(.+),(.+),(.+)'}), // Top left corner
       new sprite({imageURL: 'tiles/hilltograss', x: 34, y: 34, width: 16, height: 16, condition:     '(.+),(g|s|d),(.+),(.+),(h),(g|s|d),(.+),(.+),(.+)'}), // Top right corner
       new sprite({imageURL: 'tiles/hilltograss', x: 0, y: 68, width: 16, height: 16, condition:      '(.+),(.+),(.+),(g|s|d),(h),(.+),(.+),(g|s|d),(.+)'}), // Bottom left corner
@@ -88,7 +86,11 @@ function start() {
     name: 'hillstairs',
     color: '255,0,0,255',
     clipto: [true,true,true,true],
-    transitions: [ new sprite({imageURL: 'tiles/hillstairs', x: 17, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(hs),(.+),(.+),(.+),(.+)'})]
+    transitions: [ new sprite({imageURL: 'tiles/hillstairs', x: 17, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(hs),(hs),(hs),(.+),(.+),(.+)'}),
+      new sprite({imageURL: 'tiles/hillstairs', x: 0, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(hs),(hs),(.+),(.+),(.+)'}),
+      new sprite({imageURL: 'tiles/hillstairs', x: 34, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(hs),(hs),(.+),(.+),(.+),(.+)'}),
+      new sprite({imageURL: 'tiles/hillstairs', x: 51, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(hs),(.+),(.+),(.+),(.+)'}),
+    ]
   });
     
   baseTileSet.add({
