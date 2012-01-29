@@ -55,7 +55,7 @@
     graphics: new Array(),
   };
 
-  images.load = function(imageURL,callback,funcname) {
+  images.load = function(imageURL,callback,funcname,arguments) {
     if(imageURL == undefined) { throw "New sprite has undefined imageURL"; }
     images.unloaded++;
     if(images.graphics[imageURL] == undefined) {
@@ -65,7 +65,7 @@
     if(images.graphics[imageURL].loaded) {
       game.terminal.write('Graphic "'+imageURL+'" already loaded.');
       images.unloaded--;
-      if(callback != undefined) { callback[funcname](); }
+      if(callback != undefined) { callback[funcname](arguments); }
       return;
     }
     else {
@@ -73,7 +73,7 @@
 	images.unloaded--;
 	images.graphics[imageURL].loaded = true;
 	game.terminal.write('Graphic "'+imageURL+'" finished loading.');
-	if(callback != undefined) { callback[funcname](); }
+	if(callback != undefined) { callback[funcname](arguments); }
       });
       images.graphics[imageURL].src = 'images/'+imageURL+'.png';
     }
