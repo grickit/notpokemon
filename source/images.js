@@ -26,18 +26,24 @@
 // ----- }
 
 // ----- CLASS: animation {
-  function animation(frames) {
+  function animation(frames,loop) {
     this.frames = frames;
     this.index = 0;
     this.current = this.frames[this.index];
     this.paused = true;
+    this.loop = (loop == undefined)? false : loop;
 
     this.next = function() {
       this.index++;
-      if(this.index >= this.frames.length) { this.index = 0; }
+      if(this.index >= this.frames.length) {
+	this.index = 0;
+      }
       this.current = this.frames[this.index];
       this.timeout = setTimeout(function(thisObj) { thisObj.next(); },this.current.duration, this);
       this.paused = false;
+      if (this.index == 0 && loop != true) {
+	this.stop();
+      }
     }
 
     this.stop = function() {
