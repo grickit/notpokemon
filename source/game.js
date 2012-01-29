@@ -8,6 +8,7 @@
     targetTPS: 1000/30,
     tileSize: 16,
     framesThisSecond: 0,
+    entities: []
   }
 
   game.inbounds = function(x, y) {
@@ -87,6 +88,10 @@
 	}
       }
       game.viewport.drawImage(overlay, x, y);
+    }
+
+    game.viewport.drawEntity = function(entity,x,y) {
+      game.viewport.drawImage(entity.currentImage,x,y);
     }
   // ----- }
 
@@ -170,11 +175,11 @@
       for(var y = -2; y < game.viewport.tilesY+2; y++) {
 	for(var x = -2;  x < game.viewport.tilesX+2; x++) {
 	  //Render entities
-	  /*if((these_entities = game.viewport.getAdjustedEntities(x, y)) != undefined) {
+	  if((these_entities = game.viewport.getAdjustedEntities(x, y)) != undefined) {
 	    for(name in these_entities) {
 	      game.viewport.drawEntity(these_entities[name],x,y);
 	    }
-	  }*/
+	  }
 	  //Render overlays
 	  for(o in (tile = game.viewport.getAdjustedTile(x, y)).overlays) {
 	    game.viewport.drawOverlay(tile.overlays[o], x, y);

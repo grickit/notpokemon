@@ -21,6 +21,8 @@ function preStart() {
   images.load('tiles/redflower');
   images.load('maps/map1');
 
+  images.load('characters/sign');
+
 }
 
 function start() {
@@ -127,6 +129,8 @@ function start() {
     new sprite({imageURL: 'characters/marker', x: 16, y: 16, duration: 500})
   ]);
   foo.next();
+
+  testEnt = new entity({ name: 'testEnt', x: 5, y: 5 });
 
   game.drawFrame();
   setInterval(game.keyboard.poll,1000/30);
