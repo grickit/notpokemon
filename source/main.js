@@ -117,7 +117,7 @@ function start() {
   });
   baseTileSet.tilesByLetter['gfr'].overlays[0].next();
 
-  mapone = new map('maps/map1');
+  mapone = new map('maps/map1',['maps/map1-2']);
   game.currentMap = mapone;
 
   foo = new animation([

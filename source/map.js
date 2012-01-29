@@ -1,9 +1,13 @@
-function map(imageURL) {
+function map(imageURL,extralayers) {
   this.imageURL = imageURL;
   this.tiles = new Array();
   this.entities = new Array();
   this.events = new Array();
   images.load(imageURL,this,'init');
+  this.extralayers = extralayers;
+  for(layer in this.extralayers) {
+    images.load(this.extralayers[layer],this,'addLayer',this.extralayers[layer]);
+  }
 }
 
 map.prototype.init = function() {
@@ -52,4 +56,15 @@ map.prototype.init = function() {
     }
   }
   //window.open(this.canvas.toDataURL(),'foo');
+}
+
+map.prototype.addLayer = function(imageURL) {
+  if (images.get(imageURL).width != this.width || images.get(imageURL).height != this.height) {
+    throw "Map layer '"+imageURL+"' is not the same dimensions as base map '"+this.imageURL+"'.";
+  }
+  var tempcanvas = document.createElement('canvas');
+  tempcanvas.width = this.width;
+  tempcanvas.height = this.height;
+  var tempcontext = tempcanvas.getContext('2d');
+  tempcontext.drawImage(images.get(imageURL), 0, 0);
 }
