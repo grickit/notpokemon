@@ -19,8 +19,9 @@ function preStart() {
   images.load('tiles/tallgrass');
   images.load('tiles/tallgrass-overlay');
   images.load('tiles/redflower');
+  images.load('tiles/hillstairs');
   images.load('maps/map1');
-
+  images.load('maps/map1-2');
   images.load('characters/sign');
 
 }
@@ -64,8 +65,10 @@ function start() {
     letter: 'h',
     name: 'hill',
     color: '128,128,0,255',
-    clipto: [true,true,true,true],
-    transitions: [ new sprite({imageURL: 'tiles/hilltograss', x: 0, y: 34, width: 16, height: 16, condition: '(.+),(g|s|d),(.+),(g|s|d),(h),(.+),(.+),(.+),(.+)'}), // Top left corner
+    transitions: [
+      new sprite({imageURL: 'tiles/hillstairs', x: 0, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(h),(h),(hs),(.+),(.+),(.+)'}),
+      new sprite({imageURL: 'tiles/hillstairs', x: 34, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(hs),(h),(h),(.+),(.+),(.+)'}),
+      new sprite({imageURL: 'tiles/hilltograss', x: 0, y: 34, width: 16, height: 16, condition: '(.+),(g|s|d),(.+),(g|s|d),(h),(.+),(.+),(.+),(.+)'}), // Top left corner
       new sprite({imageURL: 'tiles/hilltograss', x: 34, y: 34, width: 16, height: 16, condition:     '(.+),(g|s|d),(.+),(.+),(h),(g|s|d),(.+),(.+),(.+)'}), // Top right corner
       new sprite({imageURL: 'tiles/hilltograss', x: 0, y: 68, width: 16, height: 16, condition:      '(.+),(.+),(.+),(g|s|d),(h),(.+),(.+),(g|s|d),(.+)'}), // Bottom left corner
       new sprite({imageURL: 'tiles/hilltograss', x: 34, y: 68, width: 16, height: 16, condition:     '(.+),(.+),(.+),(.+),(h),(g|s|d),(.+),(g|s|d),(.+)'}), // Bottom right corner
@@ -79,6 +82,15 @@ function start() {
       new sprite({imageURL: 'tiles/hilltograss', x: 34, y: 51, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(h),(g|s|d),(.+),(.+),(.+)'}), // Right side
     ].concat(simpleTileSpriteSetEnd('tiles/hilltograss','(h)'))
   });
+
+  baseTileSet.add({
+    letter: 'hs',
+    name: 'hillstairs',
+    color: '255,0,0,255',
+    clipto: [true,true,true,true],
+    transitions: [ new sprite({imageURL: 'tiles/hillstairs', x: 17, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(hs),(.+),(.+),(.+),(.+)'})]
+  });
+    
   baseTileSet.add({
     letter: 'T',
     group: 'g',
@@ -121,14 +133,6 @@ function start() {
 
   mapone = new map('maps/map1',['maps/map1-2']);
   game.currentMap = mapone;
-
-  foo = new animation([
-    new sprite({imageURL: 'characters/marker', x: 0, y: 0}),
-    new sprite({imageURL: 'characters/marker', x: 0, y: 16}),
-    new sprite({imageURL: 'characters/marker', x: 16, y: 0}),
-    new sprite({imageURL: 'characters/marker', x: 16, y: 16, duration: 500})
-  ]);
-  foo.next();
 
   testEnt = new entity({ name: 'testEnt', x: 10, y: 5 });
 
