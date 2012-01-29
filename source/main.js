@@ -109,10 +109,10 @@ function start() {
       [ new sprite({imageURL: 'alpha'}) ],
     overlays: [
       new animation([
-	new sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 500}),
-	new sprite({imageURL: 'tiles/redflower', x: 17, y: 0, duration: 500}),
-	new sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 500}),
-	new sprite({imageURL: 'tiles/redflower', x: 34, y: 0, duration: 500}),
+	new sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
+	new sprite({imageURL: 'tiles/redflower', x: 17, y: 0, duration: 700}),
+	new sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
+	new sprite({imageURL: 'tiles/redflower', x: 34, y: 0, duration: 700}),
       ])]
   });
   baseTileSet.tilesByLetter['gfr'].overlays[0].next();
