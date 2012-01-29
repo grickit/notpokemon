@@ -130,7 +130,7 @@ function start() {
   ]);
   foo.next();
 
-  testEnt = new entity({ name: 'testEnt', x: 5, y: 5 });
+  testEnt = new entity({ name: 'testEnt', x: 10, y: 5 });
 
   game.drawFrame();
   setInterval(game.keyboard.poll,1000/30);

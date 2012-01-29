@@ -7,7 +7,7 @@
     if(args.name == undefined) { throw "new entity missing required name attribute"; }
     else { this.name = args.name; game.entities[this.name] = this; }
 
-    this.sprites = (args.sprites == undefined)? [new sprite({imageURL: 'characters/sign'})] : args.sprites;
+    this.sprites = (args.sprites == undefined)? [new sprite({imageURL: 'characters/sign', yoffset: -1})] : args.sprites;
 
     this.setPosition = function(x,y) {
       delete game.currentMap.entities[this.x][this.y][this.name];
