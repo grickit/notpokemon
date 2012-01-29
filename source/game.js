@@ -4,6 +4,35 @@
     directionWords: { 0: 'north', 1: 'south', 2: 'east', 3: 'west' },
     directionNumbers: { 'north': 0, 'south': 1, 'east': 2, 'west': 3 },
     directionChanges: { 'north': { x: 0, y: -1 }, 'south': { x: 0, y: 1 }, 'east': { x: 1, y: 0 }, 'west': { x: -1, y: 0 } },
+    tints: { 'normal': 'rgba(120,120,90,0.1)', 'dim': 'rgba(10,0,0,0.2)', 'dark': 'rgba(0,0,0,0.3)', 'bright': 'rgba(0,0,0,0)'},
+    hourTints: {
+      0: 'rgba(0,0,10,0.5)',
+      1: 'rgba(0,0,10,0.5)',
+      2: 'rgba(0,0,10,0.5)',
+      3: 'rgba(0,0,10,0.4)',
+      4: 'rgba(0,0,10,0.4)',
+      5: 'rgba(0,0,10,0.3)',
+      6: 'rgba(0,0,10,0.3)',
+      7: 'rgba(0,0,10,0.2)',
+      8: 'rgba(0,0,10,0.2)',
+      9: 'rgba(0,0,10,0.1)',
+      10: 'rgba(0,0,10,0.1)',
+      11: 'rgba(0,0,10,0)',
+      12: 'rgba(0,0,10,0)',
+      13: 'rgba(0,0,10,0)',
+      14: 'rgba(0,0,10,0)',
+      15: 'rgba(0,0,10,0.1)',
+      16: 'rgba(0,0,10,0.1)',
+      17: 'rgba(0,0,10,0.2)',
+      18: 'rgba(0,0,10,0.2)',
+      19: 'rgba(0,0,10,0.3)',
+      20: 'rgba(0,0,10,0.3)',
+      21: 'rgba(0,0,10,0.4)',
+      22: 'rgba(0,0,10,0.4)',
+      23: 'rgba(0,0,10,0.5)',
+    },
+    time: 0,
+    currentTint: 'rgba(0,0,0,0)',
     targetFPS: 25,
     targetTPS: 1000/30,
     tileSize: 16,
@@ -186,7 +215,7 @@
 	  }
 	}
       }
-
+      clearCanvas(game.viewport.context,game.currentTint);
       game.framesThisSecond++;
     }
     var timer = new Date().getMilliseconds() - starttime;
