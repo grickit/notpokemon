@@ -60,6 +60,13 @@
       this.current = this.frames[this.index];
       this.timeout = setTimeout(function(thisObj) { thisObj.next(); },this.current.duration, this);
     }
+
+    this.reset = function() {
+      clearTimeout(this.timeout);
+      this.paused = true;
+      this.index = 0;
+      this.current = this.frames[this.index];
+    }
   }
 // ----- }
 

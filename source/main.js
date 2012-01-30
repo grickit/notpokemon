@@ -136,7 +136,7 @@ function start() {
   mapone = new map('maps/map1',['maps/map1-2']);
   game.currentMap = mapone;
 
-  testEnt = new entity({ name: 'testEnt', x: 12, y: 5, sprites: characterSheet('characters/kantopokemon',0,0)});
+  testEnt = new entity({ name: 'testEnt', x: 41, y: 25, sprites: characterSheet('characters/kantopokemon',0,0)});
 
   game.drawFrame();
   setInterval(game.keyboard.poll,1000/30);

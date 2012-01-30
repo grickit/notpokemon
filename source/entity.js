@@ -10,15 +10,26 @@
     this.sprites = (args.sprites == undefined)? [new sprite({imageURL: 'characters/sign', yoffset: -1})] : args.sprites;
 
     this.setPosition = function(x,y) {
-      console.log(x+','+y);
       delete game.currentMap.entities[this.x][this.y][this.name];
       this.x = x;
       this.y = y;
       game.currentMap.entities[this.x][this.y][this.name] = this;
     }
+
+    this.step = function(direction) {
+      var newx = this.x + game.directionChanges[direction].x;
+      var newy = this.y + game.directionChanges[direction].y;
+      this.facing = game.directionNumbers[direction];
+      if(game.getTile(this.x, this.y).clipfrom[game.directionNumbers[direction]] && game.getTile(newx,newy).clipto[game.directionNumbers[direction]]) {
+	this.currentImage = this.sprites[direction];
+	this.currentImage.restart();
+	setTimeout(function(thisObj){ thisObj.setPosition(newx,newy); thisObj.currentImage.reset(); },800,this);
+      }
+    }
+
     this.setPosition(this.x,this.y);
     this.currentImage = this.sprites['south'];
-    setInterval(function(thisObj){ thisObj.currentImage.restart(); thisObj.setPosition(thisObj.x,thisObj.y+1); },1000,this);
+    setInterval(function(thisObj){ thisObj.step(game.directionWords[randRange(0,3)]); },1000,this);
   }
 // ----- }
 
@@ -37,11 +48,11 @@
 	y: y,
 	width: width/2,
 	height: height/4,
-	xoffset: -7,
-	yoffset: -20,
+	xoffset: -8,
+	yoffset: -16,
 	trackxoffset: 0,
 	trackyoffset: 0,
-	duration: 250
+	duration: 200
       }),
       new sprite({
 	imageURL: imageURL,
@@ -49,11 +60,11 @@
 	y: y,
 	width: width/2,
 	height: height/4,
-	xoffset: -7,
+	xoffset: -8,
 	yoffset: -20,
 	trackxoffset: 0,
 	trackyoffset: 4,
-	duration: 250
+	duration: 200
       }),
       new sprite({
 	imageURL: imageURL,
@@ -61,11 +72,11 @@
 	y: y + (height/4),
 	width: width/2,
 	height: height/4,
-	xoffset: -7,
+	xoffset: -8,
 	yoffset: -24,
 	trackxoffset: 0,
 	trackyoffset: 8,
-	duration: 250
+	duration: 200
       }),
       new sprite({
 	imageURL: imageURL,
@@ -73,11 +84,11 @@
 	y: y + (height/4),
 	width: width/2,
 	height: height/4,
-	xoffset: -7,
+	xoffset: -8,
 	yoffset: -28,
 	trackxoffset: 0,
 	trackyoffset: 12,
-	duration: 250
+	duration: 200
       }),
     ]);
 
@@ -92,7 +103,7 @@
 	yoffset: -16,
 	trackxoffset: 0,
 	trackyoffset: 0,
-	duration: 250
+	duration: 200
       }),
       new sprite({
 	imageURL: imageURL,
@@ -104,7 +115,7 @@
 	yoffset: -12,
 	trackxoffset: 0,
 	trackyoffset: -4,
-	duration: 250
+	duration: 200
       }),
       new sprite({
 	imageURL: imageURL,
@@ -116,7 +127,7 @@
 	yoffset: -8,
 	trackxoffset: 0,
 	trackyoffset: -8,
-	duration: 250
+	duration: 200
       }),
       new sprite({
 	imageURL: imageURL,
@@ -128,7 +139,7 @@
 	yoffset: -4,
 	trackxoffset: 0,
 	trackyoffset: -12,
-	duration: 250
+	duration: 200
       }),
     ]);
 
@@ -143,7 +154,7 @@
 	yoffset: -16,
 	trackxoffset: 0,
 	trackyoffset: 0,
-	duration: 250
+	duration: 200
       }),
       new sprite({
 	imageURL: imageURL,
@@ -155,7 +166,7 @@
 	yoffset: -16,
 	trackxoffset: -4,
 	trackyoffset: 0,
-	duration: 250
+	duration: 200
       }),
       new sprite({
 	imageURL: imageURL,
@@ -167,7 +178,7 @@
 	yoffset: -16,
 	trackxoffset: -12,
 	trackyoffset: 0,
-	duration: 250
+	duration: 200
       }),
       new sprite({
 	imageURL: imageURL,
@@ -179,7 +190,7 @@
 	yoffset: -16,
 	trackxoffset: -12,
 	trackyoffset: 0,
-	duration: 250
+	duration: 200
       }),
     ]);
 
@@ -194,7 +205,7 @@
 	yoffset: -16,
 	trackxoffset: 0,
 	trackyoffset: 0,
-	duration: 250
+	duration: 200
       }),
       new sprite({
 	imageURL: imageURL,
@@ -206,7 +217,7 @@
 	yoffset: -16,
 	trackxoffset: 4,
 	trackyoffset: 0,
-	duration: 250
+	duration: 200
       }),
       new sprite({
 	imageURL: imageURL,
@@ -218,7 +229,7 @@
 	yoffset: -16,
 	trackxoffset: 8,
 	trackyoffset: 0,
-	duration: 250
+	duration: 200
       }),
       new sprite({
 	imageURL: imageURL,
@@ -230,7 +241,7 @@
 	yoffset: -16,
 	trackxoffset: 12,
 	trackyoffset: 0,
-	duration: 250
+	duration: 200
       }),
     ]);
     return {'north': north_anim, 'south': south_anim, 'east': east_anim, 'west': west_anim};
