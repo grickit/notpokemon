@@ -18,8 +18,7 @@
     }
     this.setPosition(this.x,this.y);
     this.currentImage = this.sprites['south'];
-    this.currentImage.loop = true;
-    this.currentImage.restart();
+    setInterval(function(thisObj){ thisObj.currentImage.restart(); thisObj.setPosition(thisObj.x,thisObj.y+1); },1000,this);
   }
 // ----- }
 
