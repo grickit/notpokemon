@@ -10,14 +10,16 @@
     this.sprites = (args.sprites == undefined)? [new sprite({imageURL: 'characters/sign', yoffset: -1})] : args.sprites;
 
     this.setPosition = function(x,y) {
+      console.log(x+','+y);
       delete game.currentMap.entities[this.x][this.y][this.name];
       this.x = x;
       this.y = y;
       game.currentMap.entities[this.x][this.y][this.name] = this;
     }
     this.setPosition(this.x,this.y);
-    this.currentImage = this.sprites[0];
-    console.log(this.currentImage);
+    this.currentImage = this.sprites['south'];
+    this.currentImage.loop = true;
+    this.currentImage.restart();
   }
 // ----- }
 
@@ -36,7 +38,7 @@
 	y: y,
 	width: width/2,
 	height: height/4,
-	xoffset: -8,
+	xoffset: -7,
 	yoffset: -20,
 	trackxoffset: 0,
 	trackyoffset: 0,
@@ -48,7 +50,7 @@
 	y: y,
 	width: width/2,
 	height: height/4,
-	xoffset: -8,
+	xoffset: -7,
 	yoffset: -20,
 	trackxoffset: 0,
 	trackyoffset: 4,
@@ -60,7 +62,7 @@
 	y: y + (height/4),
 	width: width/2,
 	height: height/4,
-	xoffset: -8,
+	xoffset: -7,
 	yoffset: -24,
 	trackxoffset: 0,
 	trackyoffset: 8,
@@ -72,23 +74,23 @@
 	y: y + (height/4),
 	width: width/2,
 	height: height/4,
-	xoffset: -8,
+	xoffset: -7,
 	yoffset: -28,
 	trackxoffset: 0,
 	trackyoffset: 12,
 	duration: 250
       }),
-    ],true);
+    ]);
 
     south_anim = new animation([
       new sprite({
 	imageURL: imageURL,
 	x: x,
-	y: y,
+	y: y + (height/4)*2,
 	width: width/2,
 	height: height/4,
 	xoffset: -8,
-	yoffset: -20,
+	yoffset: -16,
 	trackxoffset: 0,
 	trackyoffset: 0,
 	duration: 250
@@ -129,7 +131,7 @@
 	trackyoffset: -12,
 	duration: 250
       }),
-    ],true);
+    ]);
 
     east_anim = new animation([
       new sprite({
@@ -180,7 +182,7 @@
 	trackyoffset: 0,
 	duration: 250
       }),
-    ],true);
+    ]);
 
     west_anim = new animation([
       new sprite({
@@ -231,11 +233,7 @@
 	trackyoffset: 0,
 	duration: 250
       }),
-    ],true);
-    north_anim.next();
-    south_anim.next();
-    east_anim.next();
-    west_anim.next();
-    return [north_anim,south_anim,east_anim,west_anim];
+    ]);
+    return {'north': north_anim, 'south': south_anim, 'east': east_anim, 'west': west_anim};
   }
 // ----- }

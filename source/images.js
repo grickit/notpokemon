@@ -41,7 +41,7 @@
       this.current = this.frames[this.index];
       this.timeout = setTimeout(function(thisObj) { thisObj.next(); },this.current.duration, this);
       this.paused = false;
-      if (this.index == 0 && loop != true) {
+      if (this.index == 0 && this.loop != true) {
 	this.stop();
       }
     }
