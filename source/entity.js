@@ -5,9 +5,10 @@
     this.z = (args.z == undefined)? 100 : args.z;
     this.unlisted = (args.unlisted == undefined)? false : args.unlisted;
     this.facing = (args.facing == undefined)? 1 : args.facing; //North: 0, South: 1, East: 2, West: 3;
-
-    if(args.name == undefined) { throw "new entity missing required name attribute"; }
-    else { this.name = args.name; game.entities[this.name] = this; }
+    this.name = (args.name == undefined)? uniqueEntityID() : args.name;
+    if(this.unlisted != true) {
+      game.entities[this.name] = this;
+    }
 
     this.sprites = (args.sprites == undefined)? [new sprite({imageURL: 'characters/sign', yoffset: -1})] : args.sprites;
 

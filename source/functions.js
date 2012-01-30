@@ -2,6 +2,11 @@ function randRange(min, max) {
   return min + Math.floor(Math.random()*(max - min + 1));
 }
 
+function uniqueEntityID() {
+  game.uid++;
+  return game.uid;
+}
+
 function singleTileCondition(tiles, x, y, xoffset, yoffset) {
   if(x+xoffset >= 0 && x+xoffset < tiles.length && y+yoffset >= 0 && y+yoffset < tiles[0].length) {
     if(tiles[x+xoffset][y+yoffset] == undefined) {

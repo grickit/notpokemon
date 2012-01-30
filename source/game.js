@@ -37,7 +37,8 @@
     targetTPS: 1000/30,
     tileSize: 16,
     framesThisSecond: 0,
-    entities: []
+    entities: [],
+    uid: 0
   }
 
   game.inbounds = function(x, y) {
