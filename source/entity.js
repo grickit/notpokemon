@@ -31,8 +31,7 @@
     }
 
     this.setPosition(this.x,this.y);
-    this.currentImage = this.sprites['south'];
-    setInterval(function(thisObj){ thisObj.step(game.directionWords[randRange(0,3)]); },1000,this);
+    this.currentImage = this.sprites[0];
   }
 // ----- }
 
@@ -247,6 +246,6 @@
 	duration: 200
       }),
     ]);
-    return {'north': north_anim, 'south': south_anim, 'east': east_anim, 'west': west_anim};
+    return [north_anim,south_anim,east_anim,west_anim];
   }
 // ----- }
