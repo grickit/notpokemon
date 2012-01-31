@@ -101,8 +101,9 @@ function start() {
     transitions:
       [ new sprite({imageURL: 'tiles/tree', y: 16}) ],
     overlays:
-      [ {unlisted: true, sprites: [new sprite({imageURL: 'tiles/tree', yoffset: -16})]} ],
+      [ {unlisted: true, sprites: [new sprite({imageURL: 'tiles/tree', yoffset: -16})], z: 200} ],
   });
+
   baseTileSet.add({
     letter: 'gg',
     group: 'g',
@@ -112,7 +113,7 @@ function start() {
     transitions:
       [ new sprite({imageURL: 'tiles/tallgrass'}) ],
     overlays:
-      [ {unlisted: true, sprites: [new sprite({imageURL: 'tiles/tallgrass-overlay', drawovermoving: false})]} ]
+      [ {unlisted: true, sprites: [new sprite({imageURL: 'tiles/tallgrass-overlay', drawovermoving: false})], z: 110} ]
   });
 
   baseTileSet.add({
@@ -129,7 +130,7 @@ function start() {
 	new sprite({imageURL: 'tiles/redflower', x: 17, y: 0, duration: 700}),
 	new sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
 	new sprite({imageURL: 'tiles/redflower', x: 34, y: 0, duration: 700}),
-      ],true)]}
+      ],true)], z: 0}
     ]
   });
   baseTileSet.tilesByLetter['gfr'].overlays[0].sprites[0].next();
