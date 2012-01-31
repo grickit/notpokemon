@@ -25,7 +25,7 @@
       var newy = this.y + game.directionChanges[direction].y;
       this.facing = game.directionNumbers[direction];
       if(game.getTile(this.x, this.y).clipfrom[game.directionNumbers[direction]] && game.getTile(newx,newy).clipto[game.directionNumbers[direction]]) {
-	this.currentImage = this.sprites[direction];
+	this.currentImage = this.sprites[game.directionNumbers[direction]];
 	this.currentImage.restart();
 	setTimeout(function(thisObj){ thisObj.setPosition(newx,newy); thisObj.currentImage.reset(); },800,this);
       }
