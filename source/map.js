@@ -97,6 +97,11 @@ map.prototype.addLayer = function(imageURL) {
 	      break;
 	    }
 	  }
+	  for(overlay in tile.overlays) {
+	    tile.overlays[overlay].x = x;
+	    tile.overlays[overlay].y = y;
+	    new entity(tile.overlays[overlay],this);
+	  }
 	}
       }
     }
