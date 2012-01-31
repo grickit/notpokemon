@@ -49,6 +49,11 @@ map.prototype.init = function() {
 	    break;
 	  }
 	}
+	for(overlay in tile.overlays) {
+	  tile.overlays[overlay].x = x;
+	  tile.overlays[overlay].y = y;
+	  new entity(tile.overlays[overlay],this);
+	}
       }
     }
   }

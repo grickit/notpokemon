@@ -92,7 +92,7 @@ function start() {
       new sprite({imageURL: 'tiles/hillstairs', x: 51, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(hs),(.+),(.+),(.+),(.+)'}),
     ]
   });
-    
+
   baseTileSet.add({
     letter: 'T',
     group: 'g',
@@ -101,7 +101,7 @@ function start() {
     transitions:
       [ new sprite({imageURL: 'tiles/tree', y: 16}) ],
     overlays:
-      [ new sprite({imageURL: 'tiles/tree', yoffset: -16}) ]
+      [ {unlisted: true, sprites: [new sprite({imageURL: 'tiles/tree', yoffset: -16})]} ],
   });
   baseTileSet.add({
     letter: 'gg',
@@ -112,7 +112,7 @@ function start() {
     transitions:
       [ new sprite({imageURL: 'tiles/tallgrass'}) ],
     overlays:
-      [ new sprite({imageURL: 'tiles/tallgrass-overlay', drawovermoving: false}) ]
+      [ {unlisted: true, sprites: [new sprite({imageURL: 'tiles/tallgrass-overlay', drawovermoving: false})]} ]
   });
 
   baseTileSet.add({
@@ -122,16 +122,17 @@ function start() {
     color: '128,0,0,255',
     clipto: [true,true,true,true],
     transitions:
-      [ new sprite({imageURL: 'alpha'}) ],
+      [ new sprite({imageURL: 'tiles/grass'}) ],
     overlays: [
-      new animation([
+      {unlisted: true, sprites: [new animation([
 	new sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
 	new sprite({imageURL: 'tiles/redflower', x: 17, y: 0, duration: 700}),
 	new sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
 	new sprite({imageURL: 'tiles/redflower', x: 34, y: 0, duration: 700}),
-      ],true)]
+      ],true)]}
+    ]
   });
-  baseTileSet.tilesByLetter['gfr'].overlays[0].next();
+  baseTileSet.tilesByLetter['gfr'].overlays[0].sprites[0].next();
 
   mapone = new map('maps/map1',['maps/map1-2']);
   game.currentMap = mapone;

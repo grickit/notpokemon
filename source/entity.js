@@ -1,11 +1,12 @@
 // ----- CLASS: entity {
-  function entity(args) {
+  function entity(args,map_override) {
     this.x = (args.x == undefined)? 0 : args.x;
     this.y = (args.y == undefined)? 0 : args.y;
     this.z = (args.z == undefined)? 100 : args.z;
     this.unlisted = (args.unlisted == undefined)? false : args.unlisted;
     this.facing = (args.facing == undefined)? 1 : args.facing; //North: 0, South: 1, East: 2, West: 3;
     this.name = (args.name == undefined)? uniqueEntityID() : args.name;
+    this.map = (map_override == undefined)? game.currentMap : map_override;
     if(this.unlisted != true) {
       game.entities[this.name] = this;
     }
@@ -13,10 +14,10 @@
     this.sprites = (args.sprites == undefined)? [new sprite({imageURL: 'characters/sign', yoffset: -1})] : args.sprites;
 
     this.setPosition = function(x,y) {
-      delete game.currentMap.entities[this.x][this.y][this.name];
+      delete this.map.entities[this.x][this.y][this.name];
       this.x = x;
       this.y = y;
-      game.currentMap.entities[this.x][this.y][this.name] = this;
+      this.map.entities[this.x][this.y][this.name] = this;
     }
 
     this.step = function(direction) {

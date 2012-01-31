@@ -211,9 +211,9 @@
 	    }
 	  }
 	  //Render overlays
-	  for(o in (tile = game.viewport.getAdjustedTile(x, y)).overlays) {
+	  /*for(o in (tile = game.viewport.getAdjustedTile(x, y)).overlays) {
 	    game.viewport.drawOverlay(tile.overlays[o], x, y);
-	  }
+	  }*/
 	}
       }
       clearCanvas(game.viewport.context,game.currentTint);
