@@ -150,7 +150,7 @@ function start() {
     if(game.time == 24) { game.time = 0; }
     game.menus.context.box.innerHTML = (game.time+':00');
     game.currentTint = game.hourTints[game.time];
-  },1000)
+  },60000)
 }
 
 function tryToStart() {
