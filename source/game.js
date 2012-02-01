@@ -108,18 +108,6 @@
       game.viewport.context.drawImage(images.get(image.imageURL), image.x, image.y, image.width, image.height, newxy[0] + image.xoffset, newxy[1] + image.yoffset, image.width, image.height);
     }
 
-    game.viewport.drawOverlay = function(overlay, x, y) {
-      if(!overlay.drawovermoving) {
-	these_entities = game.viewport.getAdjustedEntities(x,y);
-	for(name in these_entities) {
-	  if(these_entities[name].is_moving) {
-	    return;
-	  }
-	}
-      }
-      game.viewport.drawImage(overlay, x, y);
-    }
-
     game.viewport.drawEntity = function(entity,x,y) {
       game.viewport.drawImage(entity.currentImage,x,y);
     }
@@ -210,10 +198,6 @@
 	      game.viewport.drawEntity(these_entities[name],x,y);
 	    }
 	  }
-	  //Render overlays
-	  /*for(o in (tile = game.viewport.getAdjustedTile(x, y)).overlays) {
-	    game.viewport.drawOverlay(tile.overlays[o], x, y);
-	  }*/
 	}
       }
       clearCanvas(game.viewport.context,game.currentTint);

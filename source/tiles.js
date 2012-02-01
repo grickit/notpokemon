@@ -35,21 +35,22 @@
 // ----- }
 
 function simpleTileSpriteSet(imageURL,l,b) {
-  return [ new sprite({imageURL: imageURL, x: 0, y: 34, width: 16, height: 16, condition: '(.+),'+b+',(.+),'+b+','+l+',(.+),(.+),(.+),(.+)'}), // Top left corner
-      new sprite({imageURL: imageURL, x: 34, y: 34, width: 16, height: 16, condition:     '(.+),'+b+',(.+),(.+),'+l+','+b+',(.+),(.+),(.+)'}), // Top right corner
-      new sprite({imageURL: imageURL, x: 0, y: 68, width: 16, height: 16, condition:      '(.+),(.+),(.+),'+b+','+l+',(.+),(.+),'+b+',(.+)'}), // Bottom left corner
-      new sprite({imageURL: imageURL, x: 34, y: 68, width: 16, height: 16, condition:     '(.+),(.+),(.+),(.+),'+l+','+b+',(.+),'+b+',(.+)'}), // Bottom right corner
+  return [
+    new sprite({imageURL: imageURL, x: 0, y: 34, width: 16, height: 16, condition: '(.+),'+b+',(.+),'+b+','+l+',(.+),(.+),(.+),(.+)'}), // Top left corner
+    new sprite({imageURL: imageURL, x: 34, y: 34, width: 16, height: 16, condition:     '(.+),'+b+',(.+),(.+),'+l+','+b+',(.+),(.+),(.+)'}), // Top right corner
+    new sprite({imageURL: imageURL, x: 0, y: 68, width: 16, height: 16, condition:      '(.+),(.+),(.+),'+b+','+l+',(.+),(.+),'+b+',(.+)'}), // Bottom left corner
+    new sprite({imageURL: imageURL, x: 34, y: 68, width: 16, height: 16, condition:     '(.+),(.+),(.+),(.+),'+l+','+b+',(.+),'+b+',(.+)'}), // Bottom right corner
 
-      new sprite({imageURL: imageURL, x: 34, y: 0, width: 16, height: 16, condition: '(.+),'+l+','+b+',(.+),'+l+','+l+',(.+),(.+),(.+)'}), // Top left corner
-      new sprite({imageURL: imageURL, x: 17, y: 17, width: 16, height: 16, condition:  '(.+),(.+),(.+),'+l+','+l+',(.+),'+b+','+l+',(.+)'}), // Bottom right corner
-      new sprite({imageURL: imageURL, x: 17, y: 0, width: 16, height: 16, condition: ''+b+','+l+',(.+),'+l+','+l+',(.+),(.+),(.+),(.+)'}), // Top right corner
-      new sprite({imageURL: imageURL, x: 34, y: 17, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),'+l+','+l+',(.+),'+l+','+b+''}), // Bottom left corner
+    new sprite({imageURL: imageURL, x: 34, y: 0, width: 16, height: 16, condition: '(.+),'+l+','+b+',(.+),'+l+','+l+',(.+),(.+),(.+)'}), // Top left corner
+    new sprite({imageURL: imageURL, x: 17, y: 17, width: 16, height: 16, condition:  '(.+),(.+),(.+),'+l+','+l+',(.+),'+b+','+l+',(.+)'}), // Bottom right corner
+    new sprite({imageURL: imageURL, x: 17, y: 0, width: 16, height: 16, condition: ''+b+','+l+',(.+),'+l+','+l+',(.+),(.+),(.+),(.+)'}), // Top right corner
+    new sprite({imageURL: imageURL, x: 34, y: 17, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),'+l+','+l+',(.+),'+l+','+b+''}), // Bottom left corner
 
-      new sprite({imageURL: imageURL, x: 17, y: 34, width: 16, height: 16, condition: '(.+),'+b+',(.+),(.+),'+l+',(.+),(.+),(.+),(.+)'}), // Top side
-      new sprite({imageURL: imageURL, x: 17, y: 68, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),'+l+',(.+),(.+),'+b+',(.+)'}), // Bottom side
-      new sprite({imageURL: imageURL, x: 0, y: 51, width: 16, height: 16, condition:  '(.+),(.+),(.+),'+b+','+l+',(.+),(.+),(.+),(.+)'}), // Left side
-      new sprite({imageURL: imageURL, x: 34, y: 51, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),'+l+','+b+',(.+),(.+),(.+)'}), // Right side
-    ];
+    new sprite({imageURL: imageURL, x: 17, y: 34, width: 16, height: 16, condition: '(.+),'+b+',(.+),(.+),'+l+',(.+),(.+),(.+),(.+)'}), // Top side
+    new sprite({imageURL: imageURL, x: 17, y: 68, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),'+l+',(.+),(.+),'+b+',(.+)'}), // Bottom side
+    new sprite({imageURL: imageURL, x: 0, y: 51, width: 16, height: 16, condition:  '(.+),(.+),(.+),'+b+','+l+',(.+),(.+),(.+),(.+)'}), // Left side
+    new sprite({imageURL: imageURL, x: 34, y: 51, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),'+l+','+b+',(.+),(.+),(.+)'}), // Right side
+  ];
 }
 
 function simpleTileSpriteSetEnd(imageURL,l) {

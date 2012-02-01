@@ -23,7 +23,6 @@ function preStart() {
   images.load('maps/map1');
   images.load('maps/map1-2');
   images.load('characters/sign');
-
 }
 
 function start() {
@@ -80,7 +79,6 @@ function start() {
       new sprite({imageURL: 'tiles/hilltograss', x: 34, y: 51, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(h),(g|s|d),(.+),(.+),(.+)'}), // Right side
     ].concat(simpleTileSpriteSetEnd('tiles/hilltograss','(h)'))
   });
-
   baseTileSet.add({
     letter: 'hs',
     name: 'hillstairs',
@@ -92,7 +90,6 @@ function start() {
       new sprite({imageURL: 'tiles/hillstairs', x: 51, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(hs),(.+),(.+),(.+),(.+)'}),
     ]
   });
-
   baseTileSet.add({
     letter: 'T',
     group: 'g',
@@ -103,7 +100,6 @@ function start() {
     overlays:
       [ {unlisted: true, sprites: [new sprite({imageURL: 'tiles/tree', yoffset: -16})], z: 200} ],
   });
-
   baseTileSet.add({
     letter: 'gg',
     group: 'g',
@@ -115,7 +111,6 @@ function start() {
     overlays:
       [ {unlisted: true, sprites: [new sprite({imageURL: 'tiles/tallgrass-overlay', drawovermoving: false})], z: 110} ]
   });
-
   baseTileSet.add({
     letter: 'gfr',
     group: 'g',
@@ -145,7 +140,7 @@ function start() {
   setInterval(function() {
     game.menus.main.box.innerHTML = (game.framesThisSecond+' fps');
     game.framesThisSecond = 0;
-  }, 1000);
+  },1000);
 
   setInterval(function() {
     game.time++;
@@ -156,12 +151,8 @@ function start() {
 }
 
 function tryToStart() {
-  if(images.unloaded > 0) {
-    setTimeout(tryToStart,100);
-  }
-  else {
-    start();
-  }
+  if(images.unloaded > 0) { setTimeout(tryToStart,100); }
+  else { start(); }
 }
 
 preStart();

@@ -17,9 +17,6 @@
     // For tiles
     this.condition = (args.condition == undefined)? '(.+),(.+),(.+),(.+),(.+),(.+),(.+),(.+),(.+)' : args.condition;
 
-    // For overlays
-    this.drawovermoving = (args.drawovermoving == undefined)? true : args.drawovermoving;
-
     // For animations
     this.duration = (args.duration == undefined)? 100 : args.duration;
   }
