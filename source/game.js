@@ -190,14 +190,21 @@
       var imageData = mapone.context.getImageData(newx-game.tileSize,newy-game.tileSize,game.viewport.canvas.width+game.tileSize, game.viewport.canvas.height+game.tileSize);
       game.viewport.context.putImageData(imageData, -game.tileSize, -game.tileSize);
 
+      visible_entities = new Array();
       for(var y = -2; y < game.viewport.tilesY+2; y++) {
 	for(var x = -2;  x < game.viewport.tilesX+2; x++) {
 	  //Render entities
 	  if((these_entities = game.viewport.getAdjustedEntities(x, y)) != undefined) {
 	    for(name in these_entities) {
-	      game.viewport.drawEntity(these_entities[name],x,y);
+	      if(visible_entities[these_entities[name].z] == undefined) { visible_entities[these_entities[name].z] = new Array(); }
+	      visible_entities[these_entities[name].z].push(these_entities[name]);
 	    }
 	  }
+	}
+      }
+      for(layer in visible_entities) {
+	for(name in visible_entities[layer]) {
+	  game.viewport.drawEntity(visible_entities[layer][name],visible_entities[layer][name].x-game.viewport.x,visible_entities[layer][name].y-game.viewport.y);
 	}
       }
       clearCanvas(game.viewport.context,game.currentTint);
