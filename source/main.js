@@ -134,6 +134,7 @@ function start() {
   game.currentMap = mapone;
 
   testEnt = new entity({ name: 'testEnt', x: 41, y: 25, sprites: characterSheet('characters/kantopokemon',0,0)});
+  game.viewport.tracking = testEnt;
 
   game.drawFrame();
   setInterval(game.keyboard.poll,1000/30);

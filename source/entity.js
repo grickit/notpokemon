@@ -20,6 +20,16 @@
       this.map.entities[this.x][this.y][this.name] = this;
     }
 
+    this.getImage = function() {
+      if(this.currentImage instanceof animation) {
+	return this.currentImage.current;
+      }
+      else if(this.currentImage instanceof sprite) {
+	return this.currentImage;
+      }
+      else { throw "Current image of "+this.name+" is of unknown type."; }
+    }
+
     this.step = function(direction) {
       var newx = this.x + game.directionChanges[direction].x;
       var newy = this.y + game.directionChanges[direction].y;
@@ -27,7 +37,7 @@
       if(game.getTile(this.x, this.y).clipfrom[game.directionNumbers[direction]] && game.getTile(newx,newy).clipto[game.directionNumbers[direction]]) {
 	this.currentImage = this.sprites[game.directionNumbers[direction]];
 	this.currentImage.restart();
-	setTimeout(function(thisObj){ thisObj.setPosition(newx,newy); thisObj.currentImage.reset(); },800,this);
+	setTimeout(function(thisObj){ thisObj.setPosition(newx,newy); thisObj.currentImage.reset(); },400,this);
       }
     }
 
@@ -54,19 +64,7 @@ function characterSheet(imageURL, x, y, width, height) {
       yoffset: -16,
       trackxoffset: 0,
       trackyoffset: 0,
-      duration: 200
-    }),
-    new sprite({
-      imageURL: imageURL,
-      x: x,
-      y: y,
-      width: width/2,
-      height: height/4,
-      xoffset: -8,
-      yoffset: -20,
-      trackxoffset: 0,
-      trackyoffset: 4,
-      duration: 200
+      duration: 100
     }),
     new sprite({
       imageURL: imageURL,
@@ -75,10 +73,22 @@ function characterSheet(imageURL, x, y, width, height) {
       width: width/2,
       height: height/4,
       xoffset: -8,
+      yoffset: -20,
+      trackxoffset: 0,
+      trackyoffset: 4,
+      duration: 100
+    }),
+    new sprite({
+      imageURL: imageURL,
+      x: x,
+      y: y,
+      width: width/2,
+      height: height/4,
+      xoffset: -8,
       yoffset: -24,
       trackxoffset: 0,
       trackyoffset: 8,
-      duration: 200
+      duration: 100
     }),
     new sprite({
       imageURL: imageURL,
@@ -90,7 +100,7 @@ function characterSheet(imageURL, x, y, width, height) {
       yoffset: -28,
       trackxoffset: 0,
       trackyoffset: 12,
-      duration: 200
+      duration: 100
     }),
   ]);
 
@@ -105,19 +115,7 @@ function characterSheet(imageURL, x, y, width, height) {
       yoffset: -16,
       trackxoffset: 0,
       trackyoffset: 0,
-      duration: 200
-    }),
-    new sprite({
-      imageURL: imageURL,
-      x: x,
-      y: y + (height/4)*2,
-      width: width/2,
-      height: height/4,
-      xoffset: -8,
-      yoffset: -12,
-      trackxoffset: 0,
-      trackyoffset: -4,
-      duration: 200
+      duration: 100
     }),
     new sprite({
       imageURL: imageURL,
@@ -126,10 +124,22 @@ function characterSheet(imageURL, x, y, width, height) {
       width: width/2,
       height: height/4,
       xoffset: -8,
+      yoffset: -12,
+      trackxoffset: 0,
+      trackyoffset: -4,
+      duration: 100
+    }),
+    new sprite({
+      imageURL: imageURL,
+      x: x,
+      y: y + (height/4)*2,
+      width: width/2,
+      height: height/4,
+      xoffset: -8,
       yoffset: -8,
       trackxoffset: 0,
       trackyoffset: -8,
-      duration: 200
+      duration: 100
     }),
     new sprite({
       imageURL: imageURL,
@@ -141,7 +151,7 @@ function characterSheet(imageURL, x, y, width, height) {
       yoffset: -4,
       trackxoffset: 0,
       trackyoffset: -12,
-      duration: 200
+      duration: 100
     }),
   ]);
 
@@ -156,7 +166,19 @@ function characterSheet(imageURL, x, y, width, height) {
       yoffset: -16,
       trackxoffset: 0,
       trackyoffset: 0,
-      duration: 200
+      duration: 100
+    }),
+    new sprite({
+      imageURL: imageURL,
+      x: x + (width/2),
+      y: y + (height/4)*2 + (height/4),
+      width: width/2,
+      height: height/4,
+      xoffset: -4,
+      yoffset: -16,
+      trackxoffset: -4,
+      trackyoffset: 0,
+      duration: 100
     }),
     new sprite({
       imageURL: imageURL,
@@ -164,11 +186,11 @@ function characterSheet(imageURL, x, y, width, height) {
       y: y + (height/4)*2,
       width: width/2,
       height: height/4,
-      xoffset: -4,
+      xoffset: 4,
       yoffset: -16,
-      trackxoffset: -4,
+      trackxoffset: -12,
       trackyoffset: 0,
-      duration: 200
+      duration: 100
     }),
     new sprite({
       imageURL: imageURL,
@@ -180,19 +202,7 @@ function characterSheet(imageURL, x, y, width, height) {
       yoffset: -16,
       trackxoffset: -12,
       trackyoffset: 0,
-      duration: 200
-    }),
-    new sprite({
-      imageURL: imageURL,
-      x: x + (width/2),
-      y: y + (height/4)*2 + (height/4),
-      width: width/2,
-      height: height/4,
-      xoffset: 4,
-      yoffset: -16,
-      trackxoffset: -12,
-      trackyoffset: 0,
-      duration: 200
+      duration: 100
     }),
   ]);
 
@@ -207,19 +217,7 @@ function characterSheet(imageURL, x, y, width, height) {
       yoffset: -16,
       trackxoffset: 0,
       trackyoffset: 0,
-      duration: 200
-    }),
-    new sprite({
-      imageURL: imageURL,
-      x: x + (width/2),
-      y: y,
-      width: width/2,
-      height: height/4,
-      xoffset: -12,
-      yoffset: -16,
-      trackxoffset: 4,
-      trackyoffset: 0,
-      duration: 200
+      duration: 100
     }),
     new sprite({
       imageURL: imageURL,
@@ -227,11 +225,23 @@ function characterSheet(imageURL, x, y, width, height) {
       y: y + (height/4),
       width: width/2,
       height: height/4,
+      xoffset: -12,
+      yoffset: -16,
+      trackxoffset: 4,
+      trackyoffset: 0,
+      duration: 100
+    }),
+    new sprite({
+      imageURL: imageURL,
+      x: x + (width/2),
+      y: y,
+      width: width/2,
+      height: height/4,
       xoffset: -16,
       yoffset: -16,
       trackxoffset: 8,
       trackyoffset: 0,
-      duration: 200
+      duration: 100
     }),
     new sprite({
       imageURL: imageURL,
@@ -243,7 +253,7 @@ function characterSheet(imageURL, x, y, width, height) {
       yoffset: -16,
       trackxoffset: 12,
       trackyoffset: 0,
-      duration: 200
+      duration: 100
     }),
   ]);
   return [north_anim,south_anim,east_anim,west_anim];

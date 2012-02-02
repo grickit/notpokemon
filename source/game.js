@@ -173,10 +173,10 @@
     var starttime = new Date().getMilliseconds();
     if(!game.paused) {
       clearCanvas(game.viewport.context);
-      /*if(game.viewport.tracking != undefined) {
+      if(game.viewport.tracking != undefined) {
 	game.viewport.x = game.viewport.tracking.x - Math.floor(game.viewport.tilesX/2);
 	game.viewport.y = game.viewport.tracking.y - Math.floor(game.viewport.tilesY/2);
-      }*/
+      }
 
       //Render tiles
       var newx = game.viewport.x * game.tileSize;
