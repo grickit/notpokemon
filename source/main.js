@@ -133,7 +133,7 @@ function start() {
   mapone = new map('maps/map1',['maps/map1-2']);
   game.currentMap = mapone;
 
-  testEnt = new entity({ name: 'testEnt', x: 41, y: 25, sprites: characterSheet('characters/kantopokemon',0,0)});
+  testEnt = new entity({ name: 'testEnt', x: 41, y: 25, sprites: characterSheet('characters/kantopokemon',780,1032)});
   game.viewport.tracking = testEnt;
 
   game.drawFrame();
