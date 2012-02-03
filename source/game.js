@@ -204,8 +204,8 @@
       game.viewport.context.putImageData(imageData, -game.tileSize, -game.tileSize);
 
       game.visible_entities = 0;
+      visible_entities = new Array();
       for(var y = -2; y < game.viewport.tilesY+2; y++) {
-	visible_entities = new Array();
 	for(var x = -2;  x < game.viewport.tilesX+2; x++) {
 	  //Render entities
 	  if((these_entities = game.viewport.getAdjustedEntities(x, y)) != undefined) {
@@ -216,10 +216,10 @@
 	    }
 	  }
 	}
-	for(layer in visible_entities) {
-	  for(name in visible_entities[layer]) {
-	    game.viewport.drawEntity(visible_entities[layer][name],visible_entities[layer][name].x-game.viewport.x,visible_entities[layer][name].y-game.viewport.y);
-	  }
+      }
+      for(layer in visible_entities) {
+	for(name in visible_entities[layer]) {
+	  game.viewport.drawEntity(visible_entities[layer][name],visible_entities[layer][name].x-game.viewport.x,visible_entities[layer][name].y-game.viewport.y);
 	}
       }
       currentTime = new Date();
