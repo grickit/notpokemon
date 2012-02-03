@@ -139,7 +139,9 @@ function start() {
   game.drawFrame();
   setInterval(game.keyboard.poll,1000/30);
   setInterval(function() {
-    game.menus.main.box.innerHTML = (game.framesThisSecond+' fps');
+    game.menus.main.box.innerHTML = (game.entities.length+' entities<br>');
+    game.menus.main.box.innerHTML += (game.visible_entities+' visible<br>');
+    game.menus.main.box.innerHTML += (game.framesThisSecond+' fps');
     game.framesThisSecond = 0;
   },1000);
 }

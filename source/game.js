@@ -203,12 +203,14 @@
       var imageData = mapone.context.getImageData(newx-game.tileSize,newy-game.tileSize,game.viewport.canvas.width+game.tileSize, game.viewport.canvas.height+game.tileSize);
       game.viewport.context.putImageData(imageData, -game.tileSize, -game.tileSize);
 
+      game.visible_entities = 0;
       for(var y = -2; y < game.viewport.tilesY+2; y++) {
 	visible_entities = new Array();
 	for(var x = -2;  x < game.viewport.tilesX+2; x++) {
 	  //Render entities
 	  if((these_entities = game.viewport.getAdjustedEntities(x, y)) != undefined) {
 	    for(name in these_entities) {
+	      game.visible_entities++;
 	      if(visible_entities[these_entities[name].z] == undefined) { visible_entities[these_entities[name].z] = new Array(); }
 	      visible_entities[these_entities[name].z].push(these_entities[name]);
 	    }

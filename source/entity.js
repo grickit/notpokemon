@@ -7,9 +7,7 @@
     this.facing = (args.facing == undefined)? 1 : args.facing; //North: 0, South: 1, East: 2, West: 3;
     this.name = (args.name == undefined)? uniqueEntityID() : args.name;
     this.map = (map_override == undefined)? game.currentMap : map_override;
-    if(this.unlisted != true) {
-      game.entities[this.name] = this;
-    }
+    game.entities[this.name] = this;
 
     this.sprites = (args.sprites == undefined)? [new sprite({imageURL: 'characters/sign', yoffset: -1})] : args.sprites;
 
