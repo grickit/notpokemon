@@ -136,6 +136,17 @@ function start() {
   testEnt = new entity({ name: 'testEnt', x: 41, y: 25, sprites: characterSheet('characters/kantopokemon',780,1032)});
   game.viewport.tracking = testEnt;
 
+  foo = new animation([
+    new sprite({imageURL: 'characters/marker', x: 0, y: 0, duration: 125}),
+    new sprite({imageURL: 'characters/marker', x: 17, y: 0, duration: 125}),
+    new sprite({imageURL: 'characters/marker', x: 34, y: 0, duration: 100}),
+    new sprite({imageURL: 'characters/marker', x: 51, y: 0, duration: 125}),
+  ],true);
+  foo.next();
+  
+  secondEnt = new entity({ name: 'secondEnt', x: 41, y: 28, sprites: [foo]});
+  
+
   game.drawFrame();
   setInterval(game.keyboard.poll,1000/30);
   setInterval(function() {
