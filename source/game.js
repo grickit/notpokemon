@@ -171,7 +171,7 @@
 	  game.viewport.tracking.step('west');
 	  break;
 	case '65':
-	  radius = game.getCoordsInRadius(41,25,4)
+	  radius = game.getCoordsInRadius(game.viewport.tracking.x,game.viewport.tracking.y,4)
 	  for(tile in radius) {
 	    new entity({ x: radius[tile].x, y: radius[tile].y});
 	  }
