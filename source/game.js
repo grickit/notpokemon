@@ -4,7 +4,6 @@
     directionWords: { 0: 'north', 1: 'south', 2: 'east', 3: 'west' },
     directionNumbers: { 'north': 0, 'south': 1, 'east': 2, 'west': 3 },
     directionChanges: { 'north': { x: 0, y: -1 }, 'south': { x: 0, y: 1 }, 'east': { x: 1, y: 0 }, 'west': { x: -1, y: 0 } },
-    tints: { 'normal': 'rgba(120,120,90,0.1)', 'dim': 'rgba(10,0,0,0.2)', 'dark': 'rgba(0,0,0,0.3)', 'bright': 'rgba(0,0,0,0)'},
     hourTints: {
       0: 'rgba(0,0,10,0.5)',
       1: 'rgba(0,0,10,0.5)',
@@ -31,8 +30,6 @@
       22: 'rgba(0,0,10,0.4)',
       23: 'rgba(0,0,10,0.5)',
     },
-    time: 0,
-    currentTint: 'rgba(0,0,0,0)',
     targetFPS: 25,
     targetTPS: 1000/30,
     tileSize: 16,
@@ -206,7 +203,8 @@
 	  }
 	}
       }
-      clearCanvas(game.viewport.context,game.currentTint);
+      currentTime = new Date();
+      clearCanvas(game.viewport.context,game.hourTints[currentTime.getHours()]);
       game.framesThisSecond++;
     }
     var timer = new Date().getMilliseconds() - starttime;
