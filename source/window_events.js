@@ -1,5 +1,6 @@
 window.addEventListener('keydown', function(e) {
   game.keyboard.keymapping_temp[e.keyCode] = true;
+  console.log('Key code: '+e.keyCode);
 });
 
 window.addEventListener('keyup', function(e) {

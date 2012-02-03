@@ -49,6 +49,16 @@
     return game.errorTile;
   }
 
+  game.getCoordsInRadius = function(x,y,radius) {
+    result = new Array();
+    for(i=(x-radius); i<=(x+radius); i++) {
+      for(j=Math.floor(y-(radius-Math.abs(x-i))); j<=Math.ceil(y+(radius-Math.abs(x-i))); j++) {
+	result.push({x: i, y: j});
+      }
+    }
+    return result;
+  }
+
   game.getEntities = function(x, y) {
     if(game.inbounds(x, y)) {
       return game.currentMap.entities[x][y];
@@ -117,6 +127,7 @@
     game.keyboard.keymapping[40] = false;
     game.keyboard.keymapping[39] = false;
     game.keyboard.keymapping[37] = false;
+    game.keyboard.keymapping[65] = false;
     game.keyboard.keymapping_temp = new Array();
 
     game.keyboard.poll = function() {
@@ -158,6 +169,12 @@
 	  break;
 	case '37':
 	  game.viewport.tracking.step('west');
+	  break;
+	case '65':
+	  radius = game.getCoordsInRadius(41,25,4)
+	  for(tile in radius) {
+	    new entity({ x: radius[tile].x, y: radius[tile].y});
+	  }
 	  break;
       }
     }
