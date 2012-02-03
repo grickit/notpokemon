@@ -22,6 +22,7 @@ function preStart() {
   images.load('tiles/hillstairs');
   images.load('maps/map1');
   images.load('maps/map1-2');
+  images.load('maps/map1-3');
   images.load('characters/sign');
 }
 
@@ -130,7 +131,7 @@ function start() {
   });
   baseTileSet.tilesByLetter['gfr'].overlays[0].sprites[0].next();
 
-  mapone = new map('maps/map1',['maps/map1-2']);
+  mapone = new map('maps/map1',['maps/map1-2','maps/map1-3']);
   game.currentMap = mapone;
 
   testEnt = new entity({ name: 'testEnt', x: 41, y: 25, sprites: characterSheet('characters/kantopokemon',780,1032)});
