@@ -126,7 +126,7 @@ function start() {
 	new sprite({imageURL: 'tiles/redflower', x: 17, y: 0, duration: 700}),
 	new sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
 	new sprite({imageURL: 'tiles/redflower', x: 34, y: 0, duration: 700}),
-      ],true)], z: 0}
+      ],{loop: true})], z: 0}
     ]
   });
   baseTileSet.tilesByLetter['gfr'].overlays[0].sprites[0].next();
@@ -142,7 +142,7 @@ function start() {
     new sprite({imageURL: 'characters/marker', x: 17, y: 0, duration: 150}),
     new sprite({imageURL: 'characters/marker', x: 34, y: 0, duration: 150}),
     new sprite({imageURL: 'characters/marker', x: 51, y: 0, duration: 75}),
-  ],true);
+  ],{loop: true});
   foo.next();
   
   secondEnt = new entity({ name: 'secondEnt', x: 41, y: 28, sprites: [foo], z: 90});

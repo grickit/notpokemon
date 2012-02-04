@@ -23,12 +23,14 @@
 // ----- }
 
 // ----- CLASS: animation {
-  function animation(frames,loop) {
+  function animation(frames,args) {
     this.frames = frames;
     this.index = 0;
     this.current = this.frames[this.index];
     this.paused = true;
-    this.loop = (loop == undefined)? false : loop;
+    args = (args == undefined)? {loop: false, speed: 1} : args;
+    this.loop = (args.loop == undefined)? false : args.loop;
+    this.speed = (args.speed == undefined)? 1: args.speed;
 
     this.next = function() {
       this.index++;
@@ -36,7 +38,7 @@
 	this.index = 0;
       }
       this.current = this.frames[this.index];
-      this.timeout = setTimeout(function(thisObj) { thisObj.next(); },this.current.duration, this);
+      this.timeout = setTimeout(function(thisObj) { thisObj.next(); },this.current.duration/this.speed, this);
       this.paused = false;
       if (this.index == 0 && this.loop != true) {
 	this.stop();
@@ -55,7 +57,7 @@
       this.paused = false;
       this.index = 0;
       this.current = this.frames[this.index];
-      this.timeout = setTimeout(function(thisObj) { thisObj.next(); },this.current.duration, this);
+      this.timeout = setTimeout(function(thisObj) { thisObj.next(); },this.current.duration/this.speed, this);
     }
 
     this.reset = function() {
