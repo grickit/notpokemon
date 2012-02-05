@@ -138,10 +138,10 @@ function start() {
   game.viewport.tracking = testEnt;
 
   foo = new animation([
-    new sprite({imageURL: 'characters/marker', x: 0, y: 0, duration: 75}),
+    new sprite({imageURL: 'characters/marker', x: 0, y: 0, duration: 150}),
     new sprite({imageURL: 'characters/marker', x: 17, y: 0, duration: 150}),
     new sprite({imageURL: 'characters/marker', x: 34, y: 0, duration: 150}),
-    new sprite({imageURL: 'characters/marker', x: 51, y: 0, duration: 75}),
+    new sprite({imageURL: 'characters/marker', x: 51, y: 0, duration: 150}),
   ],{loop: true});
   foo.next();
   
