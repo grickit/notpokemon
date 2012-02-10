@@ -13,13 +13,13 @@
 
     this.setPosition = function(x,y) {
       delete this.map.entities[this.x][this.y][this.name];
-      for(entity in this.map.entities[this.x][this.y]) {
-	this.map.entities[this.x][this.y][entity].on_moved_from(this);
+      for(name in this.map.entities[this.x][this.y]) {
+	this.map.entities[this.x][this.y][name].on_moved_from(this);
       }
       this.x = x;
       this.y = y;
-      for(entity in this.map.entities[this.x][this.y]) {
-	this.map.entities[this.x][this.y][entity].on_moved_to(this);
+      for(name in this.map.entities[this.x][this.y]) {
+	this.map.entities[this.x][this.y][name].on_moved_to(this);
       }
       this.map.entities[this.x][this.y][this.name] = this;
     }
@@ -32,6 +32,12 @@
 	return this.currentImage;
       }
       else { throw "Current image of entity \""+this.name+"\" is of unknown type."; }
+    }
+
+    this.purge = function() {
+      delete this.map.entities[this.x][this.y][this.name];
+      delete game.entities[this.name];
+      delete this;
     }
 
     this.step = function(direction) {
