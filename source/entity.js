@@ -25,7 +25,7 @@
       else if(this.currentImage instanceof sprite) {
 	return this.currentImage;
       }
-      else { throw "Current image of "+this.name+" is of unknown type."; }
+      else { throw "Current image of entity \""+this.name+"\" is of unknown type."; }
     }
 
     this.step = function(direction) {
@@ -38,6 +38,22 @@
 	this.z = 120;
 	setTimeout(function(thisObj){ thisObj.setPosition(newx,newy); thisObj.currentImage.reset(); thisObj.z = 100; },400,this);
       }
+    }
+
+    this.on_render = function() {
+
+    }
+
+    this.on_tick = function(number) {
+
+    }
+
+    this.on_moved_to = function(mover) {
+
+    }
+
+    this.on_moved_from = function(mover) {
+
     }
 
     this.setPosition(this.x,this.y);

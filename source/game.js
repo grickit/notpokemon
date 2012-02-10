@@ -116,6 +116,7 @@
     }
 
     game.viewport.drawEntity = function(entity,x,y) {
+      entity.on_render();
       game.viewport.drawImage(entity.currentImage,x,y);
     }
   // ----- }
