@@ -233,4 +233,11 @@
     else { setTimeout(game.drawFrame,0); }
   }
 
+  game.viewport.canvas.addEventListener('mousedown', function(e) {
+    var canvasCoords = findPosition(game.viewport.canvas);
+    var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
+    var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
+    new entity({x: x, y: y, sprites: [foo], z: 90});
+  });
+
 // ----- }

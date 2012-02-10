@@ -144,9 +144,9 @@ function start() {
     new sprite({imageURL: 'characters/marker', x: 51, y: 0, duration: 150}),
   ],{loop: true});
   foo.next();
-  
+
   secondEnt = new entity({ name: 'secondEnt', x: 41, y: 28, sprites: [foo], z: 90});
-  
+
 
   game.drawFrame();
   setInterval(game.keyboard.poll,1000/30);
