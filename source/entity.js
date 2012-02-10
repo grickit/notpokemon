@@ -13,8 +13,14 @@
 
     this.setPosition = function(x,y) {
       delete this.map.entities[this.x][this.y][this.name];
+      for(entity in this.map.entities[this.x][this.y]) {
+	this.map.entities[this.x][this.y][entity].on_moved_from(this);
+      }
       this.x = x;
       this.y = y;
+      for(entity in this.map.entities[this.x][this.y]) {
+	this.map.entities[this.x][this.y][entity].on_moved_to(this);
+      }
       this.map.entities[this.x][this.y][this.name] = this;
     }
 
@@ -40,21 +46,10 @@
       }
     }
 
-    this.on_render = function() {
-
-    }
-
-    this.on_tick = function(number) {
-
-    }
-
-    this.on_moved_to = function(mover) {
-
-    }
-
-    this.on_moved_from = function(mover) {
-
-    }
+    this.on_render = (args.on_render == undefined)? function(){} : args.on_render;
+    this.on_tick = (args.on_tick == undefined)? function(){} : args.on_tick;
+    this.on_moved_to = (args.on_moved_to == undefined)? function(){} : args.on_moved_to;
+    this.on_moved_from = (args.on_moved_from == undefined)? function(){} : args.on_moved_from;
 
     this.setPosition(this.x,this.y);
     this.currentImage = this.sprites[0];
