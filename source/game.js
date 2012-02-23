@@ -34,7 +34,7 @@
     targetTPS: 1000/30,
     tileSize: 16,
     framesThisSecond: 0,
-    entities: [],
+    entities: new Array(),
     uid: 0
   }
 
