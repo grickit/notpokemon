@@ -250,6 +250,6 @@
   
   game.viewport.canvas.addEventListener('mouseup', function(e) {
     game.mousedown = false;
-  }
+  });
 
 // ----- }
