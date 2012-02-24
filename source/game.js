@@ -35,7 +35,8 @@
     tileSize: 16,
     framesThisSecond: 0,
     entities: new Array(),
-    uid: 0
+    uid: 0,
+    mousedown: false
   }
 
   game.inbounds = function(x, y) {
@@ -240,10 +241,15 @@
   }
 
   game.viewport.canvas.addEventListener('mousedown', function(e) {
+    game.mousedown = true;
     var canvasCoords = findPosition(game.viewport.canvas);
     var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
     var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
     new entity({x: x, y: y, sprites: [foo], z: 90});
   });
+  
+  game.viewport.canvas.addEventListener('mouseup', function(e) {
+    game.mousedown = false;
+  }
 
 // ----- }
