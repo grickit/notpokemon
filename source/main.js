@@ -99,7 +99,7 @@ function start() {
     transitions:
       [ new sprite({imageURL: 'tiles/tree', y: 16}) ],
     overlays:
-      [ {unlisted: true, sprites: [new sprite({imageURL: 'tiles/tree', yoffset: -16})], z: 200} ],
+      [ {ticks: false, sprites: [new sprite({imageURL: 'tiles/tree', yoffset: -16})], z: 200} ],
   });
   baseTileSet.add({
     letter: 'gg',
@@ -110,7 +110,7 @@ function start() {
     transitions:
       [ new sprite({imageURL: 'tiles/tallgrass'}) ],
     overlays:
-      [ {unlisted: true, sprites: [new sprite({imageURL: 'tiles/tallgrass-overlay'})], z: 110} ]
+      [ {ticks: false, sprites: [new sprite({imageURL: 'tiles/tallgrass-overlay'})], z: 110} ]
   });
   baseTileSet.add({
     letter: 'gfr',
@@ -121,7 +121,7 @@ function start() {
     transitions:
       [ new sprite({imageURL: 'tiles/grass'}) ],
     overlays: [
-      {unlisted: true, sprites: [new animation([
+      {ticks: false, sprites: [new animation([
 	new sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
 	new sprite({imageURL: 'tiles/redflower', x: 17, y: 0, duration: 700}),
 	new sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
