@@ -31,7 +31,7 @@
       23: 'rgba(0,0,10,0.5)',
     },
     targetFPS: 25,
-    targetTPS: 30,
+    targetTPS: 32, // We have to overshoot our targetTPS a bit because ticking generally takes less than a millisecond
     tileSize: 16,
     framesThisSecond: 0,
     ticksThisSecond: 0,
@@ -195,7 +195,7 @@
   // ----- }
 
   game.drawFrame = function() {
-    var starttime = new Date().getMilliseconds();
+    var framestart = new Date().getMilliseconds();
     if(!game.paused) {
       clearCanvas(game.viewport.context);
       if(game.viewport.tracking != undefined) {
@@ -238,15 +238,17 @@
       clearCanvas(game.viewport.context,game.hourTints[currentTime.getHours()]);
       game.framesThisSecond++;
     }
-    var timer = new Date().getMilliseconds() - starttime;
-    var projectedFPS = (timer == 0)? 9999 : 1000 / timer;
-    var sleeptime = (1000 / game.targetFPS) - timer;
-    if(projectedFPS > game.targetFPS) { setTimeout(game.drawFrame,sleeptime); }
+    var frametime = new Date().getMilliseconds() - framestart;
+    var projectedFPS = (frametime == 0)? 9999 : 1000 / frametime;
+    if(projectedFPS > game.targetFPS) {
+      var framesleep = (1000 / game.targetFPS) - frametime;
+      setTimeout(game.drawFrame,framesleep);
+    }
     else { setTimeout(game.drawFrame,0); }
   }
 
   game.tick = function() {
-    var starttime = new Date().getMilliseconds();
+    var tickstart = new Date().getMilliseconds();
     if(!game.paused) {
       game.keyboard.poll();
       for(name in game.ticking_entities) {
@@ -254,10 +256,12 @@
       }
       game.ticksThisSecond++;
     }
-    var timer = new Date().getMilliseconds() - starttime;
-    var projectedTPS = (timer == 0)? 9999 : 1000 / timer;
-    var sleeptime = (1000 / game.targetTPS) - timer;
-    if(projectedTPS > game.targetTPS) { setTimeout(game.tick,sleeptime); }
+    var ticktime = new Date().getMilliseconds() - tickstart;
+    var projectedTPS = (ticktime == 0)? 9999 : 1000 / ticktime;
+    if(projectedTPS > game.targetTPS) {
+      var ticksleep = (1000 / game.targetTPS) - ticktime;
+      setTimeout(game.tick,ticksleep);
+    }
     else { setTimeout(game.tick,0); }
   }
 
