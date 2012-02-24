@@ -8,6 +8,9 @@
     this.name = (args.name == undefined)? uniqueEntityID() : args.name;
     this.map = (map_override == undefined)? game.currentMap : map_override;
     game.entities[this.name] = this;
+    if(this.ticks == true) {
+      game.ticking_entities[this.name] = this;
+    }
 
     this.sprites = (args.sprites == undefined)? [new sprite({imageURL: 'characters/sign', yoffset: -1})] : args.sprites;
 
@@ -37,6 +40,7 @@
     this.purge = function() {
       delete this.map.entities[this.x][this.y][this.name];
       delete game.entities[this.name];
+      delete game.ticking_entities[this.name];
       delete this;
     }
 

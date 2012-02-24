@@ -148,12 +148,14 @@ function start() {
   secondEnt = new entity({ name: 'secondEnt', x: 41, y: 28, sprites: [foo], z: 90});
 
   game.drawFrame();
-  setInterval(game.keyboard.poll,1000/30);
+  game.tick();
   setInterval(function() {
     game.menus.main.box.innerHTML = (Object.keys(game.entities).length+' entities<br>');
     game.menus.main.box.innerHTML += (game.visible_entities+' visible<br>');
-    game.menus.main.box.innerHTML += (game.framesThisSecond+' fps');
+    game.menus.main.box.innerHTML += (game.framesThisSecond+' fps<br>');
+    game.menus.main.box.innerHTML += (game.ticksThisSecond+' tps');
     game.framesThisSecond = 0;
+    game.ticksThisSecond = 0;
   },1000);
 }
 

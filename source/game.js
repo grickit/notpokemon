@@ -31,10 +31,12 @@
       23: 'rgba(0,0,10,0.5)',
     },
     targetFPS: 25,
-    targetTPS: 1000/30,
+    targetTPS: 30,
     tileSize: 16,
     framesThisSecond: 0,
+    ticksThisSecond: 0,
     entities: new Array(),
+    ticking_entities: new Array(),
     uid: 0,
     mousedown: false
   }
@@ -175,12 +177,15 @@
 	case '65':
 	  radius = game.getCoordsInRadius(game.viewport.tracking.x,game.viewport.tracking.y,4);
 	  for(tile in radius) {
-	    new entity({
-	      x: radius[tile].x,
-	      y: radius[tile].y,
-	      on_moved_to: function(mover) { this.purge();},
-	      on_moved_from: this.on_moved_to
-	    });
+	    if(game.inbounds(radius[tile].x, radius[tile].y)) {
+	      new entity({
+		x: radius[tile].x,
+		y: radius[tile].y,
+		on_moved_to: function(mover) { this.purge();},
+		on_moved_from: this.on_moved_to,
+		ticks: false
+	      });
+	    }
 	  }
 	  break;
       }
@@ -240,12 +245,28 @@
     else { setTimeout(game.drawFrame,0); }
   }
 
+  game.tick = function() {
+    var starttime = new Date().getMilliseconds();
+    if(!game.paused) {
+      game.keyboard.poll();
+      for(name in game.ticking_entities) {
+	game.ticking_entities[name].on_tick();
+      }
+      game.ticksThisSecond++;
+    }
+    var timer = new Date().getMilliseconds() - starttime;
+    var projectedTPS = (timer == 0)? 9999 : 1000 / timer;
+    var sleeptime = (1000 / game.targetTPS) - timer;
+    if(projectedTPS > game.targetTPS) { setTimeout(game.tick,sleeptime); }
+    else { setTimeout(game.tick,0); }
+  }
+
   game.viewport.canvas.addEventListener('mousedown', function(e) {
     game.mousedown = true;
     var canvasCoords = findPosition(game.viewport.canvas);
     var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
     var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
-    new entity({x: x, y: y, sprites: [foo], z: 90});
+    new entity({x: x, y: y, sprites: [foo], z: 90, ticks: false});
   });
   
   game.viewport.canvas.addEventListener('mouseup', function(e) {
