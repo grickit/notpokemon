@@ -1,5 +1,5 @@
 // ----- CLASS: ImageManager {
-  function ImageManager {
+  function ImageManager() {
     this.unloaded = 0;
     this.graphics = new Array();
 
@@ -11,15 +11,17 @@
 	this.graphics[imageURL] = new Image();
 	this.graphics[imageURL].loaded = false;
       }
-      else if(this.graphics[imageURL].loaded = true) { // Exists and is loaded
+
+      if(this.graphics[imageURL].loaded == true) { // Exists and is loaded
 	console.log('Graphic "'+imageURL+'" already loaded.');
 	this.loaded(callback_object,callback_function,callback_arguments);
       }
       else { // Exists but has not loaded yet
+	var foo = this; // Ugly hack
 	this.graphics[imageURL].onload = function() {
-	  this.loaded = true;
+	  foo.graphics[imageURL].loaded = true;
 	  console.log('Graphic "'+imageURL+'" finished loading.');
-	  this.parent.loaded(callback_object,callback_function,callback_arguments);
+	  foo.loaded(callback_object,callback_function,callback_arguments);
 	}
 
 	this.graphics[imageURL].src = 'images/'+imageURL+'.png'; // Begin loading

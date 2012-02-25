@@ -1,7 +1,7 @@
 // ----- CLASS: animation {
   function animation(frames,args) {
-    if(this.frames == undefined) { throw "New animation has no frames"; }
     this.frames = frames;
+    if(this.frames == undefined) { console.log(this); throw "New animation has no frames"; }
     this.index = 0;
     this.current = this.frames[this.index];
 
@@ -22,7 +22,7 @@
       this.current = this.frames[this.index];
     }
 
-    this.autoplay() {
+    this.autoplay = function() {
       if(this.speed == 0) { this.paused = true; this.speed = 1; }
 
       if(this.paused != true) {
@@ -33,7 +33,7 @@
       }
       this.timeout = setTimeout(
 	function(thisObj) { thisObj.autoplay(); },
-	this.current.duration/this.speed,
+	this.current.duration/Math.abs(this.speed),
 	this
       );
     }

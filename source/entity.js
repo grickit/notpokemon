@@ -50,9 +50,10 @@
       this.facing = game.directionNumbers[direction];
       if(game.getTile(this.x, this.y).clipfrom[game.directionNumbers[direction]] && game.getTile(newx,newy).clipto[game.directionNumbers[direction]]) {
 	this.currentImage = this.sprites[game.directionNumbers[direction]];
-	this.currentImage.restart();
+	this.currentImage.stop();
+	this.currentImage.autoplay();
 	this.z = 120;
-	setTimeout(function(thisObj){ thisObj.setPosition(newx,newy); thisObj.currentImage.reset(); thisObj.z = 100; },400,this);
+	setTimeout(function(thisObj){ thisObj.setPosition(newx,newy); thisObj.currentImage.stop(); thisObj.z = 100; },400,this);
       }
     }
 

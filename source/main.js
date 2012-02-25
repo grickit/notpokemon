@@ -4,6 +4,7 @@ function preStart() {
   game.terminal.write('Creating the rest of the output boxes.');
 
   game.terminal.write('Loading images.');
+  images = new ImageManager();
   images.load('404');
   images.load('alpha');
   images.load('characters/marker');
@@ -129,7 +130,7 @@ function start() {
       ],{loop: true})], z: 0}
     ]
   });
-  baseTileSet.tilesByLetter['gfr'].overlays[0].sprites[0].next();
+  baseTileSet.tilesByLetter['gfr'].overlays[0].sprites[0].autoplay();
 
   mapone = new map('maps/map1',['maps/map1-2','maps/map1-3']);
   game.currentMap = mapone;
@@ -143,7 +144,7 @@ function start() {
     new sprite({imageURL: 'characters/marker', x: 34, y: 0, duration: 150}),
     new sprite({imageURL: 'characters/marker', x: 51, y: 0, duration: 150}),
   ],{loop: true});
-  foo.next();
+  foo.autoplay();
 
   secondEnt = new entity({ name: 'secondEnt', x: 41, y: 28, sprites: [foo], z: 90});
 
