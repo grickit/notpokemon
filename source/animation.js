@@ -59,5 +59,12 @@
 	this.previous();
       }
     }
+    
+    this.playOnce = function() {
+      this.stop();
+      this.paused = false;
+      this.loop = false;
+      this.autoplay();
+    }
   }
 // ----- }
