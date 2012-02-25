@@ -26,7 +26,7 @@
       if(this.speed == 0) { this.paused = true; this.speed = 1; }
 
       if(this.paused != true) {
-	if(this.loop != true && this.index == (this.frames.length - 1)) { this.stop(); return; }
+	if(this.loop != true && this.index == (this.frames.length - 1)) { this.paused = true; return; }
 
 	if(this.speed < 0) { this.previous(); }
 	else { this.next(); }
@@ -43,6 +43,17 @@
       this.paused = true;
       this.index = 0;
       this.current = this.frames[this.index];
+    }
+
+    this.setFrame = function (number) {
+      if(number <= this.frames.length - 1) {
+	this.index = number;
+	this.current = this.frames[this.index];
+      }
+      else {
+	this.index = number % this.frames.length;
+	this.previous();
+      }
     }
   }
 // ----- }
