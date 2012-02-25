@@ -46,9 +46,13 @@
     }
 
     this.setFrame = function (number) {
-      if(number <= this.frames.length - 1) {
+      if(number >= 0 && number <= this.frames.length - 1) {
 	this.index = number;
 	this.current = this.frames[this.index];
+      }
+      else if(number < 0) {
+	this.index = number % this.frames.length;
+	this.next();
       }
       else {
 	this.index = number % this.frames.length;
