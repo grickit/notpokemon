@@ -15,13 +15,14 @@
 	console.log('Graphic "'+imageURL+'" already loaded.');
 	this.loaded(callback_object,callback_function,callback_arguments);
       }
-      else {
-	this.graphics[imageURL].addEventListener('load',function(thisObj) { // Exists but has not loaded yet
+      else { // Exists but has not loaded yet
+	this.graphics[imageURL].onload = function() {
 	  this.loaded = true;
 	  console.log('Graphic "'+imageURL+'" finished loading.');
-	  thisObj.loaded(callback_object,callback_function,callback_arguments);
+	  this.parent.loaded(callback_object,callback_function,callback_arguments);
 	},this);
-	this.graphics[imageURL].src = 'images/'+imageURL+'.png';
+
+	this.graphics[imageURL].src = 'images/'+imageURL+'.png'; // Begin loading
       }
     }
 
