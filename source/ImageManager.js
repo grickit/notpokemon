@@ -20,7 +20,7 @@
 	  this.loaded = true;
 	  console.log('Graphic "'+imageURL+'" finished loading.');
 	  this.parent.loaded(callback_object,callback_function,callback_arguments);
-	},this);
+	}
 
 	this.graphics[imageURL].src = 'images/'+imageURL+'.png'; // Begin loading
       }
