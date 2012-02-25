@@ -26,5 +26,14 @@
 	this.graphics[imageURL].src = 'images/'+imageURL+'.png';
       }
     }
+
+    this.get = function(imageURL) {
+      if(this.graphics[imageURL] == undefined || this.graphics[imageURL].loaded == false) {
+	return false;
+      }
+      else {
+	return this.graphics[imageURL];
+      }
+    }
   }
 // ----- }
