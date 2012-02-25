@@ -36,7 +36,7 @@
     framesThisSecond: 0,
     ticksThisSecond: 0,
     entities: new Array(),
-    ticking_entities: new Array(),
+    tickers: new Array(),
     uid: 0,
     mousedown: false
   }
@@ -250,9 +250,8 @@
   game.tick = function() {
     var tickstart = new Date().getMilliseconds();
     if(!game.paused) {
-      game.keyboard.poll();
-      for(name in game.ticking_entities) {
-	game.ticking_entities[name].on_tick();
+      for(name in game.tickers) {
+	game.tickers[name].callback_object[game.tickers[name].callback_function](game.tickers[name].callback_arguments);
       }
       game.ticksThisSecond++;
     }
@@ -263,6 +262,10 @@
       setTimeout(game.tick,ticksleep);
     }
     else { setTimeout(game.tick,0); }
+  }
+
+  game.registerTick = function(name,callback_object,callback_function,callback_arguments) {
+    game.tickers[name] = {callback_object: callback_object, callback_function: callback_function, callback_arguments: callback_arguments};
   }
 
   game.viewport.canvas.addEventListener('mousedown', function(e) {

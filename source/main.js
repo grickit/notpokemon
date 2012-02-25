@@ -148,6 +148,7 @@ function start() {
 
   secondEnt = new entity({ name: 'secondEnt', x: 41, y: 28, sprites: [foo], z: 90});
 
+  game.registerTick("keyboard_poll",game.keyboard,'poll','');
   game.drawFrame();
   game.tick();
   setInterval(function() {
