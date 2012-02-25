@@ -59,12 +59,20 @@
 	this.previous();
       }
     }
-    
+
     this.playOnce = function() {
       this.stop();
       this.paused = false;
       this.loop = false;
       this.autoplay();
+    }
+
+    this.calculateDuration = function() {
+      total_duration = 0;
+      for(frame in this.frames) {
+	total_duration += this.frames[frame].duration;
+      }
+      return total_duration/Math.abs(this.speed);
     }
   }
 // ----- }

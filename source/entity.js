@@ -52,7 +52,7 @@
 	this.currentImage = this.sprites[game.directionNumbers[direction]];
 	this.currentImage.playOnce();
 	this.z = 120;
-	setTimeout(function(thisObj){ thisObj.setPosition(newx,newy); thisObj.currentImage.stop(); thisObj.z = 100; },400,this);
+	setTimeout(function(thisObj){ thisObj.setPosition(newx,newy); thisObj.currentImage.stop(); thisObj.z = 100; },this.currentImage.calculateDuration(),this);
       }
     }
 
