@@ -23,9 +23,13 @@
     }
 
     this.autoplay() {
+      if(this.speed == 0) { this.paused = true; this.speed = 1; }
+
       if(this.paused != true) {
 	if(this.loop != true && this.index == (this.frames.length - 1)) { this.stop(); return; }
-	this.next();
+
+	if(this.speed < 0) { this.previous(); }
+	else { this.next(); }
       }
       this.timeout = setTimeout(
 	function(thisObj) { thisObj.autoplay(); },
