@@ -13,9 +13,7 @@
 
     this.next = function() {
       this.index++;
-      if(this.index >= this.frames.length) {
-	this.index = 0;
-      }
+      if(this.index >= this.frames.length) { this.index = 0; }
       this.current = this.frames[this.index];
     }
 
