@@ -9,7 +9,7 @@
     this.map = (map_override == undefined)? game.currentMap : map_override;
     game.entities[this.name] = this;
     if(this.ticks == true) {
-      game.registerTick('entity_'+this.name+'_tick',this,'on_tick','');
+      game.ontick.subscribe(this,'on_tick','',false);
     }
 
     this.sprites = (args.sprites == undefined)? [new sprite({imageURL: 'characters/sign', yoffset: -1})] : args.sprites;
