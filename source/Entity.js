@@ -1,6 +1,8 @@
+//# CLEAN
+
 // ----- CLASS: Entity {
   function Entity(args,map_override) {
-    // ----- Members
+    // ----- Properties
     this.name = (args.name == undefined)? uniqueEntityID() : args.name;
     this.x = (args.x == undefined)? 0 : args.x;
     this.y = (args.y == undefined)? 0 : args.y;
