@@ -4,6 +4,7 @@
 
     this.subscribe = function(callback_object,callback_function,callback_arguments,first_time_only) {
       this.subscribers.push([callback_object,callback_function,callback_arguments,first_time_only]);
+      return this.subscribers.length - 1;
     }
 
     this.fire = function() {
