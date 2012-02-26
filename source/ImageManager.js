@@ -10,27 +10,30 @@
       if(this.graphics[imageURL] == undefined) { // Doesn't exist
 	this.graphics[imageURL] = new Image();
 	this.graphics[imageURL].loaded = false;
+	this.graphics[imageURL].onfinished = new callback();
+	this.graphics[imageURL].onfinished.subscribe(callback_object,callback_function,callback_arguments);
       }
 
       if(this.graphics[imageURL].loaded == true) { // Exists and is loaded
-	console.log('Graphic "'+imageURL+'" already loaded.');
-	this.loaded(callback_object,callback_function,callback_arguments);
+	game.terminal.write('Graphic "'+imageURL+'" already loaded.');
+	this.graphics[imageURL].onfinished.subscribe(callback_object,callback_function,callback_arguments);
+	this.loaded(imageURL);
       }
       else { // Exists but has not loaded yet
 	var foo = this; // Ugly hack
 	this.graphics[imageURL].onload = function() {
 	  foo.graphics[imageURL].loaded = true;
-	  console.log('Graphic "'+imageURL+'" finished loading.');
-	  foo.loaded(callback_object,callback_function,callback_arguments);
+	  game.terminal.write('Graphic "'+imageURL+'" finished loading.');
+	  foo.loaded(imageURL);
 	}
 
 	this.graphics[imageURL].src = 'images/'+imageURL+'.png'; // Begin loading
       }
     }
 
-    this.loaded = function loaded(callback_object,callback_function,callback_arguments) {
+    this.loaded = function loaded(imageURL) {
       this.unloaded--;
-      if(callback_object != undefined) { callback_object[callback_function](callback_arguments); }
+      this.graphics[imageURL].onfinished.fire();
     }
 
     this.get = function(imageURL) {

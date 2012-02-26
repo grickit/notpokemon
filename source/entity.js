@@ -52,8 +52,7 @@
 	this.currentImage = this.sprites[game.directionNumbers[direction]];
 	this.currentImage.playOnce();
 	this.z = 120;
-	var foo = this;
-	this.currentImage.onfinished = function() { foo.setPosition(newx,newy); foo.currentImage.stop(); foo.z = 100; }
+	this.currentImage.onfinished.subscribe(undefined,function(thisObj){ thisObj.setPosition(newx,newy); thisObj.currentImage.stop(); thisObj.z = 100; },this);
       }
     }
 
