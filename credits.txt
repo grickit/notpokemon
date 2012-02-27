@@ -3,6 +3,7 @@
   "Grickit" (Derek Hoagland)
   ---- Art ----
   "Lorc" -- Icons
+  "Grickit" -- Icons
   "WeslyFG" -- Tiles
   "Crito(Zein)" -- Tiles
   Nintendo -- Most Pokemon
