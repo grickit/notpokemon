@@ -3,7 +3,7 @@
 // ----- CLASS: EntityList {
   function EntityList() {
     // Properties
-    this.list = new Array();
+    this.list = new Object();
     this.uid = 0;
 
     // Methods
@@ -25,6 +25,5 @@
     }
 
     // Initialize
-
   }
 // ----- }
