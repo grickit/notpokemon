@@ -17,10 +17,10 @@
       var newy = this.y + game.directionChanges[direction].y;
       this.facing = game.directionNumbers[direction];
       if(game.getTile(this.x, this.y).clipfrom[game.directionNumbers[direction]] && game.getTile(newx,newy).clipto[game.directionNumbers[direction]]) {
-	this.currentImage = this.sprites[game.directionNumbers[direction]];
-	this.currentImage.playOnce();
+	this.current_image = this.sprites[game.directionNumbers[direction]];
+	this.current_image.playOnce();
 	this.z = 120;
-	this.currentImage.on_finished.subscribe(undefined,function(thisObj){ thisObj.setPosition(newx,newy); thisObj.currentImage.stop(); thisObj.z = 100; },this);
+	this.current_image.on_finished.subscribe(undefined,function(thisObj){ thisObj.setPosition(newx,newy); thisObj.current_image.stop(); thisObj.z = 100; },this);
       }
     }
 

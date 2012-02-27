@@ -24,8 +24,8 @@
     }
 
     this.getImage = function() {
-      if(this.currentImage instanceof Animation) { return this.currentImage.current; }
-      else if(this.currentImage instanceof Sprite) { return this.currentImage; }
+      if(this.current_image instanceof Animation) { return this.current_image.current; }
+      else if(this.current_image instanceof Sprite) { return this.current_image; }
       else { throw "Current image of entity \""+this.name+"\" is of unknown type."; }
     }
 
@@ -42,6 +42,6 @@
     if(args.ticks == true) { this.game_tick_subscription_number = game.on_tick.subscribe(this,'on_tick','',false); }
     game.entities[this.name] = this;
     this.setPosition(this.x,this.y);
-    this.currentImage = this.sprites[0];
+    this.current_image = this.sprites[0];
   }
 // ----- }
