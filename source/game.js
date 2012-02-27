@@ -182,8 +182,7 @@
 		x: radius[tile].x,
 		y: radius[tile].y,
 		on_moved_to: function(mover) { this.purge();},
-		on_moved_from: this.on_moved_to,
-		ticks: false
+		on_moved_from: this.on_moved_to
 	      });
 	    }
 	  }

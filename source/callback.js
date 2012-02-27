@@ -16,7 +16,7 @@
 	  this.subscribers[i][0][this.subscribers[i][1]](this.subscribers[i][2]);
 	}
 	
-	if(this.subscribers[i][3] != false) { delete this.subscribers[i]; }
+	if(this.subscribers[i] != undefined && this.subscribers[i][3] != false) { delete this.subscribers[i]; }
       }
     }
   }
