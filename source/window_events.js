@@ -1,3 +1,6 @@
+//# CLEAN
+
+// TODO: convert to Callback()s
 window.addEventListener('keydown', function(e) {
   game.keyboard.keymapping_temp[e.keyCode] = true;
   //console.log('Key code: '+e.keyCode);

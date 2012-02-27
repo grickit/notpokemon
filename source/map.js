@@ -1,3 +1,5 @@
+//# DIRTY with outdated style
+
 function map(imageURL,extralayers) {
   this.imageURL = imageURL;
   this.tiles = new Array();

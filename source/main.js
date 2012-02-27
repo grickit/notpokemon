@@ -1,3 +1,5 @@
+//# DIRTY
+
 function preStart() {
   game.terminal = new outputBox('terminal','Standard Output',5);
   game.terminal.write('Output started.');

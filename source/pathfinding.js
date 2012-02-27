@@ -1,3 +1,5 @@
+//# AUDIT ME
+
 function findPath(x, y, x2, y2) {
   var openList = new Array();
   var closedList = new Array();

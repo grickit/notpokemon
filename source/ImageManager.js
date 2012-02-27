@@ -1,3 +1,5 @@
+//# CLEAN
+
 // ----- CLASS: ImageManager {
   function ImageManager() {
     this.unloaded = 0;

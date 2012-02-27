@@ -1,3 +1,5 @@
+//# CLEAN
+
 // ----- CLASS: Callback {
   function Callback() {
     this.subscribers = new Array();
@@ -19,5 +21,7 @@
 	if(this.subscribers[i] != undefined && this.subscribers[i][3] != false) { delete this.subscribers[i]; }
       }
     }
+
+    // TODO: unsubscribe() method
   }
 // ----- }

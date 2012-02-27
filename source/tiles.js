@@ -1,3 +1,5 @@
+//# DIRTY
+
 // ----- CLASS: tileType {
   function tileType(args) {
     if (args.letter == undefined) { throw "new tileType missing required letter attribute"; }

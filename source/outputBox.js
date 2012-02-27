@@ -1,3 +1,5 @@
+//# AUDIT ME
+
 function outputBox(id, title, default_delay) {
   if(document.getElementById(id) == undefined) { throw "Element "+id+" does not exist"; }
   this.box = document.getElementById(id);

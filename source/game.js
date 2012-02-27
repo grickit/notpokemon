@@ -1,3 +1,5 @@
+//# DIRTY
+
 // ----- OBJECT: game {
   var game = {
     paused: false,
