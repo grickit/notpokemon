@@ -135,7 +135,7 @@ function start() {
   mapone = new map('maps/map1',['maps/map1-2','maps/map1-3']);
   game.currentMap = mapone;
 
-  testEnt = new entity({ name: 'testEnt', x: 41, y: 25, sprites: characterSheet('characters/kantopokemon',780,1032)});
+  testEnt = new EntityLiving({ name: 'testEnt', x: 41, y: 25, sprites: characterSheet('characters/kantopokemon',780,1032)});
   game.viewport.tracking = testEnt;
 
   foo = new animation([
@@ -146,7 +146,7 @@ function start() {
   ],{loop: true});
   foo.autoplay();
 
-  secondEnt = new entity({ name: 'secondEnt', x: 41, y: 28, sprites: [foo], z: 90});
+  secondEnt = new EntityLiving({ name: 'secondEnt', x: 41, y: 28, sprites: [foo], z: 90});
 
   game.ontick.subscribe(game.keyboard,'poll','',false);
   game.drawFrame();

@@ -52,7 +52,7 @@ map.prototype.init = function() {
 	for(overlay in tile.overlays) {
 	  tile.overlays[overlay].x = x;
 	  tile.overlays[overlay].y = y;
-	  new entity(tile.overlays[overlay],this);
+	  new Entity(tile.overlays[overlay],this);
 	}
       }
     }
@@ -100,7 +100,7 @@ map.prototype.addLayer = function(imageURL) {
 	  for(overlay in tile.overlays) {
 	    tile.overlays[overlay].x = x;
 	    tile.overlays[overlay].y = y;
-	    new entity(tile.overlays[overlay],this);
+	    new Entity(tile.overlays[overlay],this);
 	  }
 	}
       }

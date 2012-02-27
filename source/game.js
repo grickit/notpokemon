@@ -178,7 +178,7 @@
 	  radius = game.getCoordsInRadius(game.viewport.tracking.x,game.viewport.tracking.y,4);
 	  for(tile in radius) {
 	    if(game.inbounds(radius[tile].x, radius[tile].y)) {
-	      new entity({
+	      new Entity({
 		x: radius[tile].x,
 		y: radius[tile].y,
 		on_moved_to: function(mover) { this.purge();},
@@ -271,7 +271,7 @@
     var canvasCoords = findPosition(game.viewport.canvas);
     var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
     var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
-    new entity({x: x, y: y, sprites: [foo], z: 90, ticks: false});
+    new Entity({x: x, y: y, sprites: [foo], z: 90, ticks: false});
   });
   
   game.viewport.canvas.addEventListener('mouseup', function(e) {

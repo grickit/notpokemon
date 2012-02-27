@@ -1,7 +1,7 @@
 //# CLEAN
 
 // ----- CLASS: EntityLiving {
-  function Entity(args,map_override) {
+  function EntityLiving(args,map_override) {
     this.prototype = new Entity(args); // Inherit Entity
 
     // ----- Properties
