@@ -8,7 +8,7 @@
     this.y = (args.y == undefined)? 0 : args.y;
     this.z = (args.z == undefined)? 100 : args.z;
     this.map = (map_override == undefined)? game.currentMap : map_override;
-    this.sprites = (args.sprites == undefined)? [new sprite({imageURL: 'characters/sign', yoffset: -1})] : args.sprites;
+    this.sprites = (args.sprites == undefined)? [new Sprite({imageURL: 'characters/sign', yoffset: -1})] : args.sprites;
 
     // ----- Methods
     this.on_render = (args.on_render == undefined)? function(){} : args.on_render;
