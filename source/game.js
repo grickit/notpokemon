@@ -263,10 +263,6 @@
     else { setTimeout(game.tick,0); }
   }
 
-  game.registerTick = function(name,callback_object,callback_function,callback_arguments) {
-    game.tickers[name] = {callback_object: callback_object, callback_function: callback_function, callback_arguments: callback_arguments};
-  }
-
   game.viewport.canvas.addEventListener('mousedown', function(e) {
     game.mousedown = true;
     var canvasCoords = findPosition(game.viewport.canvas);
