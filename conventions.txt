@@ -1,0 +1,33 @@
+Coding Conventions
+
+Every file will have a cleanliness tag at the top for how well it sticks to these conventions
+//# CLEAN
+//# DIRTY
+//# AUDIT ME
+Also make special notes about old style, todos for the file, and anything else noteworthy.
+
+
+Every class gets its own file.
+
+
+Classes are named LikeThisHere
+
+
+Methods are named likeThisHere
+
+
+Properties are named like_this_here
+
+
+Classes are surrounded in this:
+// ----- CLASS: NameOfClass {
+// ----- }
+
+
+Try to keep the amount of global anonymous objects low.
+
+
+Organize the members of classes with these comments:
+// ----- Properties
+// ----- Methods
+// ----- Initialize

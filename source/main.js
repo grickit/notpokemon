@@ -40,7 +40,7 @@ function start() {
     name: 'grass',
     color: '128,255,128,255',
     clipto: [true,true,true,true],
-    transitions: [ new sprite({imageURL: 'tiles/grass', x: 0, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(g),(.+),(.+),(.+),(.+)'}) ]
+    transitions: [ new Sprite({imageURL: 'tiles/grass', x: 0, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(g),(.+),(.+),(.+),(.+)'}) ]
   });
   baseTileSet.add({
     letter: 'w',
@@ -67,18 +67,18 @@ function start() {
     name: 'hill',
     color: '128,128,0,255',
     transitions: [
-      new sprite({imageURL: 'tiles/hilltograss', x: 0, y: 34, width: 16, height: 16, condition: '(.+),(g|s|d),(.+),(g|s|d),(h),(.+),(.+),(.+),(.+)'}), // Top left corner
-      new sprite({imageURL: 'tiles/hilltograss', x: 34, y: 34, width: 16, height: 16, condition:     '(.+),(g|s|d),(.+),(.+),(h),(g|s|d),(.+),(.+),(.+)'}), // Top right corner
-      new sprite({imageURL: 'tiles/hilltograss', x: 0, y: 68, width: 16, height: 16, condition:      '(.+),(.+),(.+),(g|s|d),(h),(.+),(.+),(g|s|d),(.+)'}), // Bottom left corner
-      new sprite({imageURL: 'tiles/hilltograss', x: 34, y: 68, width: 16, height: 16, condition:     '(.+),(.+),(.+),(.+),(h),(g|s|d),(.+),(g|s|d),(.+)'}), // Bottom right corner
+      new Sprite({imageURL: 'tiles/hilltograss', x: 0, y: 34, width: 16, height: 16, condition: '(.+),(g|s|d),(.+),(g|s|d),(h),(.+),(.+),(.+),(.+)'}), // Top left corner
+      new Sprite({imageURL: 'tiles/hilltograss', x: 34, y: 34, width: 16, height: 16, condition:     '(.+),(g|s|d),(.+),(.+),(h),(g|s|d),(.+),(.+),(.+)'}), // Top right corner
+      new Sprite({imageURL: 'tiles/hilltograss', x: 0, y: 68, width: 16, height: 16, condition:      '(.+),(.+),(.+),(g|s|d),(h),(.+),(.+),(g|s|d),(.+)'}), // Bottom left corner
+      new Sprite({imageURL: 'tiles/hilltograss', x: 34, y: 68, width: 16, height: 16, condition:     '(.+),(.+),(.+),(.+),(h),(g|s|d),(.+),(g|s|d),(.+)'}), // Bottom right corner
 
-      new sprite({imageURL: 'tiles/hilltograss', x: 17, y: 17, width: 16, height: 16, condition:  '(.+),(.+),(.+),(h),(h),(.+),(g|s|d),(h),(.+)'}), // Bottom right corner
-      new sprite({imageURL: 'tiles/hilltograss', x: 34, y: 17, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(h),(h),(.+),(h),(g|s|d)'}), // Bottom left corner
+      new Sprite({imageURL: 'tiles/hilltograss', x: 17, y: 17, width: 16, height: 16, condition:  '(.+),(.+),(.+),(h),(h),(.+),(g|s|d),(h),(.+)'}), // Bottom right corner
+      new Sprite({imageURL: 'tiles/hilltograss', x: 34, y: 17, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(h),(h),(.+),(h),(g|s|d)'}), // Bottom left corner
 
-      new sprite({imageURL: 'tiles/hilltograss', x: 17, y: 34, width: 16, height: 16, condition: '(.+),(g|s|d),(.+),(.+),(h),(.+),(.+),(.+),(.+)'}), // Top side
-      new sprite({imageURL: 'tiles/hilltograss', x: 17, y: 68, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(h),(.+),(.+),(g|s|d),(.+)'}), // Bottom side
-      new sprite({imageURL: 'tiles/hilltograss', x: 0, y: 51, width: 16, height: 16, condition:  '(.+),(.+),(.+),(g|s|d),(h),(.+),(.+),(.+),(.+)'}), // Left side
-      new sprite({imageURL: 'tiles/hilltograss', x: 34, y: 51, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(h),(g|s|d),(.+),(.+),(.+)'}), // Right side
+      new Sprite({imageURL: 'tiles/hilltograss', x: 17, y: 34, width: 16, height: 16, condition: '(.+),(g|s|d),(.+),(.+),(h),(.+),(.+),(.+),(.+)'}), // Top side
+      new Sprite({imageURL: 'tiles/hilltograss', x: 17, y: 68, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(h),(.+),(.+),(g|s|d),(.+)'}), // Bottom side
+      new Sprite({imageURL: 'tiles/hilltograss', x: 0, y: 51, width: 16, height: 16, condition:  '(.+),(.+),(.+),(g|s|d),(h),(.+),(.+),(.+),(.+)'}), // Left side
+      new Sprite({imageURL: 'tiles/hilltograss', x: 34, y: 51, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(h),(g|s|d),(.+),(.+),(.+)'}), // Right side
     ].concat(simpleTileSpriteSetEnd('tiles/hilltograss','(h)'))
   });
   baseTileSet.add({
@@ -86,10 +86,10 @@ function start() {
     name: 'hillstairs',
     color: '255,0,0,255',
     clipto: [true,true,true,true],
-    transitions: [ new sprite({imageURL: 'tiles/hillstairs', x: 17, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(hs),(hs),(hs),(.+),(.+),(.+)'}),
-      new sprite({imageURL: 'tiles/hillstairs', x: 0, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(hs),(hs),(.+),(.+),(.+)'}),
-      new sprite({imageURL: 'tiles/hillstairs', x: 34, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(hs),(hs),(.+),(.+),(.+),(.+)'}),
-      new sprite({imageURL: 'tiles/hillstairs', x: 51, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(hs),(.+),(.+),(.+),(.+)'}),
+    transitions: [ new Sprite({imageURL: 'tiles/hillstairs', x: 17, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(hs),(hs),(hs),(.+),(.+),(.+)'}),
+      new Sprite({imageURL: 'tiles/hillstairs', x: 0, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(hs),(hs),(.+),(.+),(.+)'}),
+      new Sprite({imageURL: 'tiles/hillstairs', x: 34, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(hs),(hs),(.+),(.+),(.+),(.+)'}),
+      new Sprite({imageURL: 'tiles/hillstairs', x: 51, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(hs),(.+),(.+),(.+),(.+)'}),
     ]
   });
   baseTileSet.add({
@@ -98,9 +98,9 @@ function start() {
     name: 'tree',
     color: '0,128,0,255',
     transitions:
-      [ new sprite({imageURL: 'tiles/tree', y: 16}) ],
+      [ new Sprite({imageURL: 'tiles/tree', y: 16}) ],
     overlays:
-      [ {ticks: false, sprites: [new sprite({imageURL: 'tiles/tree', yoffset: -16})], z: 200} ],
+      [ {ticks: false, sprites: [new Sprite({imageURL: 'tiles/tree', yoffset: -16})], z: 200} ],
   });
   baseTileSet.add({
     letter: 'gg',
@@ -109,9 +109,9 @@ function start() {
     color: '0,255,0,255',
     clipto: [true,true,true,true],
     transitions:
-      [ new sprite({imageURL: 'tiles/tallgrass'}) ],
+      [ new Sprite({imageURL: 'tiles/tallgrass'}) ],
     overlays:
-      [ {ticks: false, sprites: [new sprite({imageURL: 'tiles/tallgrass-overlay'})], z: 110} ]
+      [ {ticks: false, sprites: [new Sprite({imageURL: 'tiles/tallgrass-overlay'})], z: 110} ]
   });
   baseTileSet.add({
     letter: 'gfr',
@@ -120,13 +120,13 @@ function start() {
     color: '128,0,0,255',
     clipto: [true,true,true,true],
     transitions:
-      [ new sprite({imageURL: 'tiles/grass'}) ],
+      [ new Sprite({imageURL: 'tiles/grass'}) ],
     overlays: [
-      {ticks: false, sprites: [new animation([
-	new sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
-	new sprite({imageURL: 'tiles/redflower', x: 17, y: 0, duration: 700}),
-	new sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
-	new sprite({imageURL: 'tiles/redflower', x: 34, y: 0, duration: 700}),
+      {ticks: false, sprites: [new Animation([
+	new Sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
+	new Sprite({imageURL: 'tiles/redflower', x: 17, y: 0, duration: 700}),
+	new Sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
+	new Sprite({imageURL: 'tiles/redflower', x: 34, y: 0, duration: 700}),
       ],{loop: true})], z: 0}
     ]
   });
@@ -138,11 +138,11 @@ function start() {
   testEnt = new EntityLiving({ name: 'testEnt', x: 41, y: 25, sprites: characterSheet('characters/kantopokemon',780,1032)});
   game.viewport.tracking = testEnt;
 
-  foo = new animation([
-    new sprite({imageURL: 'characters/marker', x: 0, y: 0, duration: 150}),
-    new sprite({imageURL: 'characters/marker', x: 17, y: 0, duration: 150}),
-    new sprite({imageURL: 'characters/marker', x: 34, y: 0, duration: 150}),
-    new sprite({imageURL: 'characters/marker', x: 51, y: 0, duration: 150}),
+  foo = new Animation([
+    new Sprite({imageURL: 'characters/marker', x: 0, y: 0, duration: 150}),
+    new Sprite({imageURL: 'characters/marker', x: 17, y: 0, duration: 150}),
+    new Sprite({imageURL: 'characters/marker', x: 34, y: 0, duration: 150}),
+    new Sprite({imageURL: 'characters/marker', x: 51, y: 0, duration: 150}),
   ],{loop: true});
   foo.autoplay();
 

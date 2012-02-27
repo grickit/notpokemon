@@ -105,8 +105,8 @@ function characterSheet(imageURL, x, y, width, height) {
   width = (width == undefined)? 64 : width;
   height = (height == undefined)? 128 : height;
 
-  north_anim = new animation([
-    new sprite({
+  north_anim = new Animation([
+    new Sprite({
       imageURL: imageURL,
       x: x,
       y: y,
@@ -118,7 +118,7 @@ function characterSheet(imageURL, x, y, width, height) {
       trackyoffset: 0,
       duration: 100
     }),
-    new sprite({
+    new Sprite({
       imageURL: imageURL,
       x: x,
       y: y + (height/4),
@@ -130,7 +130,7 @@ function characterSheet(imageURL, x, y, width, height) {
       trackyoffset: 4,
       duration: 100
     }),
-    new sprite({
+    new Sprite({
       imageURL: imageURL,
       x: x,
       y: y,
@@ -142,7 +142,7 @@ function characterSheet(imageURL, x, y, width, height) {
       trackyoffset: 8,
       duration: 100
     }),
-    new sprite({
+    new Sprite({
       imageURL: imageURL,
       x: x,
       y: y + (height/4),
@@ -156,8 +156,8 @@ function characterSheet(imageURL, x, y, width, height) {
     }),
   ]);
 
-  south_anim = new animation([
-    new sprite({
+  south_anim = new Animation([
+    new Sprite({
       imageURL: imageURL,
       x: x,
       y: y + (height/4)*2,
@@ -169,7 +169,7 @@ function characterSheet(imageURL, x, y, width, height) {
       trackyoffset: 0,
       duration: 100
     }),
-    new sprite({
+    new Sprite({
       imageURL: imageURL,
       x: x,
       y: y + (height/4)*2 + (height/4),
@@ -181,7 +181,7 @@ function characterSheet(imageURL, x, y, width, height) {
       trackyoffset: -4,
       duration: 100
     }),
-    new sprite({
+    new Sprite({
       imageURL: imageURL,
       x: x,
       y: y + (height/4)*2,
@@ -193,7 +193,7 @@ function characterSheet(imageURL, x, y, width, height) {
       trackyoffset: -8,
       duration: 100
     }),
-    new sprite({
+    new Sprite({
       imageURL: imageURL,
       x: x,
       y: y + (height/4)*2 + (height/4),
@@ -207,8 +207,8 @@ function characterSheet(imageURL, x, y, width, height) {
     }),
   ]);
 
-  east_anim = new animation([
-    new sprite({
+  east_anim = new Animation([
+    new Sprite({
       imageURL: imageURL,
       x: x + (width/2),
       y: y + (height/4)*2,
@@ -220,7 +220,7 @@ function characterSheet(imageURL, x, y, width, height) {
       trackyoffset: 0,
       duration: 100
     }),
-    new sprite({
+    new Sprite({
       imageURL: imageURL,
       x: x + (width/2),
       y: y + (height/4)*2 + (height/4),
@@ -232,7 +232,7 @@ function characterSheet(imageURL, x, y, width, height) {
       trackyoffset: 0,
       duration: 100
     }),
-    new sprite({
+    new Sprite({
       imageURL: imageURL,
       x: x + (width/2),
       y: y + (height/4)*2,
@@ -244,7 +244,7 @@ function characterSheet(imageURL, x, y, width, height) {
       trackyoffset: 0,
       duration: 100
     }),
-    new sprite({
+    new Sprite({
       imageURL: imageURL,
       x: x + (width/2),
       y: y + (height/4)*2 + (height/4),
@@ -258,8 +258,8 @@ function characterSheet(imageURL, x, y, width, height) {
     }),
   ]);
 
-  west_anim = new animation([
-    new sprite({
+  west_anim = new Animation([
+    new Sprite({
       imageURL: imageURL,
       x: x + (width/2),
       y: y,
@@ -271,7 +271,7 @@ function characterSheet(imageURL, x, y, width, height) {
       trackyoffset: 0,
       duration: 100
     }),
-    new sprite({
+    new Sprite({
       imageURL: imageURL,
       x: x + (width/2),
       y: y + (height/4),
@@ -283,7 +283,7 @@ function characterSheet(imageURL, x, y, width, height) {
       trackyoffset: 0,
       duration: 100
     }),
-    new sprite({
+    new Sprite({
       imageURL: imageURL,
       x: x + (width/2),
       y: y,
@@ -295,7 +295,7 @@ function characterSheet(imageURL, x, y, width, height) {
       trackyoffset: 0,
       duration: 100
     }),
-    new sprite({
+    new Sprite({
       imageURL: imageURL,
       x: x + (width/2),
       y: y + (height/4),

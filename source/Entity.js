@@ -24,8 +24,8 @@
     }
 
     this.getImage = function() {
-      if(this.currentImage instanceof animation) { return this.currentImage.current; }
-      else if(this.currentImage instanceof sprite) { return this.currentImage; }
+      if(this.currentImage instanceof Animation) { return this.currentImage.current; }
+      else if(this.currentImage instanceof Sprite) { return this.currentImage; }
       else { throw "Current image of entity \""+this.name+"\" is of unknown type."; }
     }
 

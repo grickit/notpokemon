@@ -1,7 +1,9 @@
-// ----- CLASS: animation {
-  function animation(frames,args) {
+//# CLEAN
+
+// ----- CLASS: Animation {
+  function Animation(frames,args) {
+    // ----- Properties
     this.frames = frames;
-    if(this.frames == undefined) { console.log(this); throw "New animation has no frames"; }
     this.index = 0;
     this.current = this.frames[this.index];
 
@@ -11,6 +13,7 @@
     this.paused = (args.paused == undefined)? false : args.paused;
     this.onfinished = new callback();
 
+    // ----- Methods
     this.next = function() {
       this.index++;
       if(this.index >= this.frames.length) { this.index = 0; this.onfinished.fire(); }
@@ -75,5 +78,8 @@
       }
       return total_duration/Math.abs(this.speed);
     }
+
+    // ----- Initialize
+    if(frames == undefined) { console.log(this); throw "New animation has no frames"; }
   }
 // ----- }

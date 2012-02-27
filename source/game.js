@@ -112,7 +112,7 @@
 
     game.viewport.drawImage = function(image, x, y) {
       var newxy = game.viewport.getAdjustedDrawingCoordinates(x, y);
-      if(image instanceof animation) {
+      if(image instanceof Animation) {
 	image = image.current;
       }
       game.viewport.context.drawImage(images.get(image.imageURL), image.x, image.y, image.width, image.height, newxy[0] + image.xoffset, newxy[1] + image.yoffset, image.width, image.height);
