@@ -1,7 +1,7 @@
 //# DIRTY
 
 function preStart() {
-  game.terminal = new outputBox('terminal','Standard Output',5);
+  game.terminal = new OutputBox('terminal','Standard Output',5);
   game.terminal.write('Output started.');
   game.terminal.write('Creating the rest of the output boxes.');
 

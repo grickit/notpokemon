@@ -73,8 +73,8 @@
 
   // ----- OBJECT: game.menus {
     game.menus = {};
-    game.menus.main = new outputBox('menu_main','Main');
-    game.menus.context = new outputBox('menu_context','Context');
+    game.menus.main = new OutputBox('menu_main','Main');
+    game.menus.context = new OutputBox('menu_context','Context');
   // ----- }
 
   // ----- OBJECT: game.viewport {
