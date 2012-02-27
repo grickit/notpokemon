@@ -17,7 +17,7 @@
       }
 
       if(this.graphics[imageURL].loaded == true) { // Exists and is loaded
-	game.terminal.write('Graphic "'+imageURL+'" already loaded.');
+	game.stdout.write('Graphic "'+imageURL+'" already loaded.');
 	this.graphics[imageURL].on_finished.subscribe(callback_object,callback_function,callback_arguments);
 	this.loaded(imageURL);
       }
@@ -25,7 +25,7 @@
 	var foo = this; // Ugly hack
 	this.graphics[imageURL].onload = function() {
 	  foo.graphics[imageURL].loaded = true;
-	  game.terminal.write('Graphic "'+imageURL+'" finished loading.');
+	  game.stdout.write('Graphic "'+imageURL+'" finished loading.');
 	  foo.loaded(imageURL);
 	}
 

@@ -1,11 +1,11 @@
 //# DIRTY
 
 function preStart() {
-  game.terminal = new OutputBox('terminal','Standard Output',5);
-  game.terminal.write('Output started.');
-  game.terminal.write('Creating the rest of the output boxes.');
+  game.stdout = new OutputBox('stdout','Standard Output',5);
+  game.stdout.write('Output started.');
+  game.stdout.write('Creating the rest of the output boxes.');
 
-  game.terminal.write('Loading images.');
+  game.stdout.write('Loading images.');
   images = new ImageManager();
   images.load('404');
   images.load('alpha');

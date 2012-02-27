@@ -4,17 +4,26 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="../globalheader.css" type="text/css">
     <script type="text/javascript" src="analytics.js"></script>
+    <script type="text/javascript">
+      function injectCode() {
+	code = document.getElementById('stdin').value;
+	eval(code);
+	document.getElementById('stdin').value = '';
+      }
+    </script>
   </head>
  <body>
   <div id="globalheader"><a href="http://grickit.github.com">&nbsp;&lt; Back to grickit.github.com</a> <a href="http://github.com/grickit/notpokemon">&nbsp;&lt; Source code</a></div>
 
     <div id="window">
       <div id="entity_list"></div>
-      <canvas id='map' width="272" height="208"></canvas>
+      <canvas id="map" width="272" height="208"></canvas>
       <div id="menu_main"></div>
       <div id="menu_context"></div>
     </div>
-    <div id='terminal'></div>
+    <div id="stdout"></div>
+    <textarea id="stdin"></textarea><br>
+    <input type="Submit" onclick="injectCode()">
 
     <script type="text/javascript" src="source/OutputBox.js"></script>
     <script type="text/javascript" src="source/window_events.js"></script>
