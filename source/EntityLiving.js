@@ -3,6 +3,7 @@
 // ----- CLASS: EntityLiving {
   function EntityLiving(args,map_override) {
     this.prototype = new Entity(args); // Inherit Entity
+    Entity.call(this,args,map_override); // Inherit Entity
 
     // ----- Properties
     this.facing = (args.facing == undefined)? 1 : args.facing; // North: 0, South: 1, East: 2, West: 3;
@@ -25,6 +26,5 @@
     }
 
     // ----- Initialize
-    Entity.call(this,args,map_override); // Inherit Entity
   }
 // ----- }
