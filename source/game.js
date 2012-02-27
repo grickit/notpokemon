@@ -180,7 +180,7 @@
 	  radius = game.getCoordsInRadius(game.viewport.tracking.x,game.viewport.tracking.y,4);
 	  for(tile in radius) {
 	    if(game.inbounds(radius[tile].x, radius[tile].y)) {
-	      new Entity({
+	      new EntityTrigger({
 		x: radius[tile].x,
 		y: radius[tile].y,
 		on_moved_to: function(mover) { this.purge();},

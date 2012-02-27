@@ -8,6 +8,7 @@
     this.y = (args.y == undefined)? 0 : args.y;
     this.z = (args.z == undefined)? 100 : args.z;
     this.map = (map_override == undefined)? game.currentMap : map_override;
+    // TODO: sprites should be an associative array named animations
     this.sprites = (args.sprites == undefined)? [new Sprite({imageURL: 'characters/sign', yoffset: -1})] : args.sprites;
 
     // ----- Methods
