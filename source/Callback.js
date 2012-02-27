@@ -1,5 +1,5 @@
-// ----- CLASS: callback {
-  function callback() {
+// ----- CLASS: Callback {
+  function Callback() {
     this.subscribers = new Array();
 
     this.subscribe = function(callback_object,callback_function,callback_arguments,first_time_only) {

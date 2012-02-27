@@ -19,7 +19,7 @@
     this.purge = function() {
       delete this.map.entities[this.x][this.y][this.name];
       delete game.entities[this.name];
-      delete game.ontick.subscribers[this.game_tick_subscription_number]; // TODO: callback() needs an unsubscribe method
+      delete game.on_tick.subscribers[this.game_tick_subscription_number]; // TODO: callback() needs an unsubscribe method
       delete this;
     }
 
@@ -39,7 +39,7 @@
     }
 
     // ----- Initialize
-    if(args.ticks == true) { this.game_tick_subscription_number = game.ontick.subscribe(this,'on_tick','',false); }
+    if(args.ticks == true) { this.game_tick_subscription_number = game.on_tick.subscribe(this,'on_tick','',false); }
     game.entities[this.name] = this;
     this.setPosition(this.x,this.y);
     this.currentImage = this.sprites[0];

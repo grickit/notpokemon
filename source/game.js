@@ -36,7 +36,7 @@
     framesThisSecond: 0,
     ticksThisSecond: 0,
     entities: new Array(),
-    ontick: new callback(),
+    on_tick: new Callback(),
     uid: 0,
     mousedown: false
   }
@@ -249,7 +249,7 @@
   game.tick = function() {
     var tickstart = new Date().getMilliseconds();
     if(!game.paused) {
-      game.ontick.fire();
+      game.on_tick.fire();
       game.ticksThisSecond++;
     }
     var ticktime = new Date().getMilliseconds() - tickstart;

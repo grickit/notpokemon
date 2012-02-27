@@ -20,7 +20,7 @@
 	this.currentImage = this.sprites[game.directionNumbers[direction]];
 	this.currentImage.playOnce();
 	this.z = 120;
-	this.currentImage.onfinished.subscribe(undefined,function(thisObj){ thisObj.setPosition(newx,newy); thisObj.currentImage.stop(); thisObj.z = 100; },this);
+	this.currentImage.on_finished.subscribe(undefined,function(thisObj){ thisObj.setPosition(newx,newy); thisObj.currentImage.stop(); thisObj.z = 100; },this);
       }
     }
 

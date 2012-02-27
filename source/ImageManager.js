@@ -10,13 +10,13 @@
       if(this.graphics[imageURL] == undefined) { // Doesn't exist
 	this.graphics[imageURL] = new Image();
 	this.graphics[imageURL].loaded = false;
-	this.graphics[imageURL].onfinished = new callback();
-	this.graphics[imageURL].onfinished.subscribe(callback_object,callback_function,callback_arguments);
+	this.graphics[imageURL].on_finished = new Callback();
+	this.graphics[imageURL].on_finished.subscribe(callback_object,callback_function,callback_arguments);
       }
 
       if(this.graphics[imageURL].loaded == true) { // Exists and is loaded
 	game.terminal.write('Graphic "'+imageURL+'" already loaded.');
-	this.graphics[imageURL].onfinished.subscribe(callback_object,callback_function,callback_arguments);
+	this.graphics[imageURL].on_finished.subscribe(callback_object,callback_function,callback_arguments);
 	this.loaded(imageURL);
       }
       else { // Exists but has not loaded yet
@@ -33,7 +33,7 @@
 
     this.loaded = function loaded(imageURL) {
       this.unloaded--;
-      this.graphics[imageURL].onfinished.fire();
+      this.graphics[imageURL].on_finished.fire();
     }
 
     this.get = function(imageURL) {

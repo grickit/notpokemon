@@ -11,12 +11,12 @@
     this.loop = (args.loop == undefined)? false : args.loop;
     this.speed = (args.speed == undefined)? 1 : args.speed;
     this.paused = (args.paused == undefined)? false : args.paused;
-    this.onfinished = new callback();
+    this.on_finished = new Callback();
 
     // ----- Methods
     this.next = function() {
       this.index++;
-      if(this.index >= this.frames.length) { this.index = 0; this.onfinished.fire(); }
+      if(this.index >= this.frames.length) { this.index = 0; this.on_finished.fire(); }
       this.current = this.frames[this.index];
     }
 
@@ -30,7 +30,7 @@
       if(this.speed == 0) { this.paused = true; this.speed = 1; }
 
       if(this.paused != true) {
-	if(this.loop != true && this.index == (this.frames.length - 1)) { this.paused = true; this.onfinished.fire(); return; }
+	if(this.loop != true && this.index == (this.frames.length - 1)) { this.paused = true; this.on_finished.fire(); return; }
 
 	if(this.speed < 0) { this.previous(); }
 	else { this.next(); }

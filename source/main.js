@@ -148,7 +148,7 @@ function start() {
 
   secondEnt = new EntityLiving({ name: 'secondEnt', x: 41, y: 28, sprites: [foo], z: 90});
 
-  game.ontick.subscribe(game.keyboard,'poll','',false);
+  game.on_tick.subscribe(game.keyboard,'poll','',false);
   game.drawFrame();
   game.tick();
   setInterval(function() {
