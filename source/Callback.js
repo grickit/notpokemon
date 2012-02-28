@@ -2,11 +2,13 @@
 
 // ----- CLASS: Callback {
   function Callback() {
-    this.subscribers = new Array();
+    this.subscribers = new Object();
+    this.sid = 0;
 
     this.subscribe = function(callback_object,callback_function,callback_arguments,first_time_only) {
-      this.subscribers.push([callback_object,callback_function,callback_arguments,first_time_only]);
-      return this.subscribers.length - 1;
+      this.sid++;
+      this.subscribers[this.sid] = [callback_object,callback_function,callback_arguments,first_time_only];
+      return this.sid;
     }
 
     this.fire = function() {

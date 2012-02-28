@@ -4,7 +4,6 @@ function map(imageURL,extralayers) {
   this.imageURL = imageURL;
   this.tiles = new Array();
   this.entities = new Array();
-  this.events = new Array();
   this.extralayers = extralayers;
   images.load(imageURL,this,'init');
 }
@@ -26,18 +25,15 @@ map.prototype.init = function() {
 
   for(var x = 0; x < this.width; x++) {
     var ytiles = new Array();
-    var yentities = new Array();
-    var yevents = new Array();
+    var yentities = new Object();
     for(var y = 0; y < this.height; y++) {
       var tempimagedata = tempcontext.getImageData(x,y,1,1);
       var color = (''+tempimagedata.data[0]+','+tempimagedata.data[1]+','+tempimagedata.data[2]+','+tempimagedata.data[3]);
       ytiles[y] = color;
-      yentities[y] = new Array();
-      yevents[y] = new Array();
+      yentities[y] = new Object();
     }
     this.tiles[x] = ytiles;
     this.entities[x] = yentities;
-    this.events[x] = yevents;
   }
 
   for(var x = 0; x < this.width; x++) {

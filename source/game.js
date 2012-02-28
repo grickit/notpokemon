@@ -37,7 +37,7 @@
     tileSize: 16,
     framesThisSecond: 0,
     ticksThisSecond: 0,
-    entities: new Array(),
+    entities: new Object(),
     on_tick: new Callback(),
     uid: 0,
     mousedown: false
@@ -128,13 +128,13 @@
 
   // ----- OBJECT: game.keyboard {
     game.keyboard = {};
-    game.keyboard.keymapping = new Array();
+    game.keyboard.keymapping = new Object();
     game.keyboard.keymapping[38] = false;
     game.keyboard.keymapping[40] = false;
     game.keyboard.keymapping[39] = false;
     game.keyboard.keymapping[37] = false;
     game.keyboard.keymapping[65] = false;
-    game.keyboard.keymapping_temp = new Array();
+    game.keyboard.keymapping_temp = new Object();
 
     game.keyboard.poll = function() {
       if(!game.paused) {
@@ -155,7 +155,7 @@
 	}
       }
       else {
-	game.keyboard.keymapping_temp = new Array();
+	game.keyboard.keymapping_temp = new Object();
       }
     }
 
