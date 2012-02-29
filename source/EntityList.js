@@ -8,8 +8,7 @@
 
     // Methods
     this.getUniqueEntityID = function() {
-      this.uid++;
-      return this.uid;
+      return this.uid++;
     }
 
     this.get = function(name) {
