@@ -6,8 +6,8 @@
     else { this.letter = args.letter; }
 
     this.group = (args.group == undefined)? this.letter : args.group;
-    this.clipto = (args.clipto == undefined)? [false,false,false,false]: args.clipto;
-    this.clipfrom = (args.clipfrom == undefined)? [true,true,true,true]: args.clipfrom;
+    this.clipto = (args.clipto == undefined)? [false,false,false,false] : args.clipto;
+    this.clipfrom = (args.clipfrom == undefined)? [true,true,true,true] : args.clipfrom;
     this.overlays = args.overlays;
   }
 // ----- }
