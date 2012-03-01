@@ -10,7 +10,7 @@
     args = (args == undefined)? {loop: false, speed: 1, paused: false} : args;
     this.loop = (args.loop == undefined)? false : args.loop;
     this.speed = (args.speed == undefined)? 1 : args.speed;
-    this.paused = (args.paused == undefined)? false : args.paused;
+    this.paused = (args.paused == undefined)? true : args.paused;
     this.on_finished = new Callback();
 
     // ----- Methods
@@ -81,5 +81,6 @@
 
     // ----- Initialize
     if(frames == undefined) { console.log(this); throw "New animation has no frames"; }
+    if(this.paused == false) { this.autoplay(); }
   }
 // ----- }

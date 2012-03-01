@@ -30,117 +30,43 @@ function preStart() {
 }
 
 function start() {
-  game.errorTile = new tileType({
-    letter: '_',
-    name: 'error',
-    color: '999,999,999,999',
+  game.errorTile = new TileType({
+    code: '_',
+    sprite: new Sprite({
+      imageURL: '404',
+    }),
   });
 
-  baseTileSet = new tileSet;
+  baseTileSet = new TileSet();
   baseTileSet.add({
-    letter: 'g',
-    name: 'grass',
-    color: '128,255,128,255',
-    clipto: [true,true,true,true],
-    transitions: [ new Sprite({imageURL: 'tiles/grass', x: 0, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(g),(.+),(.+),(.+),(.+)'}) ]
-  });
-  baseTileSet.add({
-    letter: 'w',
-    name: 'water',
-    color: '0,0,255,255',
-    transitions: simpleTileSpriteSet('tiles/watertograss','(w)','(g|d)').concat(simpleTileSpriteSetEnd('tiles/watertograss','(w)'))
-  });
-  baseTileSet.add({
-    letter: 's',
-    name: 'sand',
-    color: '255,255,0,255',
-    clipto: [true,true,true,true],
-    transitions: simpleTileSpriteSet('tiles/sandtograss','(s)','(g)').concat(simpleTileSpriteSet('tiles/sandtowater','(s)','(w)')).concat(simpleTileSpriteSetEnd('tiles/sandtograss','(s)'))
-  });
-  baseTileSet.add({
-    letter: 'd',
-    name: 'dirt',
-    color: '128,64,0,255',
-    clipto: [true,true,true,true],
-    transitions: simpleTileSpriteSet('tiles/dirttograss','(d)','(w|g|s|h)').concat(simpleTileSpriteSetEnd('tiles/dirttograss','(d)'))
-  });
-  baseTileSet.add({
-    letter: 'h',
-    name: 'hill',
-    color: '128,128,0,255',
-    transitions: [
-      new Sprite({imageURL: 'tiles/hilltograss', x: 0, y: 34, width: 16, height: 16, condition: '(.+),(g|s|d),(.+),(g|s|d),(h),(.+),(.+),(.+),(.+)'}), // Top left corner
-      new Sprite({imageURL: 'tiles/hilltograss', x: 34, y: 34, width: 16, height: 16, condition:     '(.+),(g|s|d),(.+),(.+),(h),(g|s|d),(.+),(.+),(.+)'}), // Top right corner
-      new Sprite({imageURL: 'tiles/hilltograss', x: 0, y: 68, width: 16, height: 16, condition:      '(.+),(.+),(.+),(g|s|d),(h),(.+),(.+),(g|s|d),(.+)'}), // Bottom left corner
-      new Sprite({imageURL: 'tiles/hilltograss', x: 34, y: 68, width: 16, height: 16, condition:     '(.+),(.+),(.+),(.+),(h),(g|s|d),(.+),(g|s|d),(.+)'}), // Bottom right corner
-
-      new Sprite({imageURL: 'tiles/hilltograss', x: 17, y: 17, width: 16, height: 16, condition:  '(.+),(.+),(.+),(h),(h),(.+),(g|s|d),(h),(.+)'}), // Bottom right corner
-      new Sprite({imageURL: 'tiles/hilltograss', x: 34, y: 17, width: 16, height: 16, condition:  '(.+),(.+),(.+),(.+),(h),(h),(.+),(h),(g|s|d)'}), // Bottom left corner
-
-      new Sprite({imageURL: 'tiles/hilltograss', x: 17, y: 34, width: 16, height: 16, condition: '(.+),(g|s|d),(.+),(.+),(h),(.+),(.+),(.+),(.+)'}), // Top side
-      new Sprite({imageURL: 'tiles/hilltograss', x: 17, y: 68, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(h),(.+),(.+),(g|s|d),(.+)'}), // Bottom side
-      new Sprite({imageURL: 'tiles/hilltograss', x: 0, y: 51, width: 16, height: 16, condition:  '(.+),(.+),(.+),(g|s|d),(h),(.+),(.+),(.+),(.+)'}), // Left side
-      new Sprite({imageURL: 'tiles/hilltograss', x: 34, y: 51, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(h),(g|s|d),(.+),(.+),(.+)'}), // Right side
-    ].concat(simpleTileSpriteSetEnd('tiles/hilltograss','(h)'))
-  });
-  baseTileSet.add({
-    letter: 'hs',
-    name: 'hillstairs',
-    color: '255,0,0,255',
-    clipto: [true,true,true,true],
-    transitions: [ new Sprite({imageURL: 'tiles/hillstairs', x: 17, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(hs),(hs),(hs),(.+),(.+),(.+)'}),
-      new Sprite({imageURL: 'tiles/hillstairs', x: 0, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(hs),(hs),(.+),(.+),(.+)'}),
-      new Sprite({imageURL: 'tiles/hillstairs', x: 34, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(hs),(hs),(.+),(.+),(.+),(.+)'}),
-      new Sprite({imageURL: 'tiles/hillstairs', x: 51, y: 0, width: 16, height: 16, condition: '(.+),(.+),(.+),(.+),(hs),(.+),(.+),(.+),(.+)'}),
-    ]
-  });
-  baseTileSet.add({
-    letter: 'T',
-    group: 'g',
-    name: 'tree',
-    color: '0,128,0,255',
-    transitions:
-      [ new Sprite({imageURL: 'tiles/tree', y: 16}) ],
-    overlays:
-      [ {ticks: false, sprites: [new Sprite({imageURL: 'tiles/tree', yoffset: -16})], z: 200} ],
-  });
-  baseTileSet.add({
-    letter: 'gg',
-    group: 'g',
-    name: 'tallgrass',
-    color: '0,255,0,255',
-    clipto: [true,true,true,true],
-    transitions:
-      [ new Sprite({imageURL: 'tiles/tallgrass'}) ],
-    overlays:
-      [ {ticks: false, sprites: [new Sprite({imageURL: 'tiles/tallgrass-overlay'})], z: 110} ]
-  });
-  baseTileSet.add({
-    letter: 'gfr',
-    group: 'g',
-    name: 'redflower',
-    color: '128,0,0,255',
-    clipto: [true,true,true,true],
-    transitions:
-      [ new Sprite({imageURL: 'tiles/grass'}) ],
-    overlays: [
-      {ticks: false, sprites: [new Animation([
-	new Sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
-	new Sprite({imageURL: 'tiles/redflower', x: 17, y: 0, duration: 700}),
-	new Sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
-	new Sprite({imageURL: 'tiles/redflower', x: 34, y: 0, duration: 700}),
-      ],{loop: true})], z: 0}
-    ]
-  });
-  baseTileSet.tilesByLetter['gfr'].overlays[0].sprites[0].autoplay();
-
-  testTileSet = new TileSet();
-  testTileSet.add({
     code: 'g',
+    sprite: new Sprite({
+      imageURL: 'tiles/grass',
+    }),
+    clipto: [true,true,true,true],
   });
-  testTileSet.add({
+  baseTileSet.add({
     code: 'r',
+    sprite: new Sprite({
+      imageURL: 'tiles/dirttograss',
+      x: 17,
+      y: 51,
+    })
   });
+  baseTileSet.add({
+    code: 'gfr',
+    sprite:
+      new Animation(
+	[
+	  new Sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
+	  new Sprite({imageURL: 'tiles/redflower', x: 17, y: 0, duration: 700}),
+	  new Sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
+	  new Sprite({imageURL: 'tiles/redflower', x: 34, y: 0, duration: 700}),
+	],
+	{loop: true, paused: false}
+      )
+  });
+
 
   mapone = new Map(14,12);
   game.currentMap = mapone;

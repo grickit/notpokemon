@@ -48,8 +48,8 @@
   }
 
   game.getTile = function(x, y) {
-    if(game.inbounds(x, y) && baseTileSet.tilesByColor[game.currentMap.tiles[x][y]] != undefined) {
-      return baseTileSet.tilesByColor[game.currentMap.tiles[x][y]];
+    if(game.inbounds(x, y) && baseTileSet.tiles[game.currentMap.tiles[x][y]] != undefined) {
+      return baseTileSet.tiles[game.currentMap.tiles[x][y]];
     }
     return game.errorTile;
   }
@@ -216,11 +216,9 @@
       //var imageData = mapone.context.getImageData(newx-game.tileSize,newy-game.tileSize,game.viewport.canvas.width+game.tileSize, game.viewport.canvas.height+game.tileSize);
       //game.viewport.context.putImageData(imageData, -game.tileSize, -game.tileSize);
 
-      for(var x = 0; x < game.viewport.tilesX; x++) {
-	for(var y = 0; y < game.viewport.tilesY; y++) {
-	  if(game.inbounds(x,y)) {
-	    game.viewport.drawImage(testTileSet.tiles[mapone.tiles[x][y]].sprite,x,y);
-	  }
+      for(var x = -2; x < game.viewport.tilesX+2; x++) {
+	for(var y = -2; y < game.viewport.tilesY+2; y++) {
+	  game.viewport.drawImage(game.viewport.getAdjustedTile(x,y).sprite,x,y);
 	}
       }
 
