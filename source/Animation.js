@@ -7,7 +7,7 @@
     this.index = 0;
     this.current = this.frames[this.index];
 
-    args = (args == undefined)? {loop: false, speed: 1, paused: false} : args;
+    args = (args == undefined)? {loop: false, speed: 1, paused: true} : args;
     this.loop = (args.loop == undefined)? false : args.loop;
     this.speed = (args.speed == undefined)? 1 : args.speed;
     this.paused = (args.paused == undefined)? true : args.paused;
@@ -81,6 +81,6 @@
 
     // ----- Initialize
     if(frames == undefined) { console.log(this); throw "New animation has no frames"; }
-    if(this.paused == false) { this.autoplay(); }
+    if(args.paused == false) { this.autoplay(); }
   }
 // ----- }

@@ -74,16 +74,6 @@ function start() {
   testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/kantopokemon',780,1032)});
   game.viewport.tracking = testEnt;
 
-  foo = new Animation([
-    new Sprite({imageURL: 'characters/marker', x: 0, y: 0, duration: 150}),
-    new Sprite({imageURL: 'characters/marker', x: 17, y: 0, duration: 150}),
-    new Sprite({imageURL: 'characters/marker', x: 34, y: 0, duration: 150}),
-    new Sprite({imageURL: 'characters/marker', x: 51, y: 0, duration: 150}),
-  ],{loop: true});
-  foo.autoplay();
-
-  secondEnt = new EntityLiving({ name: 'secondEnt', x: 5, y: 5, sprites: [foo], z: 90});
-
   game.on_tick.subscribe(game.keyboard,'poll','',false);
   game.drawFrame();
   game.tick();

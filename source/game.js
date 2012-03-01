@@ -271,14 +271,22 @@
 
   game.viewport.canvas.addEventListener('mousedown', function(e) {
     game.mousedown = true;
-    var canvasCoords = findPosition(game.viewport.canvas);
-    var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
-    var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
-    new Entity({x: x, y: y, sprites: [foo], z: 90, ticks: false});
   });
-  
+
   game.viewport.canvas.addEventListener('mouseup', function(e) {
     game.mousedown = false;
+    game.viewport.onmousemove = null;
+  });
+
+  game.viewport.canvas.addEventListener('mousemove', function(e) {
+    if(game.mousedown) {
+      var canvasCoords = findPosition(game.viewport.canvas);
+      var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
+      var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
+      if(game.getTile(x,y)) {
+	game.currentMap.tiles[x][y] = 'r';
+      }
+    }
   });
 
 // ----- }
