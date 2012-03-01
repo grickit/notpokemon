@@ -1,8 +1,10 @@
 //# CLEAN
 
 // ----- CLASS: Map {
-  function Map() {
+  function Map(width,height) {
     // Properties
+    this.width = (width == undefined)? 20 : width;
+    this.height = (height == undefined)? 20 : height;
     this.tiles = new Array();
     this.entities = new Array();
 

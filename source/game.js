@@ -213,8 +213,16 @@
       if(game.viewport.tracking != undefined && game.viewport.tracking.getImage().trackyoffset) {
 	newy -= game.viewport.tracking.getImage().trackyoffset;
       }
-      var imageData = mapone.context.getImageData(newx-game.tileSize,newy-game.tileSize,game.viewport.canvas.width+game.tileSize, game.viewport.canvas.height+game.tileSize);
-      game.viewport.context.putImageData(imageData, -game.tileSize, -game.tileSize);
+      //var imageData = mapone.context.getImageData(newx-game.tileSize,newy-game.tileSize,game.viewport.canvas.width+game.tileSize, game.viewport.canvas.height+game.tileSize);
+      //game.viewport.context.putImageData(imageData, -game.tileSize, -game.tileSize);
+
+      for(var x = 0; x < game.viewport.tilesX; x++) {
+	for(var y = 0; y < game.viewport.tilesY; y++) {
+	  if(game.inbounds(x,y)) {
+	    game.viewport.drawImage(testTileSet.tiles[mapone.tiles[x][y]].sprite,x,y);
+	  }
+	}
+      }
 
       game.visible_entities = 0;
       for(var y = -2; y < game.viewport.tilesY+2; y++) {

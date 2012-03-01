@@ -134,10 +134,18 @@ function start() {
   });
   baseTileSet.tilesByLetter['gfr'].overlays[0].sprites[0].autoplay();
 
-  mapone = new map('maps/map1',['maps/map1-2','maps/map1-3']);
+  testTileSet = new TileSet();
+  testTileSet.add({
+    code: 'g',
+  });
+  testTileSet.add({
+    code: 'r',
+  });
+
+  mapone = new Map(14,12);
   game.currentMap = mapone;
 
-  testEnt = new EntityLiving({ name: 'testEnt', x: 41, y: 25, sprites: characterSheet('characters/kantopokemon',780,1032)});
+  testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/kantopokemon',780,1032)});
   game.viewport.tracking = testEnt;
 
   foo = new Animation([
@@ -148,7 +156,7 @@ function start() {
   ],{loop: true});
   foo.autoplay();
 
-  secondEnt = new EntityLiving({ name: 'secondEnt', x: 41, y: 28, sprites: [foo], z: 90});
+  secondEnt = new EntityLiving({ name: 'secondEnt', x: 5, y: 5, sprites: [foo], z: 90});
 
   game.on_tick.subscribe(game.keyboard,'poll','',false);
   game.drawFrame();
