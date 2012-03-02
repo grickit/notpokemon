@@ -30,41 +30,18 @@ function preStart() {
 }
 
 function start() {
-  game.errorTile = new TileType({
-    code: '_',
-    sprite: new Sprite({
-      imageURL: '404',
-    }),
-  });
+  game.errorTile = new TileType({code: '_',sprite: new Sprite({ imageURL: '404' })});
 
   baseTileSet = new TileSet();
-  baseTileSet.add({
-    code: 'g',
-    sprite: new Sprite({
-      imageURL: 'tiles/grass',
-    }),
-    clipto: [true,true,true,true],
-  });
-  baseTileSet.add({
-    code: 'r',
-    sprite: new Sprite({
-      imageURL: 'tiles/dirttograss',
-      x: 17,
-      y: 51,
-    })
-  });
-  baseTileSet.add({
-    code: 'gfr',
-    sprite:
-      new Animation(
-	[
-	  new Sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
-	  new Sprite({imageURL: 'tiles/redflower', x: 17, y: 0, duration: 700}),
-	  new Sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
-	  new Sprite({imageURL: 'tiles/redflower', x: 34, y: 0, duration: 700}),
-	],
-	{loop: true, paused: false}
-      )
+  baseTileSet.add({code: 'g',sprite: new Sprite({imageURL: 'tiles/grass'}),clipto: [true,true,true,true]});
+  baseTileSet.add({code: 'r',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 17,y: 51})});
+
+  baseTileSet.add({code: 'gfr',sprite: new Animation(
+    [new Sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
+    new Sprite({imageURL: 'tiles/redflower', x: 17, y: 0, duration: 700}),
+    new Sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
+    new Sprite({imageURL: 'tiles/redflower', x: 34, y: 0, duration: 700}),],
+    {loop: true, paused: false})
   });
 
 
