@@ -280,6 +280,14 @@
 
   game.viewport.canvas.addEventListener('mousedown', function(e) {
     game.mousedown = true;
+    if(game.mousedown) {
+      var canvasCoords = findPosition(game.viewport.canvas);
+      var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
+      var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
+      if(game.inbounds(x,y)) {
+	game.currentMap.tiles[x][y] = game.editortile;
+      }
+    }
   });
 
   game.viewport.canvas.addEventListener('mouseup', function(e) {
