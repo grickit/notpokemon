@@ -129,16 +129,11 @@
   // ----- OBJECT: game.keyboard {
     game.keyboard = {};
     game.keyboard.keymapping = new Object();
-    game.keyboard.keymapping[38] = false;
-    game.keyboard.keymapping[40] = false;
-    game.keyboard.keymapping[39] = false;
-    game.keyboard.keymapping[37] = false;
-    game.keyboard.keymapping[65] = false;
     game.keyboard.keymapping_temp = new Object();
 
     game.keyboard.poll = function() {
       if(!game.paused) {
-	for(key in game.keyboard.keymapping) {
+	for(key in game.keyboard.keymapping_temp) {
 	  if(game.keyboard.keymapping_temp[key]) {
 	    if(game.keyboard.keymapping[key]) {
 	      game.keyboard.keyHold(key);
