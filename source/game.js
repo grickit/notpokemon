@@ -165,19 +165,27 @@
     game.keyboard.keyHold = function(key) {
       switch(key) {
 	case '38':
-	  game.viewport.tracking.step('north');
+	  //game.viewport.tracking.step('north');
+	  game.viewport.tracking = null;
+	  game.viewport.y--;
 	  break;
 	case '40':
-	  game.viewport.tracking.step('south');
+	  //game.viewport.tracking.step('south');
+	  game.viewport.tracking = null;
+	  game.viewport.y++;
 	  break;
 	case '39':
-	  game.viewport.tracking.step('east');
+	  //game.viewport.tracking.step('east');
+	  game.viewport.x++;
+	  game.viewport.tracking = null;
 	  break;
 	case '37':
-	  game.viewport.tracking.step('west');
+	  //game.viewport.tracking.step('west');
+	  game.viewport.tracking = null;
+	  game.viewport.x--;
 	  break;
 	case '65':
-	  radius = game.getCoordsInRadius(game.viewport.tracking.x,game.viewport.tracking.y,4);
+	  /*radius = game.getCoordsInRadius(game.viewport.tracking.x,game.viewport.tracking.y,4);
 	  for(tile in radius) {
 	    if(game.inbounds(radius[tile].x, radius[tile].y)) {
 	      new EntityTrigger({
@@ -188,6 +196,7 @@
 	      });
 	    }
 	  }
+	  */
 	  break;
       }
     }
