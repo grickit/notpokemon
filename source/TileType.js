@@ -2,8 +2,8 @@
   function TileType(args,set) {
     var self = this;
     // ----- Properties
-    if (!isset(args.letter)) { throw "new tileType missing required code attribute"; }
-    else { self.letter = args.letter; }
+    if (!isset(args.code)) { throw "new TileType missing required code attribute"; }
+    else { self.code = args.code; }
     self.childof = args.childof;
     self.overlays = args.overlays;
 
