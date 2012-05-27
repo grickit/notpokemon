@@ -23,6 +23,6 @@
     // ----- Methods
 
     // ----- Initialize
-    if(args.imageURL == undefined) { throw "New sprite has undefined imageURL"; }
+    if(!isset(args.imageURL)) { throw "New sprite has undefined imageURL"; }
   }
 // ----- }
