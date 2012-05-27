@@ -1,5 +1,3 @@
-//# CLEAN
-
 // ----- CLASS: Sprite {
   function Sprite(args) {
     var self = this;
