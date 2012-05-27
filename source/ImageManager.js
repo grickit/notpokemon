@@ -1,50 +1,39 @@
-//# CLEAN
-
 // ----- CLASS: ImageManager {
   function ImageManager() {
-    this.unloaded = 0;
-    this.graphics = new Array();
+    var self = this;
+    // ----- Properties
+    self.unloaded = 0;
+    self.graphics = new Array();
 
-    this.load = function(imageURL,callback_object,callback_function,callback_arguments) {
-      if(imageURL == undefined) { throw "Tried to load an image with an undefined imageURL"; }
-      this.unloaded++;
+    // ----- Methods
+    self.load = function(imageURL,callback_function) {
+      if(!isset(imageURL)) { throw "Tried to load an image with an undefined imageURL"; }
 
-      if(this.graphics[imageURL] == undefined) { // Doesn't exist
-	this.graphics[imageURL] = new Image();
-	this.graphics[imageURL].loaded = false;
-	this.graphics[imageURL].on_finished = new Callback();
-	this.graphics[imageURL].on_finished.subscribe(callback_object,callback_function,callback_arguments);
+      if(!isset(self.graphics[imageURL])) { // Doesn't exist
+	self.graphics[imageURL] = new Image();
+	self.graphics[imageURL].loaded = false;
+	self.graphics[imageURL].on_finished = new Callback();
       }
 
-      if(this.graphics[imageURL].loaded == true) { // Exists and is loaded
+      self.unloaded++;
+      self.graphics[imageURL].on_finished.subscribe(callback_function,true);
+      if(self.graphics[imageURL].loaded == true) { // Exists and is loaded
 	game.stdout.write('Graphic "'+imageURL+'" already loaded.');
-	this.graphics[imageURL].on_finished.subscribe(callback_object,callback_function,callback_arguments);
-	this.loaded(imageURL);
       }
       else { // Exists but has not loaded yet
-	var foo = this; // Ugly hack
-	this.graphics[imageURL].onload = function() {
-	  foo.graphics[imageURL].loaded = true;
+	addEventListener(self.graphics[imageURL],'load',function() {
 	  game.stdout.write('Graphic "'+imageURL+'" finished loading.');
-	  foo.loaded(imageURL);
-	}
-
-	this.graphics[imageURL].src = 'images/'+imageURL+'.png'; // Begin loading
+	  self.graphics[imageURL].loaded = true;
+	  self.unloaded--;
+	  self.graphics[imageURL].on_finished.fire();
+	});
+	self.graphics[imageURL].src = 'images/'+imageURL+'.png'; // Begin loading
       }
     }
 
-    this.loaded = function loaded(imageURL) {
-      this.unloaded--;
-      this.graphics[imageURL].on_finished.fire();
-    }
-
-    this.get = function(imageURL) {
-      if(this.graphics[imageURL] == undefined || this.graphics[imageURL].loaded == false) {
-	return false;
-      }
-      else {
-	return this.graphics[imageURL];
-      }
+    self.get = function(imageURL) {
+      if(!isset(self.graphics[imageURL]) || self.graphics[imageURL].loaded == false) { return false; }
+      else { return self.graphics[imageURL]; }
     }
   }
 // ----- }
