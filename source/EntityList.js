@@ -1,28 +1,27 @@
-//# CLEAN
-
 // ----- CLASS: EntityList {
   function EntityList() {
-    // Properties
-    this.list = new Object();
-    this.uid = 0;
+    var self = this;
+    // ----- Properties
+    self.list = {};
+    self.uid = 0;
 
-    // Methods
-    this.getUniqueEntityID = function() {
-      return this.uid++;
+    // ----- Methods
+    self.getUniqueEntityID = function() {
+      return self.uid++;
     }
 
-    this.get = function(name) {
-      return this.list[name];
+    self.get = function(name) {
+      return self.list[name];
     }
 
-    this.remove = function(name) {
-      delete this.list[name];
+    self.remove = function(name) {
+      delete self.list[name];
     }
 
-    this.add = function(name,entity) {
-      this.list[name] = entity;
+    self.add = function(name,entity) {
+      self.list[name] = entity;
     }
 
-    // Initialize
+    // ----- Initialize
   }
 // ----- }
