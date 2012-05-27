@@ -21,12 +21,12 @@
 	game.stdout.write('Graphic "'+imageURL+'" already loaded.');
       }
       else { // Exists but has not loaded yet
-	addEventListener(self.graphics[imageURL],'load',function() {
+	self.graphics[imageURL].onload = function() {
 	  game.stdout.write('Graphic "'+imageURL+'" finished loading.');
 	  self.graphics[imageURL].loaded = true;
 	  self.unloaded--;
 	  self.graphics[imageURL].on_finished.fire();
-	});
+	};
 	self.graphics[imageURL].src = 'images/'+imageURL+'.png'; // Begin loading
       }
     }

@@ -67,7 +67,9 @@ function start() {
   testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/kantopokemon',780,1032)});
   game.viewport.tracking = testEnt;
 
-  game.on_tick.subscribe(game.keyboard,'poll','',false);
+  game.on_tick.subscribe(function(){
+    game.keyboard.poll();
+  },false,false);
   game.drawFrame();
   game.tick();
   setInterval(function() {

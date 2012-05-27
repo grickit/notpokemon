@@ -21,8 +21,8 @@
     self.fire = function() {
       self.count += 1;
       for(var i in self.subscribers) {
-	self.subscribers[i][0]();
-	if(!self.subscribers[i][2]) { delete self.subscribers[i]; }
+	if(typeof self.subscribers[i][0] === 'function') { self.subscribers[i][0](); }
+	if(self.subscribers[i][2] !== false) { delete self.subscribers[i]; }
       }
     }
 
