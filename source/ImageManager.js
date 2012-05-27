@@ -3,7 +3,7 @@
     var self = this;
     // ----- Properties
     self.unloaded = 0;
-    self.graphics = new Array();
+    self.graphics = [];
 
     // ----- Methods
     self.load = function(imageURL,callback_function) {
@@ -35,5 +35,7 @@
       if(!isset(self.graphics[imageURL]) || self.graphics[imageURL].loaded == false) { return false; }
       else { return self.graphics[imageURL]; }
     }
+
+    // ----- Initialize
   }
 // ----- }
