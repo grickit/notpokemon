@@ -2,22 +2,23 @@
 
 // ----- CLASS: Sprite {
   function Sprite(args) {
+    var self = this;
     // ----- Properties
     // General
-    this.imageURL = args.imageURL;
-    this.x = (args.x == undefined)? 0 : args.x;
-    this.y = (args.y == undefined)? 0 : args.y;
-    this.width = (args.width == undefined)? 16 : args.width;
-    this.height = (args.height == undefined)? 16 : args.height;
-    this.xoffset = (args.xoffset == undefined)? 0 : args.xoffset;
-    this.yoffset = (args.yoffset == undefined)? 0 : args.yoffset;
+    self.imageURL = args.imageURL;
+    self.x = isset(args.x)? args.x : 0;
+    self.y = isset(args.y)? args.y : 0;
+    self.width = isset(args.width)? args.width : 16;
+    self.height = isset(args.height)? args.height : 16;
+    self.xoffset = isset(args.xoffset)? args.xoffset : 0;
+    self.yoffset = isset(args.yoffset)? args.yoffset : 0;
     // For characters
-    this.trackxoffset = (args.trackxoffset == undefined)? 0 : args.trackxoffset;
-    this.trackyoffset = (args.trackyoffset == undefined)? 0 : args.trackyoffset;
+    self.trackxoffset = isset(args.trackxoffset)? args.trackxoffset : 0;
+    self.trackyoffset = isset(args.trackyoffset)? args.trackyoffset : 0;
     // For tiles
-    this.condition = (args.condition == undefined)? '(.+),(.+),(.+),(.+),(.+),(.+),(.+),(.+),(.+)' : args.condition;
+    self.condition = isset(args.condition)? args.condition : '(.+),(.+),(.+),(.+),(.+),(.+),(.+),(.+),(.+)';
     // For animations
-    this.duration = (args.duration == undefined)? 100 : args.duration;
+    self.duration = isset(args.duration)? args.duration : 100;
 
     // ----- Methods
 
