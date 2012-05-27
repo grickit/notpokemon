@@ -1,36 +1,35 @@
-//# CLEAN
-
 // ----- CLASS: Map {
   function Map(width,height) {
-    // Properties
-    this.width = (width == undefined)? 20 : width;
-    this.height = (height == undefined)? 20 : height;
-    this.tiles = new Array();
-    this.entities = new Array();
+    var self = this;
+    // ----- Properties
+    self.width = isset(width)? width : 20;
+    self.height = isset(height)? height : 20;
+    self.tiles = [];
+    self.entities = [];
 
-    // Methods
-    this.setDimensions = function(width,height) {
+    // ----- Methods
+    self.setDimensions = function(width,height) {
       newtiles = new Array();
       newentities = new Array();
       for(x = 0; x <= width; x++) {
-	if(this.tiles[x] == undefined) { newtiles[x] = new Array(); }
-	else { newtiles[x] = this.tiles[x]; }
-	if(this.entities[x] == undefined) { newentities[x] = new Array(); }
-	else { newentities[x] = this.entities[x]; }
+	if(!isset(self.tiles[x])) { newtiles[x] = new Array(); }
+	else { newtiles[x] = self.tiles[x]; }
+	if(!isset(self.entities[x])) { newentities[x] = new Array(); }
+	else { newentities[x] = self.entities[x]; }
 	for(y = 0; y <= height; y++) {
-	  if(this.tiles[x] == undefined || this.tiles[x][y] == undefined) { newtiles[x][y] = 'g'; }
-	  else { newtiles[x][y] = this.tiles[x][y]; }
-	  if(this.entities[x] == undefined || this.entities[x][y] == undefined) { newentities[x][y] = new Object(); }
-	  else { newentities[x][y] = this.entities[x][y]; }
+	  if(!isset(self.tiles[x]) || !isset(self.tiles[x][y])) { newtiles[x][y] = 'g'; }
+	  else { newtiles[x][y] = self.tiles[x][y]; }
+	  if(!isset(self.entities[x]) || !isset(self.entities[x][y])) { newentities[x][y] = {}; }
+	  else { newentities[x][y] = self.entities[x][y]; }
 	}
       }
-      this.tiles = newtiles;
-      this.entities = newentities;
-      this.width = width;
-      this.height = height;
+      self.tiles = newtiles;
+      self.entities = newentities;
+      self.width = width;
+      self.height = height;
     }
 
-    // Initialize
-    this.setDimensions(width,height);
+    // ----- Initialize
+    self.setDimensions(width,height);
   }
 // ----- }
