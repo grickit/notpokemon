@@ -1,21 +1,25 @@
-//# CLEAN
-
 // ----- CLASS: TileType {
   function TileType(args,set) {
-    if (args.code == undefined) { throw "new tileType missing required code attribute"; }
-    else { this.letter = args.letter; }
-    this.childof = args.childof;
-    this.overlays = args.overlays;
+    var self = this;
+    // ----- Properties
+    if (!isset(args.letter)) { throw "new tileType missing required code attribute"; }
+    else { self.letter = args.letter; }
+    self.childof = args.childof;
+    self.overlays = args.overlays;
 
-    if(this.childof == undefined || set.tiles[this.childof] == undefined) {
-      this.sprite = (args.sprite == undefined)? new Sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}) : args.sprite;
-      this.clipto = (args.clipto == undefined)? [false,false,false,false] : args.clipto;
-      this.clipfrom = (args.clipfrom == undefined)? [true,true,true,true] : args.clipfrom;
+    if(!isset(self.childof) || !isset(set.tiles[self.childof])) {
+      self.sprite = isset(args.sprite)? args.sprite : new Sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700});
+      self.clipto = isset(args.clipto)? args.clipto : [false,false,false,false];
+      self.clipfrom = isset(args.clipfrom)? args.clipfrom : [true,true,true,true];
     }
     else {
-      this.sprite = (args.sprite == undefined)? set[this.childof].sprite : args.sprite;
-      this.clipto = (args.clipto == undefined)? set[this.childof].clipto : args.clipto;
-      this.clipfrom = (args.clipfrom == undefined)? set[this.childof].clipto : args.clipfrom;
+      self.sprite = isset(args.sprite)? args.sprite : set.tiles[self.childof].sprite;
+      self.clipto = isset(args.clipto)? args.clipto : set.tiles[self.childof].clipto;
+      self.clipfrom = isset(args.clipfrom)? args.clipfrom : set.tiles[self.childof].clipfrom;
     }
+
+    // ----- Methods
+
+    // ----- Initialize
   }
 // ----- }
