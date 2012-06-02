@@ -34,7 +34,7 @@ function start() {
 
   baseTileSet = new TileSet();
   baseTileSet.add({code: 'g',sprite: new Sprite({imageURL: 'tiles/grass'}),clipto: [true,true,true,true]});
-  baseTileSet.add({code: 'r',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 17,y: 51})});
+  baseTileSet.add({code: 'd',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 17,y: 51})});
 
   baseTileSet.add({code: 'dg-conv-tl',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 17,y: 0})});
   baseTileSet.add({code: 'dg-conv-tr',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 34,y: 0})});
@@ -58,7 +58,13 @@ function start() {
     {loop: true, paused: false})
   });
 
-  game.editortile = 'r';
+  game.editortile = 'd';
+
+
+  for(var code in baseTileSet.tiles) {
+    var tile = baseTileSet.tiles[code];
+    game.menus.side.write('<a href="#" onclick="game.editortile=\''+code+'\'">'+code+'</a>');
+  }
 
 
   mapone = new Map(14,12);

@@ -75,6 +75,7 @@
     game.menus = {};
     game.menus.main = new OutputBox('menu_main','Main');
     game.menus.context = new OutputBox('menu_context','Context');
+    game.menus.side = new OutputBox('menu_side','Side');
   // ----- }
 
   // ----- OBJECT: game.viewport {
