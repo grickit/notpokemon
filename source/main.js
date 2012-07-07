@@ -60,6 +60,7 @@ function start() {
   game.currentMap = mapone;
 
   testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/kantopokemon',780,1032)});
+  gengar = new EntityLiving({ name: 'gengar', x: 5, y: 4, sprites: characterSheet('characters/kantopokemon',325,774)});
   game.viewport.tracking = testEnt;
 
   game.on_tick.subscribe(function(){

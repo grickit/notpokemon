@@ -15,7 +15,7 @@ function manhattanDistance(x, y, x2, y2) {
   return Math.abs(x2 - x) + Math.abs(y2 - y);
 }
 
-function tileTransitionSet(tileSet,code,clipto,clipfrom,overlays,imageURL) {
+function tileTransitionSet(tileSet,code,imageURL) {
   tileSet.add({code: code+'-conv-tl',sprite: new Sprite({imageURL: imageURL,x: 17,y: 0})});
   tileSet.add({code: code+'-conv-tr',sprite: new Sprite({imageURL: imageURL,x: 34,y: 0})});
   tileSet.add({code: code+'-conv-bl',sprite: new Sprite({imageURL: imageURL,x: 17,y: 17})});
@@ -86,7 +86,6 @@ function ajaxGetRequest(url) {
 }
 
 function characterSheet(imageURL, x, y, width, height) {
-  imageURL = imageURL;
   x = (x == undefined)? 0 : x;
   y = (y == undefined)? 0 : y;
   width = (width == undefined)? 64 : width;
