@@ -11,25 +11,6 @@ function uniqueEntityID() {
   return game.uid;
 }
 
-function singleTileCondition(tiles, x, y, xoffset, yoffset) {
-  if(x+xoffset >= 0 && x+xoffset < tiles.length && y+yoffset >= 0 && y+yoffset < tiles[0].length) {
-    if(tiles[x+xoffset][y+yoffset] == undefined) {
-      return '-';
-    }
-    else {
-      if(baseTileSet.tilesByColor[tiles[x+xoffset][y+yoffset]] == undefined) {
-	return '-';
-      }
-      else {
-	return baseTileSet.tilesByColor[tiles[x+xoffset][y+yoffset]].group;
-      }
-    }
-  }
-  else {
-    return '-';
-  }
-}
-
 function tileConditionTest(tiles, condition, x, y) {
   var testString = singleTileCondition(tiles, x, y, -1, -1)+','+
   singleTileCondition(tiles, x, y, 0, -1)+','+
