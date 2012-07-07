@@ -36,18 +36,8 @@ function start() {
   baseTileSet.add({code: 'g',sprite: new Sprite({imageURL: 'tiles/grass'}),clipto: [true,true,true,true]});
   baseTileSet.add({code: 'd',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 17,y: 51})});
 
-  baseTileSet.add({code: 'dg-conv-tl',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 17,y: 0})});
-  baseTileSet.add({code: 'dg-conv-tr',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 34,y: 0})});
-  baseTileSet.add({code: 'dg-conv-bl',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 17,y: 17})});
-  baseTileSet.add({code: 'dg-conv-br',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 34,y: 17})});
-  baseTileSet.add({code: 'dg-tl',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 0,y: 34})});
-  baseTileSet.add({code: 'dg-t',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 17,y: 34})});
-  baseTileSet.add({code: 'dg-tr',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 34,y: 34})});
-  baseTileSet.add({code: 'dg-ml',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 0,y: 51})});
-  baseTileSet.add({code: 'dg-mr',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 34,y: 51})});
-  baseTileSet.add({code: 'dg-bl',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 0,y: 68})});
-  baseTileSet.add({code: 'dg-b',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 17,y: 68})});
-  baseTileSet.add({code: 'dg-br',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 34,y: 68})});
+  tileTransitionSet(baseTileSet,'dg','tiles/dirttograss');
+  tileTransitionSet(baseTileSet,'hg','tiles/hilltograss');
 
   baseTileSet.add({code: 'gfr',sprite: new Animation(
     [new Sprite({imageURL: 'tiles/redflower', x: 0, y: 0, duration: 700}),
