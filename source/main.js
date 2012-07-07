@@ -23,9 +23,6 @@ function preStart() {
   images.load('tiles/tallgrass-overlay');
   images.load('tiles/redflower');
   images.load('tiles/hillstairs');
-  images.load('maps/map1');
-  images.load('maps/map1-2');
-  images.load('maps/map1-3');
   images.load('characters/sign');
 }
 
