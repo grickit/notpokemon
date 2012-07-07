@@ -43,6 +43,7 @@ function start() {
     new Sprite({imageURL: 'tiles/redflower', x: 34, y: 0, duration: 700}),],
     {loop: true, paused: false})
   });
+  baseTileSet.add({code: 'tt',sprite: new Sprite({imageURL: 'tiles/tree',x: 0,y: 16})});
 
   game.editortile = 'd';
 
