@@ -11,19 +11,6 @@ function uniqueEntityID() {
   return game.uid;
 }
 
-function tileConditionTest(tiles, condition, x, y) {
-  var testString = singleTileCondition(tiles, x, y, -1, -1)+','+
-  singleTileCondition(tiles, x, y, 0, -1)+','+
-  singleTileCondition(tiles, x, y, 1, -1)+','+
-  singleTileCondition(tiles, x, y, -1, 0)+','+
-  singleTileCondition(tiles, x, y, 0, 0)+','+
-  singleTileCondition(tiles, x, y, 1, 0)+','+
-  singleTileCondition(tiles, x, y, -1, 1)+','+
-  singleTileCondition(tiles, x, y, 0, 1)+','+
-  singleTileCondition(tiles, x, y, 1, 1);
-  return (testString.match(new RegExp(condition)));
-}
-
 function manhattanDistance(x, y, x2, y2) {
   return Math.abs(x2 - x) + Math.abs(y2 - y);
 }
