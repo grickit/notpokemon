@@ -57,7 +57,6 @@
 	overlay.y = y;
 	var tempEnt = new EntityOverlay(overlay,self);
       }
-      console.log(game.entities);
     }
 
     // ----- Initialize

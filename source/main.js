@@ -48,6 +48,11 @@ function start() {
     sprite: new Sprite({imageURL: 'tiles/tree',x: 0,y: 16}),
     overlays: [ { z: 200, sprites: [ new Sprite({imageURL: 'tiles/tree', x: 0, y: 0, yoffset: -16}) ]} ]
   });
+  baseTileSet.add({
+    code: 'gg',
+    sprite: new Sprite({imageURL: 'tiles/tallgrass',x: 0,y: 0}),
+    overlays: [ { z: 200, sprites: [ new Sprite({imageURL: 'tiles/tallgrass-overlay', x: 0, y: 0}) ]} ]
+  });
 
   game.editortile = 'd';
 
