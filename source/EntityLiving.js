@@ -1,7 +1,6 @@
 // ----- CLASS: EntityLiving {
   function EntityLiving(args,map_override) {
     var self = this;
-    this.prototype = new Entity(args);
     Entity.call(this,args,map_override);
 
     // ----- Properties

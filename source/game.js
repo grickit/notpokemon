@@ -282,6 +282,7 @@
       var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
       if(game.inbounds(x,y)) {
 	game.currentMap.tiles[x][y] = game.editortile;
+	game.currentMap.recalculateOverlays(x,y);
       }
     }
   });
@@ -298,6 +299,7 @@
       var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
       if(game.inbounds(x,y)) {
 	game.currentMap.tiles[x][y] = game.editortile;
+	game.currentMap.recalculateOverlays(x,y);
       }
     }
   });

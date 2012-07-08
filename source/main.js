@@ -43,7 +43,11 @@ function start() {
     new Sprite({imageURL: 'tiles/redflower', x: 34, y: 0, duration: 700}),],
     {loop: true, paused: false})
   });
-  baseTileSet.add({code: 'tt',sprite: new Sprite({imageURL: 'tiles/tree',x: 0,y: 16})});
+  baseTileSet.add({
+    code: 'tt',
+    sprite: new Sprite({imageURL: 'tiles/tree',x: 0,y: 16}),
+    overlays: [ { z: 200, sprites: [ new Sprite({imageURL: 'tiles/tree', x: 0, y: 0, yoffset: -16}) ]} ]
+  });
 
   game.editortile = 'd';
 
@@ -57,7 +61,7 @@ function start() {
   mapone = new Map(14,12);
   game.currentMap = mapone;
 
-  testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/kantopokemon',780,1032)});
+  testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/kantopokemon',715,1032)});
   gengar = new EntityLiving({ name: 'gengar', x: 5, y: 4, sprites: characterSheet('characters/kantopokemon',325,774)});
   game.viewport.tracking = testEnt;
 
