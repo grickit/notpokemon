@@ -51,7 +51,8 @@ function start() {
   baseTileSet.add({
     code: 'gg',
     sprite: new Sprite({imageURL: 'tiles/tallgrass',x: 0,y: 0}),
-    overlays: [ { z: 200, sprites: [ new Sprite({imageURL: 'tiles/tallgrass-overlay', x: 0, y: 0}) ]} ]
+    overlays: [ { z: 200, sprites: [ new Sprite({imageURL: 'tiles/tallgrass-overlay', x: 0, y: 0}) ]} ],
+    clipto: [true,true,true,true]
   });
 
   game.editortile = 'd';
