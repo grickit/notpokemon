@@ -60,6 +60,25 @@ function preStart() {
     }
   });
   editorWindow.tile = 'd'
+
+  gameWindow = new WindowType({
+    keyHold: function(key) {
+      switch(key) {
+        case '38':
+          game.viewport.tracking.step('north');
+          break;
+        case '40':
+          game.viewport.tracking.step('south');
+          break;
+        case '39':
+          game.viewport.tracking.step('east');
+          break;
+        case '37':
+          game.viewport.tracking.step('west');
+          break;
+      }
+    }
+  });
 }
 
 function start() {
@@ -99,7 +118,7 @@ function start() {
 
   mapone = new Map(14,12);
   game.currentMap = mapone;
-  game.currentWindow = editorWindow
+  game.currentWindow = gameWindow
 
   testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/kantopokemon',715,1032)});
   gengar = new EntityLiving({ name: 'gengar', x: 5, y: 4, sprites: characterSheet('characters/kantopokemon',325,774)});
