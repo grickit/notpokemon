@@ -120,7 +120,7 @@ function start() {
   game.currentMap = mapone;
   game.currentWindow = gameWindow
 
-  testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/kantopokemon',715,1032)});
+  testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/johtopokemon',650,1032)});
   gengar = new EntityLiving({ name: 'gengar', x: 5, y: 4, sprites: characterSheet('characters/kantopokemon',325,774)});
   game.viewport.tracking = testEnt;
 
