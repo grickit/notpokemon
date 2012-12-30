@@ -12,6 +12,7 @@ function preStart() {
   images.load('characters/marker');
   images.load('characters/kantopokemon');
   images.load('characters/johtopokemon');
+  images.load('characters/hoennpokemon');
   images.load('tiles/dirttograss');
   images.load('tiles/watertograss');
   images.load('tiles/sandtograss');
@@ -120,7 +121,7 @@ function start() {
   game.currentMap = mapone;
   game.currentWindow = gameWindow
 
-  testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/johtopokemon',650,1032)});
+  testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/hoennpokemon',195,1290)});
   gengar = new EntityLiving({ name: 'gengar', x: 5, y: 4, sprites: characterSheet('characters/kantopokemon',325,774)});
   game.viewport.tracking = testEnt;
 
