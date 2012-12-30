@@ -58,7 +58,7 @@
     result = new Array();
     for(i=(x-radius); i<=(x+radius); i++) {
       for(j=Math.floor(y-(radius-Math.abs(x-i))); j<=Math.ceil(y+(radius-Math.abs(x-i))); j++) {
-	result.push({x: i, y: j});
+        result.push({x: i, y: j});
       }
     }
     return result;
@@ -105,10 +105,10 @@
       var newx = x * game.tileSize;
       var newy = y * game.tileSize;
       if(game.viewport.tracking != undefined && game.viewport.tracking.getImage().trackxoffset) {
-	newx += game.viewport.tracking.getImage().trackxoffset;
+        newx += game.viewport.tracking.getImage().trackxoffset;
       }
       if(game.viewport.tracking != undefined && game.viewport.tracking.getImage().trackyoffset) {
-	newy += game.viewport.tracking.getImage().trackyoffset;
+        newy += game.viewport.tracking.getImage().trackyoffset;
       }
       return [newx, newy];
     }
@@ -116,7 +116,7 @@
     game.viewport.drawImage = function(image, x, y) {
       var newxy = game.viewport.getAdjustedDrawingCoordinates(x, y);
       if(image instanceof Animation) {
-	image = image.current;
+        image = image.current;
       }
       game.viewport.context.drawImage(images.get(image.imageURL), image.x, image.y, image.width, image.height, newxy[0] + image.xoffset, newxy[1] + image.yoffset, image.width, image.height);
     }
@@ -134,70 +134,32 @@
 
     game.keyboard.poll = function() {
       if(!game.paused) {
-	for(key in game.keyboard.keymapping_temp) {
-	  if(game.keyboard.keymapping_temp[key]) {
-	    if(game.keyboard.keymapping[key]) {
-	      game.keyboard.keyHold(key);
-	    }
-	    else {
-	      game.keyboard.keymapping[key] = true;
-	      game.keyboard.keyDown(key);
-	    }
-	  }
-	  else if (game.keyboard.keymapping[key]) {
-	    game.keyboard.keymapping[key] = false;
-	    game.keyboard.keyUp(key);
-	  }
-	}
+        for(key in game.keyboard.keymapping_temp) {
+          if(game.keyboard.keymapping_temp[key]) {
+            if(game.keyboard.keymapping[key]) {
+              game.keyboard.keyHold(key);
+            }
+            else {
+              game.keyboard.keymapping[key] = true;
+              game.keyboard.keyDown(key);
+            }
+          }
+          else if (game.keyboard.keymapping[key]) {
+            game.keyboard.keymapping[key] = false;
+            game.keyboard.keyUp(key);
+          }
+        }
       }
       else {
-	game.keyboard.keymapping_temp = new Object();
+        game.keyboard.keymapping_temp = new Object();
       }
     }
 
-    game.keyboard.keyDown = function(key) {
-    }
+    game.keyboard.keyDown = function(key) { game.currentWindow.keyDown(key); }
 
-    game.keyboard.keyHold = function(key) {
-      switch(key) {
-	case '38':
-	  //game.viewport.tracking.step('north');
-	  game.viewport.tracking = null;
-	  game.viewport.y--;
-	  break;
-	case '40':
-	  //game.viewport.tracking.step('south');
-	  game.viewport.tracking = null;
-	  game.viewport.y++;
-	  break;
-	case '39':
-	  //game.viewport.tracking.step('east');
-	  game.viewport.x++;
-	  game.viewport.tracking = null;
-	  break;
-	case '37':
-	  //game.viewport.tracking.step('west');
-	  game.viewport.tracking = null;
-	  game.viewport.x--;
-	  break;
-	case '65':
-	  /*radius = game.getCoordsInRadius(game.viewport.tracking.x,game.viewport.tracking.y,4);
-	  for(tile in radius) {
-	    if(game.inbounds(radius[tile].x, radius[tile].y)) {
-	      new EntityTrigger({
-		x: radius[tile].x,
-		y: radius[tile].y,
-		on_moved_to: function(mover) { this.purge();},
-		on_moved_from: this.on_moved_to
-	      });
-	    }
-	  }
-	  */
-	  break;
-      }
-    }
+    game.keyboard.keyHold = function(key) { game.currentWindow.keyHold(key); }
 
-    game.keyboard.keyUp = function(key) { }
+    game.keyboard.keyUp = function(key) { game.currentWindow.keyUp(key); }
   // ----- }
 
   game.drawFrame = function() {
@@ -205,46 +167,46 @@
     if(!game.paused) {
       clearCanvas(game.viewport.context);
       if(game.viewport.tracking != undefined) {
-	game.viewport.x = game.viewport.tracking.x - Math.floor(game.viewport.tilesX/2);
-	game.viewport.y = game.viewport.tracking.y - Math.floor(game.viewport.tilesY/2);
+        game.viewport.x = game.viewport.tracking.x - Math.floor(game.viewport.tilesX/2);
+        game.viewport.y = game.viewport.tracking.y - Math.floor(game.viewport.tilesY/2);
       }
 
       //Render tiles
       var newx = game.viewport.x * game.tileSize;
       var newy = game.viewport.y * game.tileSize;
       if(game.viewport.tracking != undefined && game.viewport.tracking.getImage().trackxoffset) {
-	newx -= game.viewport.tracking.getImage().trackxoffset;
+        newx -= game.viewport.tracking.getImage().trackxoffset;
       }
       if(game.viewport.tracking != undefined && game.viewport.tracking.getImage().trackyoffset) {
-	newy -= game.viewport.tracking.getImage().trackyoffset;
+        newy -= game.viewport.tracking.getImage().trackyoffset;
       }
       //var imageData = mapone.context.getImageData(newx-game.tileSize,newy-game.tileSize,game.viewport.canvas.width+game.tileSize, game.viewport.canvas.height+game.tileSize);
       //game.viewport.context.putImageData(imageData, -game.tileSize, -game.tileSize);
 
       for(var x = -2; x < game.viewport.tilesX+2; x++) {
-	for(var y = -2; y < game.viewport.tilesY+2; y++) {
-	  game.viewport.drawImage(game.viewport.getAdjustedTile(x,y).sprite,x,y);
-	}
+        for(var y = -2; y < game.viewport.tilesY+2; y++) {
+          game.viewport.drawImage(game.viewport.getAdjustedTile(x,y).sprite,x,y);
+        }
       }
 
       game.visible_entities = 0;
       for(var y = -2; y < game.viewport.tilesY+2; y++) {
-	visible_entities = new Array();
-	for(var x = -2;  x < game.viewport.tilesX+2; x++) {
-	  //Render entities
-	  if((these_entities = game.viewport.getAdjustedEntities(x, y)) != undefined) {
-	    for(name in these_entities) {
-	      game.visible_entities++;
-	      if(visible_entities[these_entities[name].z] == undefined) { visible_entities[these_entities[name].z] = new Array(); }
-	      visible_entities[these_entities[name].z].push(these_entities[name]);
-	    }
-	  }
-	}
-	for(layer in visible_entities) {
-	  for(name in visible_entities[layer]) {
-	    game.viewport.drawEntity(visible_entities[layer][name],visible_entities[layer][name].x-game.viewport.x,visible_entities[layer][name].y-game.viewport.y);
-	  }
-	}
+        visible_entities = new Array();
+        for(var x = -2;  x < game.viewport.tilesX+2; x++) {
+          //Render entities
+          if((these_entities = game.viewport.getAdjustedEntities(x, y)) != undefined) {
+            for(name in these_entities) {
+              game.visible_entities++;
+              if(visible_entities[these_entities[name].z] == undefined) { visible_entities[these_entities[name].z] = new Array(); }
+              visible_entities[these_entities[name].z].push(these_entities[name]);
+            }
+          }
+        }
+        for(layer in visible_entities) {
+          for(name in visible_entities[layer]) {
+            game.viewport.drawEntity(visible_entities[layer][name],visible_entities[layer][name].x-game.viewport.x,visible_entities[layer][name].y-game.viewport.y);
+          }
+        }
       }
       currentTime = new Date();
       clearCanvas(game.viewport.context,game.hourTints[currentTime.getHours()]);
@@ -276,32 +238,25 @@
 
   game.viewport.canvas.addEventListener('mousedown', function(e) {
     game.mousedown = true;
-    if(game.mousedown) {
-      var canvasCoords = findPosition(game.viewport.canvas);
-      var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
-      var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
-      if(game.inbounds(x,y)) {
-	game.currentMap.tiles[x][y] = game.editortile;
-	game.currentMap.recalculateOverlays(x,y);
-      }
-    }
+    var canvasCoords = findPosition(game.viewport.canvas);
+    var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
+    var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
+    game.currentWindow.mouseDown(x,y);
   });
 
   game.viewport.canvas.addEventListener('mouseup', function(e) {
     game.mousedown = false;
-    game.viewport.onmousemove = null;
+    var canvasCoords = findPosition(game.viewport.canvas);
+    var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
+    var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
+    game.currentWindow.mouseUp(x,y);
   });
 
   game.viewport.canvas.addEventListener('mousemove', function(e) {
-    if(game.mousedown) {
-      var canvasCoords = findPosition(game.viewport.canvas);
-      var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
-      var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
-      if(game.inbounds(x,y)) {
-	game.currentMap.tiles[x][y] = game.editortile;
-	game.currentMap.recalculateOverlays(x,y);
-      }
-    }
+    var canvasCoords = findPosition(game.viewport.canvas);
+    var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
+    var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
+    game.currentWindow.mouseMove(x,y);
   });
 
 // ----- }

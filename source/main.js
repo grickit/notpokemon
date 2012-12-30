@@ -24,6 +24,42 @@ function preStart() {
   images.load('tiles/redflower');
   images.load('tiles/hillstairs');
   images.load('characters/sign');
+
+  editorWindow = new WindowType({
+    keyHold: function(key) {
+      switch(key) {
+        case '38':
+          game.viewport.tracking = null;
+          game.viewport.y--;
+          break;
+        case '40':
+          game.viewport.tracking = null;
+          game.viewport.y++;
+          break;
+        case '39':
+          game.viewport.x++;
+          game.viewport.tracking = null;
+          break;
+        case '37':
+          game.viewport.tracking = null;
+          game.viewport.x--;
+          break;
+      }
+    },
+    mouseDown: function(x,y) {
+      if(game.inbounds(x,y)) {
+        game.currentMap.tiles[x][y] = this.tile;
+        game.currentMap.recalculateOverlays(x,y);
+      }
+    },
+    mouseMove: function(x,y) {
+      if(game.inbounds(x,y) && game.mousedown) {
+        game.currentMap.tiles[x][y] = this.tile;
+        game.currentMap.recalculateOverlays(x,y);
+      }
+    }
+  });
+  editorWindow.tile = 'd'
 }
 
 function start() {
@@ -55,17 +91,15 @@ function start() {
     clipto: [true,true,true,true]
   });
 
-  game.editortile = 'd';
-
-
   for(var code in baseTileSet.tiles) {
     var tile = baseTileSet.tiles[code];
-    game.menus.side.write('<a href="#" onclick="game.editortile=\''+code+'\'">'+code+'</a>');
+    game.menus.side.write('<a href="#" onclick="editorWindow.tile=\''+code+'\'">'+code+'</a>');
   }
 
 
   mapone = new Map(14,12);
   game.currentMap = mapone;
+  game.currentWindow = editorWindow
 
   testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/kantopokemon',715,1032)});
   gengar = new EntityLiving({ name: 'gengar', x: 5, y: 4, sprites: characterSheet('characters/kantopokemon',325,774)});
