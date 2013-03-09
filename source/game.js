@@ -82,10 +82,12 @@
     game.viewport = {}
     game.viewport.canvas = document.getElementById('map');
     game.viewport.context= game.viewport.canvas.getContext('2d');
+    game.viewport.canvas.width = parseInt(game.viewport.canvas.clientWidth);
+    game.viewport.canvas.height = parseInt(game.viewport.canvas.clientHeight);
     game.viewport.context.width = game.viewport.canvas.width;
     game.viewport.context.height = game.viewport.canvas.height;
-    game.viewport.tilesX = game.viewport.canvas.width / game.tileSize;
-    game.viewport.tilesY = game.viewport.canvas.height / game.tileSize;
+    game.viewport.tilesX = Math.floor(game.viewport.canvas.width / game.tileSize);
+    game.viewport.tilesY = Math.floor(game.viewport.canvas.height / game.tileSize);
     game.viewport.x = 0;
     game.viewport.y = 0;
 
@@ -164,6 +166,14 @@
 
   game.drawFrame = function() {
     var framestart = new Date().getMilliseconds();
+
+    game.viewport.canvas.width = parseInt(game.viewport.canvas.clientWidth);
+    game.viewport.canvas.height = parseInt(game.viewport.canvas.clientHeight);
+    game.viewport.context.width = game.viewport.canvas.width;
+    game.viewport.context.height = game.viewport.canvas.height;
+    game.viewport.tilesX = Math.floor(game.viewport.canvas.width / game.tileSize);
+    game.viewport.tilesY = Math.floor(game.viewport.canvas.height / game.tileSize);
+
     if(!game.paused) {
       clearCanvas(game.viewport.context);
       if(game.viewport.tracking != undefined) {

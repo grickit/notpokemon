@@ -24,8 +24,8 @@
     this.writeNow = function(message,br) {
       this.box.innerHTML += message;
       if(br != false) {
-	this.box.innerHTML += '<br>';
-	this.box.scrollTop += 100;
+        this.box.innerHTML += '<br>';
+        this.box.scrollTop += 100;
       }
     }
 
@@ -33,11 +33,11 @@
       // Scrolling writes need to finish immediately if paused because the poller isn't guarunteed to stop right away.
       if(game.paused) { this.writeNow(text,br); }
       else {
-	var first_char = text.charAt(0);
-	this.writeNow(first_char,false);
-	text = text.substring(1,text.length);
-	if(text.length > 0) { setTimeout(function(thisObj) { thisObj.scrollingWriteNow(text,br); }, this.scroll_delay, this); }
-	else { this.writeNow('',br); }
+        var first_char = text.charAt(0);
+        this.writeNow(first_char,false);
+        text = text.substring(1,text.length);
+        if(text.length > 0) { setTimeout(function(thisObj) { thisObj.scrollingWriteNow(text,br); }, this.scroll_delay, this); }
+        else { this.writeNow('',br); }
       }
     }
 
@@ -53,36 +53,36 @@
       //Idle the poller when paused
       if(game.paused) { setTimeout(function(thisObj) { thisObj.poll(); }, this.scroll_delay*2, this); }
       else {
-	var next_message = this.messages.shift();
-	if(next_message) {
-	  if(next_message.type == 'normal') {
-	    this.writeNow(next_message.message,next_message.br);
-	    setTimeout(function(thisObj) { thisObj.poll(); }, this.scroll_delay*2, this);
-	  }
-	  else if(next_message.type == 'scrolling') {
-	    this.scrollingWriteNow(next_message.message,next_message.br);
-	    setTimeout(function(thisObj) { thisObj.poll(); }, next_message.message.length * this.scroll_delay*2 + this.scroll_delay*2, this);
-	  }
-	  else if(next_message.type == 'clear') {
-	    this.clearNow();
-	    setTimeout(function(thisObj) { thisObj.poll(); }, this.scroll_delay*2, this);
-	  }
-	  else if(next_message.type == 'wait') {
-	    setTimeout(function(thisObj) { thisObj.poll(); }, next_message.message , this);
-	  }
-	  else if(next_message.type == 'delay change') {
-	    this.changeDelayNow(next_message.message);
-	    setTimeout(function(thisObj) { thisObj.poll(); }, next_message.message , this);
-	  }
-	}
-	else {
-	  setTimeout(function(thisObj) { thisObj.poll(); }, this.scroll_delay*2, this);
-	}
+        var next_message = this.messages.shift();
+        if(next_message) {
+          if(next_message.type == 'normal') {
+            this.writeNow(next_message.message,next_message.br);
+            setTimeout(function(thisObj) { thisObj.poll(); }, this.scroll_delay*2, this);
+          }
+          else if(next_message.type == 'scrolling') {
+            this.scrollingWriteNow(next_message.message,next_message.br);
+            setTimeout(function(thisObj) { thisObj.poll(); }, next_message.message.length * this.scroll_delay*2 + this.scroll_delay*2, this);
+          }
+          else if(next_message.type == 'clear') {
+            this.clearNow();
+            setTimeout(function(thisObj) { thisObj.poll(); }, this.scroll_delay*2, this);
+          }
+          else if(next_message.type == 'wait') {
+            setTimeout(function(thisObj) { thisObj.poll(); }, next_message.message , this);
+          }
+          else if(next_message.type == 'delay change') {
+            this.changeDelayNow(next_message.message);
+            setTimeout(function(thisObj) { thisObj.poll(); }, next_message.message , this);
+          }
+        }
+        else {
+          setTimeout(function(thisObj) { thisObj.poll(); }, this.scroll_delay*2, this);
+        }
       }
     }
 
     // Initialize
-    if(this.box == undefined) { throw "Element "+id+" does not exist"; }
+    if(this.box == undefined) { console.log("Element "+id+" does not exist"); }
     this.poll();
     this.clear();
   }
