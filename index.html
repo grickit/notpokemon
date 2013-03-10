@@ -12,7 +12,12 @@
     </script>
   </head>
  <body>
-  <div id="globalheader"><a href="http://grickit.github.com">&nbsp;&lt; Back to grickit.github.com</a> <a href="http://github.com/grickit/notpokemon">&nbsp;&lt; Source code</a></div>
+  <div id="globalheader">
+    <a href="http://grickit.github.com">&nbsp;&lt; Back to grickit.github.com</a> <a href="http://github.com/grickit/notpokemon">&nbsp;&lt; Source code</a><br>
+    <div id="stdout"></div><br>
+    <textarea class="stdin" id="stdin"></textarea><br>
+    <input type="submit" onclick="injectCode()" value="Inject" class="stdin">
+  </div>
   <canvas id="map"></canvas>
 
     <script type="text/javascript" src="source/OutputBox.js"></script>

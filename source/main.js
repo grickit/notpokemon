@@ -117,7 +117,7 @@ function start() {
   }
 
 
-  mapone = new Map(14,12);
+  mapone = new Map(75,40);
   game.currentMap = mapone;
   game.currentWindow = gameWindow
 

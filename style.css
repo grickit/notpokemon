@@ -20,9 +20,9 @@ body {
 #globalheader {
   position: absolute;
   top: -20px;
-  left: 0px;
   z-index: 200;
   width: 100%;
+  height: 20px;
   margin-top: 0px;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -33,11 +33,12 @@ body {
   border-bottom: 2px solid #0090B0;
   font-family: Arial;
   font-size: 10pt;
+  overflow: hidden;
 }
 
 #globalheader:hover {
   top: 0px;
-  height: 30px;
+  height: auto;
 }
 
 #globalheader a, #globalheader a:link, #globalheader a:visited {
@@ -105,13 +106,11 @@ body {
 }
 
 #stdout {
-  position: relative;
   width: 500px;
   height: 100px;
   border: 1px solid #000000;
   margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 10px;
   text-align: left;
   background-color: #300A24;
   color: #FFFFFF;
@@ -119,8 +118,12 @@ body {
   overflow-y: auto;
 }
 
-#stdin {
+textarea.stdin {
   width: 500px;
-  margin-top: 5px;
   height: 75px;
+  margin-left: 10px;
+}
+
+input.stdin {
+  margin-left: 10px;
 }
