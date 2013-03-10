@@ -33,7 +33,7 @@
       23: 'rgba(0,0,10,0.5)',
     },
     targetFPS: 25,
-    targetTPS: 32, // We have to overshoot our targetTPS a bit because ticking generally takes less than a millisecond
+    targetTPS: 25,
     tileSize: 16,
     framesThisSecond: 0,
     ticksThisSecond: 0,
@@ -246,7 +246,6 @@
     var projectedTPS = (ticktime == 0)? 9999 : (1000 / ticktime);
     if(projectedTPS > game.targetTPS) {
       var ticksleep = (1000 / game.targetTPS) - ticktime;
-      if(ticktime == 0) { ticksleep = 15; }
       setTimeout(game.tick,ticksleep);
     }
     else { setTimeout(game.tick,0); }
