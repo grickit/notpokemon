@@ -87,7 +87,7 @@ function start() {
 
   baseTileSet = new TileSet();
   baseTileSet.add({code: 'g',sprite: new Sprite({imageURL: 'tiles/grass'}),clipto: [true,true,true,true]});
-  baseTileSet.add({code: 'd',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 17,y: 51})});
+  baseTileSet.add({code: 'd',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 17,y: 51}),clipto: [true,true,true,true]});
 
   tileTransitionSet(baseTileSet,'dg','tiles/dirttograss');
   tileTransitionSet(baseTileSet,'hg','tiles/hilltograss');
@@ -119,7 +119,86 @@ function start() {
 
   mapone = new Map(75,40);
   game.currentMap = mapone;
-  game.currentWindow = gameWindow
+  mapone.tiles = [
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","d","d","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","d","d","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","d","d","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","d","d","d","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","d","d","d","d","d","g","g","g","g","g","d","d","d","g","d","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","d","d","d","d","d","d","g","g","g","d","d","d","d","d","d","d","d","d","d","d","d","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","tt","d","d","d","g","d","d","d","d","g","d","d","d","d","d","d","d","d","d","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","tt","tt","g","d","d","d","d","d","d","g","g","g","g","g","tt","tt","tt","tt","d","d","d","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","tt","tt","tt","g","g","d","d","d","d","g","g","g","g","g","tt","tt","tt","tt","tt","g","d","d","d","d","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","tt","tt","g","g","g","d","d","g","g","g","g","g","g","g","tt","tt","tt","g","g","g","d","d","d","d","d","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","tt","tt","g","tt","d","g","g","g","g","g","g","g","g","tt","tt","tt","g","g","g","g","g","d","d","d","d","d","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","d","d","g","g","g","g","g","g","g","g","tt","tt","g","g","g","g","g","g","g","d","d","d","d","d","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","d","d","g","g","g","g","g","g","g","g","tt","tt","tt","g","g","g","g","g","g","g","g","g","d","d","d","g","g"],
+  ["g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","d","d","d","g","g","g","g","g","g","g","g","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","d","d","d","g"],
+  ["g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","tt","d","d","d","g","g","g","g","g","g","tt","tt","tt","g","g","g","g","tt","g","g","g","g","g","g","d","d","d","g"],
+  ["g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","tt","tt","d","d","d","g","g","g","g","g","g","tt","g","g","g","tt","tt","tt","tt","g","g","g","g","g","g","g","d","d","g"],
+  ["g","g","g","g","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","d","d","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","d","g"],
+  ["g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","d","d","g","g","g","g","g","g","g","tt","g","g","tt","tt","tt","g","g","g","g","g","g","g","g","g","d","g"],
+  ["g","g","g","g","tt","g","tt","tt","tt","tt","tt","tt","tt","tt","tt","d","d","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","d","d","d","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","d","d","d","g","g","g","g","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","d","d","d","g","g","g","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","g","tt","d","d","g","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","tt","g","tt","tt","g","d","d","g","g","g","g","g","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","g","d","d","d","g","g","g","g","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","tt","g","d","d","d","d","d","d","d","d","d","d","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","d","d","d","d","d","d","d","d","d","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","d","tt","g","d","d","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","g","d","d","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","g","g","g","g","g","g","g","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","tt","g","tt","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","tt","tt","g"],
+  ["tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","tt","tt","g"],
+  ["tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","tt","g"],
+  ["tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","g"],
+  ["tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","g","g","g"],
+  ["tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","tt","g","g","g","g"],
+  ["tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g","tt","tt","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","tt","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
+  ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"]
+  ];
+  mapone.populateOverlays();
+  game.currentWindow = gameWindow;
 
   testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/hoennpokemon',195,1290)});
   gengar = new EntityLiving({ name: 'gengar', x: 5, y: 4, sprites: characterSheet('characters/kantopokemon',325,774)});
@@ -131,10 +210,12 @@ function start() {
   game.drawFrame();
   game.tick();
   setInterval(function() {
-    game.menus.main.box.innerHTML = (Object.keys(game.entities).length+' entities<br>');
-    game.menus.main.box.innerHTML += (game.visible_entities+' visible<br>');
-    game.menus.main.box.innerHTML += (game.framesThisSecond+' fps<br>');
-    game.menus.main.box.innerHTML += (game.ticksThisSecond+' tps');
+    //game.menus.main.box.innerHTML = (Object.keys(game.entities).length+' entities<br>');
+    //game.menus.main.box.innerHTML += (game.visible_entities+' visible<br>');
+    //game.menus.main.box.innerHTML += (game.framesThisSecond+' fps<br>');
+    //game.menus.main.box.innerHTML += (game.ticksThisSecond+' tps');
+    game.actualFramesPerSecond = game.framesThisSecond;
+    game.actualTicksPerSecond = game.ticksThisSecond;
     game.framesThisSecond = 0;
     game.ticksThisSecond = 0;
   },1000);
