@@ -221,6 +221,11 @@
       currentTime = new Date();
       clearCanvas(game.viewport.context,game.hourTints[currentTime.getHours()]);
       game.framesThisSecond++;
+      game.viewport.context.fillStyle = "white";
+      game.viewport.context.fillText(Object.keys(game.entities).length+' entities',10,30);
+      game.viewport.context.fillText(game.visible_entities+' visible',10,40);
+      game.viewport.context.fillText(game.actualFramesPerSecond+'/'+game.targetFPS+' fps',10,50);
+      game.viewport.context.fillText(game.actualTicksPerSecond+'/'+game.targetTPS+' tps',10,60);
     }
     var frametime = new Date().getMilliseconds() - framestart;
     var projectedFPS = (frametime == 0)? 9999 : 1000 / frametime;
@@ -238,9 +243,10 @@
       game.ticksThisSecond++;
     }
     var ticktime = new Date().getMilliseconds() - tickstart;
-    var projectedTPS = (ticktime == 0)? 9999 : 1000 / ticktime;
+    var projectedTPS = (ticktime == 0)? 9999 : (1000 / ticktime);
     if(projectedTPS > game.targetTPS) {
       var ticksleep = (1000 / game.targetTPS) - ticktime;
+      if(ticktime == 0) { ticksleep = 15; }
       setTimeout(game.tick,ticksleep);
     }
     else { setTimeout(game.tick,0); }
