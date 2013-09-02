@@ -19,6 +19,7 @@
     self.on_moved_from = isset(args.on_moved_from)? args.on_moved_from : function(){};
 
     self.purge = function() {
+      if(game.viewport.tracking = self) { game.viewport.tracking = undefined; }
       delete self.map.entities[self.x][self.y][self.name];
       delete game.entities[self.name];
       game.on_tick.unsubscribe[self.game_tick_subscription_number];
