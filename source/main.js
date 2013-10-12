@@ -83,7 +83,7 @@ function preStart() {
           hereEnts[entity].purge();
         }
         delete hereEnts;
-        new Entity({ x: x, y: y, sprites: [ new Sprite({imageURL: 'tiles/tree', x: 0, y: 0, height: 32, yoffset: -16}) ]});
+        new Entity({ x: x, y: y, z: 500, sprites: [ treeSprite ]});
       }
     },
     mouseMove: function(x,y) {
@@ -93,6 +93,15 @@ function preStart() {
     },
   });
 }
+
+var roseAnim = new Animation([
+  new Sprite({imageURL: 'tiles/redflower', x: 0, width: 17, height: 32, yoffset: -15, duration: 550}),
+  new Sprite({imageURL: 'tiles/redflower', x: 18, width: 17, height: 32, yoffset: -15, duration: 550}),
+  new Sprite({imageURL: 'tiles/redflower', x: 0, width: 17, height: 32, yoffset: -15, duration: 550}),
+  new Sprite({imageURL: 'tiles/redflower', x: 36, width: 17, height: 32, yoffset: -15, duration: 550}),
+],{paused: false, loop:true});
+
+var treeSprite = new Sprite({imageURL: 'tiles/tree', width: 32, height: 40, xoffset: -8, yoffset: -23});
 
 function start() {
   game.errorTile = new TileType({code: '_',sprite: new Sprite({ imageURL: '404' })});
