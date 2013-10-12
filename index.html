@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>HTML 5 Test Game</title>
+    <link rel="stylesheet" href="../globalheader.css" type="text/css">
     <link rel="stylesheet" href="style.css" type="text/css">
     <script type="text/javascript" src="analytics.js"></script>
     <script type="text/javascript">
@@ -13,12 +14,18 @@
   </head>
  <body>
   <div id="globalheader">
-    <a href="http://grickit.github.com">&nbsp;&lt; Back to grickit.github.com</a> <a href="http://github.com/grickit/notpokemon">&nbsp;&lt; Source code</a><br>
-    <div id="stdout"></div><br>
-    <textarea class="stdin" id="stdin"></textarea><br>
-    <input type="submit" onclick="injectCode()" value="Inject" class="stdin">
+    <a href="http://grickit.github.io">&laquo; Back to grickit.github.io</a>
+    <a href="http://github.com/grickit/notpokemon">&laquo; Source code</a>
   </div>
   <canvas id="map"></canvas>
+
+  <div id="tray">
+    <div id="stdout"></div>
+    <br>
+    <textarea class="stdin" id="stdin"></textarea>
+    <br>
+    <input type="submit" onclick="injectCode()" value="Inject" class="stdin">
+  </div>
 
     <script type="text/javascript" src="source/OutputBox.js"></script>
     <script type="text/javascript" src="source/window_events.js"></script>
