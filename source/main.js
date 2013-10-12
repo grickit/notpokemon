@@ -49,13 +49,11 @@ function preStart() {
     mouseDown: function(x,y) {
       if(game.inbounds(x,y)) {
         game.currentMap.tiles[x][y] = this.tile;
-        game.currentMap.recalculateOverlays(x,y);
       }
     },
     mouseMove: function(x,y) {
       if(game.inbounds(x,y) && game.mousedown) {
         game.currentMap.tiles[x][y] = this.tile;
-        game.currentMap.recalculateOverlays(x,y);
       }
     }
   });
@@ -184,7 +182,6 @@ function start() {
   ["s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
   ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"]
   ];
-  mapone.populateOverlays();
   game.currentWindow = gameWindow;
 
   testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/hoennpokemon',195,1290)});
