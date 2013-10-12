@@ -21,7 +21,6 @@ function preStart() {
   images.load('tiles/tree');
   images.load('tiles/grass');
   images.load('tiles/tallgrass');
-  images.load('tiles/tallgrass-overlay');
   images.load('tiles/redflower');
   images.load('tiles/hillstairs');
   images.load('characters/sign');
