@@ -78,7 +78,17 @@ function preStart() {
     },
     mouseDown: function(x,y) {
       if(game.inbounds(x,y)) {
+        var hereEnts = game.getEntities(x,y);
+        for(entity in hereEnts) {
+          hereEnts[entity].purge();
+        }
+        delete hereEnts;
         new Entity({ x: x, y: y, sprites: [ new Sprite({imageURL: 'tiles/tree', x: 0, y: 0, height: 32, yoffset: -16}) ]});
+      }
+    },
+    mouseMove: function(x,y) {
+      if(game.mousedown) {
+        gameWindow.mouseDown(x,y);
       }
     },
   });
