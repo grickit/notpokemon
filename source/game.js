@@ -176,7 +176,7 @@
     game.viewport.tilesY = Math.floor(game.viewport.canvas.height / game.tileSize / game.tileScale);
 
     if(!game.paused) {
-      clearCanvas(game.viewport.context);
+      //clearCanvas(game.viewport.context);
       game.viewport.context.scale(game.tileScale,game.tileScale);
       game.viewport.context.webkitImageSmoothingEnabled = game.viewport.context.imageSmoothingEnabled = game.viewport.context.mozImageSmoothingEnabled = game.viewport.context.oImageSmoothingEnabled = false;
       if(game.viewport.tracking != undefined) {
