@@ -34,7 +34,7 @@
     },
     targetFPS: 25,
     targetTPS: 25,
-    tileSize: 16,
+    tileSize: 32,
     framesThisSecond: 0,
     ticksThisSecond: 0,
     entities: new Object(),
@@ -254,23 +254,23 @@
   game.viewport.canvas.addEventListener('mousedown', function(e) {
     game.mousedown = true;
     var canvasCoords = findPosition(game.viewport.canvas);
-    var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
-    var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
+    var x = Math.floor((e.pageX - canvasCoords[0]) / game.tileSize) + game.viewport.x;
+    var y = Math.floor((e.pageY - canvasCoords[1]) / game.tileSize) + game.viewport.y;
     game.currentWindow.mouseDown(x,y);
   });
 
   game.viewport.canvas.addEventListener('mouseup', function(e) {
     game.mousedown = false;
     var canvasCoords = findPosition(game.viewport.canvas);
-    var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
-    var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
+    var x = Math.floor((e.pageX - canvasCoords[0]) / game.tileSize) + game.viewport.x;
+    var y = Math.floor((e.pageY - canvasCoords[1]) / game.tileSize) + game.viewport.y;
     game.currentWindow.mouseUp(x,y);
   });
 
   game.viewport.canvas.addEventListener('mousemove', function(e) {
     var canvasCoords = findPosition(game.viewport.canvas);
-    var x = Math.floor((e.pageX - canvasCoords[0]) / 16) + game.viewport.x;
-    var y = Math.floor((e.pageY - canvasCoords[1]) / 16) + game.viewport.y;
+    var x = Math.floor((e.pageX - canvasCoords[0]) / game.tileSize) + game.viewport.x;
+    var y = Math.floor((e.pageY - canvasCoords[1]) / game.tileSize) + game.viewport.y;
     game.currentWindow.mouseMove(x,y);
   });
 
