@@ -34,7 +34,8 @@
     },
     targetFPS: 25,
     targetTPS: 25,
-    tileSize: 32,
+    tileSize: 16,
+    tileScale: 2,
     framesThisSecond: 0,
     ticksThisSecond: 0,
     entities: new Object(),
@@ -81,7 +82,7 @@
   // ----- OBJECT: game.viewport {
     game.viewport = {}
     game.viewport.canvas = document.getElementById('map');
-    game.viewport.context= game.viewport.canvas.getContext('2d');
+    game.viewport.context = game.viewport.canvas.getContext('2d');
     game.viewport.canvas.width = parseInt(game.viewport.canvas.clientWidth);
     game.viewport.canvas.height = parseInt(game.viewport.canvas.clientHeight);
     game.viewport.context.width = game.viewport.canvas.width;
@@ -171,11 +172,13 @@
     game.viewport.canvas.height = parseInt(game.viewport.canvas.clientHeight);
     game.viewport.context.width = game.viewport.canvas.width;
     game.viewport.context.height = game.viewport.canvas.height;
-    game.viewport.tilesX = Math.floor(game.viewport.canvas.width / game.tileSize);
-    game.viewport.tilesY = Math.floor(game.viewport.canvas.height / game.tileSize);
+    game.viewport.tilesX = Math.floor(game.viewport.canvas.width / game.tileSize / game.tileScale);
+    game.viewport.tilesY = Math.floor(game.viewport.canvas.height / game.tileSize / game.tileScale);
 
     if(!game.paused) {
       clearCanvas(game.viewport.context);
+      game.viewport.context.scale(game.tileScale,game.tileScale);
+      game.viewport.context.webkitImageSmoothingEnabled = game.viewport.context.imageSmoothingEnabled = game.viewport.context.mozImageSmoothingEnabled = game.viewport.context.oImageSmoothingEnabled = false;
       if(game.viewport.tracking != undefined) {
         game.viewport.x = game.viewport.tracking.x - Math.floor(game.viewport.tilesX/2);
         game.viewport.y = game.viewport.tracking.y - Math.floor(game.viewport.tilesY/2);
@@ -220,6 +223,7 @@
       }
       currentTime = new Date();
       clearCanvas(game.viewport.context,game.hourTints[currentTime.getHours()]);
+      game.viewport.context.scale(1/game.tileScale,1/game.tileScale); // Unscale the canvas for drawing text
       game.framesThisSecond++;
       game.viewport.context.fillStyle = "white";
       game.viewport.context.fillText(Object.keys(game.entities).length+' entities',10,30);
@@ -254,23 +258,23 @@
   game.viewport.canvas.addEventListener('mousedown', function(e) {
     game.mousedown = true;
     var canvasCoords = findPosition(game.viewport.canvas);
-    var x = Math.floor((e.pageX - canvasCoords[0]) / game.tileSize) + game.viewport.x;
-    var y = Math.floor((e.pageY - canvasCoords[1]) / game.tileSize) + game.viewport.y;
+    var x = Math.floor((e.pageX - canvasCoords[0]) / game.tileSize / game.tileScale) + game.viewport.x;
+    var y = Math.floor((e.pageY - canvasCoords[1]) / game.tileSize / game.tileScale) + game.viewport.y;
     game.currentWindow.mouseDown(x,y);
   });
 
   game.viewport.canvas.addEventListener('mouseup', function(e) {
     game.mousedown = false;
     var canvasCoords = findPosition(game.viewport.canvas);
-    var x = Math.floor((e.pageX - canvasCoords[0]) / game.tileSize) + game.viewport.x;
-    var y = Math.floor((e.pageY - canvasCoords[1]) / game.tileSize) + game.viewport.y;
+    var x = Math.floor((e.pageX - canvasCoords[0]) / game.tileSize / game.tileScale) + game.viewport.x;
+    var y = Math.floor((e.pageY - canvasCoords[1]) / game.tileSize / game.tileScale) + game.viewport.y;
     game.currentWindow.mouseUp(x,y);
   });
 
   game.viewport.canvas.addEventListener('mousemove', function(e) {
     var canvasCoords = findPosition(game.viewport.canvas);
-    var x = Math.floor((e.pageX - canvasCoords[0]) / game.tileSize) + game.viewport.x;
-    var y = Math.floor((e.pageY - canvasCoords[1]) / game.tileSize) + game.viewport.y;
+    var x = Math.floor((e.pageX - canvasCoords[0]) / game.tileSize / game.tileScale) + game.viewport.x;
+    var y = Math.floor((e.pageY - canvasCoords[1]) / game.tileSize / game.tileScale) + game.viewport.y;
     game.currentWindow.mouseMove(x,y);
   });
 
