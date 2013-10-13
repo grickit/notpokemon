@@ -185,17 +185,6 @@
       }
 
       //Render tiles
-      var newx = game.viewport.x * game.tileSize;
-      var newy = game.viewport.y * game.tileSize;
-      if(game.viewport.tracking != undefined && game.viewport.tracking.getImage().trackxoffset) {
-        newx -= game.viewport.tracking.getImage().trackxoffset;
-      }
-      if(game.viewport.tracking != undefined && game.viewport.tracking.getImage().trackyoffset) {
-        newy -= game.viewport.tracking.getImage().trackyoffset;
-      }
-      //var imageData = mapone.context.getImageData(newx-game.tileSize,newy-game.tileSize,game.viewport.canvas.width+game.tileSize, game.viewport.canvas.height+game.tileSize);
-      //game.viewport.context.putImageData(imageData, -game.tileSize, -game.tileSize);
-
       for(var x = -2; x < game.viewport.tilesX+2; x++) {
         for(var y = -2; y < game.viewport.tilesY+2; y++) {
           game.viewport.drawImage(game.viewport.getAdjustedTile(x,y).sprite,x,y);
