@@ -46,18 +46,30 @@ function preStart() {
           break;
       }
     },
+    keyUp: function(key) {
+      switch(key) {
+        case '81':
+          tilePicker.scroll_down();
+          break;
+        case '87':
+          tilePicker.scroll_up();
+          break;
+      }
+    },
     mouseDown: function(x,y) {
       if(game.inbounds(x,y)) {
-        game.currentMap.tiles[x][y] = this.tile;
+        game.currentMap.tiles[x][y] = tilePicker.tileArray[tilePicker.index];
       }
     },
     mouseMove: function(x,y) {
-      if(game.inbounds(x,y) && game.mousedown) {
-        game.currentMap.tiles[x][y] = this.tile;
+      if(game.inbounds(x,y)) {
+        tilePicker.setPosition(x,y);
+      }
+      if(game.mousedown) {
+        editorWindow.mouseDown(x,y);
       }
     }
   });
-  editorWindow.tile = 'd'
 
   gameWindow = new WindowType({
     keyHold: function(key) {
@@ -201,10 +213,11 @@ function start() {
   ["s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
   ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"]
   ];
-  game.currentWindow = gameWindow;
+  game.currentWindow = editorWindow;
 
   testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/hoennpokemon',195,1290)});
   gengar = new EntityLiving({ name: 'gengar', x: 5, y: 4, sprites: characterSheet('characters/kantopokemon',325,774)});
+  tilePicker = new TileSelector({ name: 'tilePicker', x: 0, y: 0});
   game.viewport.tracking = testEnt;
 
   game.on_tick.subscribe(function(){
