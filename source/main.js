@@ -46,27 +46,18 @@ function preStart() {
           break;
       }
     },
+    keyDown: function(key) {
+      switch(key) {
+        case '81':
+          game.currentMap = editorpalette;
+          break;
+      }
+    },
     keyUp: function(key) {
       switch(key) {
         case '81':
-          tilePicker.scroll_down();
+          game.currentMap = mapone;
           break;
-        case '87':
-          tilePicker.scroll_up();
-          break;
-      }
-    },
-    mouseDown: function(x,y) {
-      if(game.inbounds(x,y)) {
-        game.currentMap.tiles[x][y] = tilePicker.tileArray[tilePicker.index];
-      }
-    },
-    mouseMove: function(x,y) {
-      if(game.inbounds(x,y)) {
-        tilePicker.setPosition(x,y);
-      }
-      if(game.mousedown) {
-        editorWindow.mouseDown(x,y);
       }
     }
   });
@@ -122,10 +113,13 @@ function start() {
   baseTileSet.add({code: 'g',sprite: new Sprite({imageURL: 'tiles/grass'}),clipto: [true,true,true,true]});
   baseTileSet.add({code: 'd',sprite: new Sprite({imageURL: 'tiles/dirttograss',x: 17,y: 51}),clipto: [true,true,true,true]});
   baseTileSet.add({code: 's',sprite: new Sprite({imageURL: 'tiles/sandtograss',x: 17,y: 51}),clipto: [true,true,true,true]});
+  baseTileSet.add({code: 'w',sprite: new Sprite({imageURL: 'tiles/watertograss',x: 17,y: 51}),clipto: [false,false,false,false]});
 
   tileTransitionSet(baseTileSet,'dg','tiles/dirttograss');
   tileTransitionSet(baseTileSet,'hg','tiles/hilltograss');
   tileTransitionSet(baseTileSet,'sg','tiles/sandtograss');
+  tileTransitionSet(baseTileSet,'wg','tiles/watertograss');
+  tileTransitionSet(baseTileSet,'sw','tiles/sandtowater');
 
   for(var code in baseTileSet.tiles) {
     var tile = baseTileSet.tiles[code];
@@ -133,7 +127,7 @@ function start() {
   }
 
 
-  mapone = new Map(75,40);
+  mapone = new Map({name: 'mapone', width: 75, height: 40});
   game.currentMap = mapone;
   mapone.tiles = [
   ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","d","d","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
@@ -213,11 +207,38 @@ function start() {
   ["s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","s","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"],
   ["g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g","g"]
   ];
+
+  editorpalette = new Map({name: 'map_editorpalette', width: 17, height: 6});
+  editorpalette.tiles = [
+    ['d','g','s','w'],
+
+    [],
+
+    ['dg-tl','dg-ml','dg-bl','dg-conv-tl','dg-mr','dg-conv-bl'],
+    ['dg-t','d','dg-b','dg-b','g','dg-t'],
+    ['dg-tr','dg-mr','dg-br','dg-conv-tr','dg-ml','dg-conv-br'],
+
+    ['sg-tl','sg-ml','sg-bl','sg-conv-tl','sg-mr','sg-conv-bl'],
+    ['sg-t','s','sg-b','sg-b','g','sg-t'],
+    ['sg-tr','sg-mr','sg-br','sg-conv-tr','sg-ml','sg-conv-br'],
+
+    ['hg-tl','hg-ml','hg-bl','hg-conv-tl','hg-mr','hg-conv-bl'],
+    ['hg-t','g','hg-b','hg-b','g','hg-t'],
+    ['hg-tr','hg-mr','hg-br','hg-conv-tr','hg-ml','hg-conv-br'],
+
+    ['wg-tl','wg-ml','wg-bl','wg-conv-tl','wg-mr','wg-conv-bl'],
+    ['wg-t','w','wg-b','wg-b','g','wg-t'],
+    ['wg-tr','wg-mr','wg-br','wg-conv-tr','wg-ml','wg-conv-br'],
+
+    ['sw-tl','sw-ml','sw-bl','sw-conv-tl','sw-mr','sw-conv-bl'],
+    ['sw-t','s','sw-b','sw-b','w','sw-t'],
+    ['sw-tr','sw-mr','sw-br','sw-conv-tr','sw-ml','sw-conv-br'],
+  ];
+
   game.currentWindow = editorWindow;
 
   testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/hoennpokemon',195,1290)});
   gengar = new EntityLiving({ name: 'gengar', x: 5, y: 4, sprites: characterSheet('characters/kantopokemon',325,774)});
-  tilePicker = new TileSelector({ name: 'tilePicker', x: 0, y: 0});
   game.viewport.tracking = testEnt;
 
   game.on_tick.subscribe(function(){
