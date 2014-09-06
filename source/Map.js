@@ -1,9 +1,10 @@
 // ----- CLASS: Map {
-  function Map(width,height) {
+  function Map(args) {
     var self = this;
     // ----- Properties
-    self.width = isset(width)? width : 20;
-    self.height = isset(height)? height : 20;
+    self.name = isset(args.name)? args.name : 'map_x';
+    self.width = isset(args.width)? args.width : 20;
+    self.height = isset(args.height)? args.height : 20;
     self.tiles = [];
     self.entities = [];
 
@@ -30,6 +31,6 @@
     }
 
     // ----- Initialize
-    self.setDimensions(width,height);
+    self.setDimensions(self.width,self.height);
   }
 // ----- }
