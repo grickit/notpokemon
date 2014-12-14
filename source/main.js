@@ -59,6 +59,21 @@ function preStart() {
           game.currentMap = mapone;
           break;
       }
+    },
+    mouseDown: function(x,y) {
+      if(game.inbounds(x,y)) {
+        if(game.currentMap == editorpalette) {
+          editorTile = editorpalette.tiles[x][y];
+        }
+        else {
+          game.currentMap.tiles[x][y] = editorTile;
+        }
+      }
+    },
+    mouseMove: function(x,y) {
+      if(game.mousedown) {
+        editorWindow.mouseDown(x,y);
+      }
     }
   });
 
@@ -236,6 +251,7 @@ function start() {
   ];
 
   game.currentWindow = editorWindow;
+  editorTile = game.errorTile;
 
   testEnt = new EntityLiving({ name: 'testEnt', x: 5, y: 5, sprites: characterSheet('characters/hoennpokemon',195,1290)});
   gengar = new EntityLiving({ name: 'gengar', x: 5, y: 4, sprites: characterSheet('characters/kantopokemon',325,774)});
