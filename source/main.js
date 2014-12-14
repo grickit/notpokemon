@@ -49,6 +49,10 @@ function preStart() {
     keyDown: function(key) {
       switch(key) {
         case '81':
+          game.viewport.tempx = game.viewport.x;
+          game.viewport.tempy = game.viewport.y;
+          game.viewport.x = -5;
+          game.viewport.y = -5;
           game.currentMap = editorpalette;
           break;
       }
@@ -56,6 +60,8 @@ function preStart() {
     keyUp: function(key) {
       switch(key) {
         case '81':
+          game.viewport.x = game.viewport.tempx;
+          game.viewport.y = game.viewport.tempy;
           game.currentMap = mapone;
           break;
       }
