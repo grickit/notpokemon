@@ -57,6 +57,20 @@ function findPosition(obj) {
   return [left, top];
 }
 
+function convertPageXYToTileXY(pageX,pageY) {
+  var canvasCoords = findPosition(game.viewport.canvas);
+  var tileX = Math.floor((pageX - canvasCoords[0]) / game.tileSize / game.tileScale) + game.viewport.x;
+  var tileY = Math.floor((pageY - canvasCoords[1]) / game.tileSize / game.tileScale) + game.viewport.y;
+  return [tileX, tileY];
+}
+
+function convertTileXYToPageXY(tileX,tileY) {
+  var canvasCoords = findPosition(game.viewport.canvas);
+  var pageX = Math.floor((tileX - game.viewport.x) * game.tileSize * game.tileScale) + canvasCoords[0];
+  var pageY = Math.floor((tileY - game.viewport.y) * game.tileSize * game.tileScale) + canvasCoords[1];
+  return [pageX, pageY];
+}
+
 function clearCanvas(context,color) {
   context.fillStyle = (color == undefined)? '#000000' : color;
   context.beginPath();
