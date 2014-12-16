@@ -9,6 +9,7 @@ function preStart() {
   images = new ImageManager();
   images.load('404');
   images.load('alpha');
+  images.load('border');
   images.load('characters/marker');
   images.load('characters/kantopokemon');
   images.load('characters/johtopokemon');
@@ -255,6 +256,8 @@ function start() {
     ['sw-t','s','sw-b','sw-b','w','sw-t'],
     ['sw-tr','sw-mr','sw-br','sw-conv-tr','sw-ml','sw-conv-br'],
   ];
+ 
+  game.cursor = new EntityCursor({ name: 'cursor' });
 
   game.currentWindow = editorWindow;
   editorTile = game.errorTile;

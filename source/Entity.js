@@ -43,7 +43,7 @@
     }
 
     // ----- Initialize
-    if(args.ticks == true) { self.game_tick_subscription_number = game.on_tick.subscribe(self.ontick,false,false); }
+    if(args.ticks == true) { self.game_tick_subscription_number = game.on_tick.subscribe(self.on_tick,false,false); }
     game.entities[self.name] = self;
     self.setPosition(self.x,self.y);
     self.current_image = self.sprites[0];
